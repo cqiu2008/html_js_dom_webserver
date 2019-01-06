@@ -1,0 +1,167 @@
+/* 文件表格div属性 */
+
+.dtable {
+
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	font-size: 11px;
+
+	color: #666;
+
+	white-space: nowrap;
+
+	float:left;
+
+	padding-left:50px;
+
+}
+
+/* 文件单元格头 */
+
+td.title{
+
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	font-size: 13px;
+
+	background-color:#c0d2ec;
+
+	width:20%;
+
+}
+
+/* 文件单元格内容 */
+
+td.cell{
+
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	font-size: 13px;
+
+	background-color:#FFFAF0;
+
+	width:20%;
+
+}
+
+/* 重命名 */
+
+.renameInput{
+
+	height: 20px;
+
+	font-size: 12px;
+
+}
+
+/* 树形控件 */
+
+.dtree {
+
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	font-size: 11px;
+
+	color: #666;
+
+	white-space: nowrap;
+
+	float:left;
+
+}
+
+.dtree img {
+
+	border: 0px;
+
+	vertical-align: middle;
+
+}
+
+.dtree a {
+
+	color: #333;
+
+	text-decoration: none;
+
+}
+
+.dtree a.node, .dtree a.nodeSel {
+
+	white-space: nowrap;
+
+	padding: 1px 2px 1px 2px;
+
+}
+
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+
+	color: #333;
+
+	text-decoration: underline;
+
+}
+
+.dtree a.nodeSel {
+
+	background-color: #c0d2ec;
+
+}
+
+.dtree .clip {
+
+	overflow: hidden;
+
+}
+
+
+
+.div_RightMenu
+
+{
+
+    z-index:30000;
+
+    text-align:left;    
+
+    cursor: default;
+
+    position: absolute;
+
+    background-color:#FAFFF8;
+
+    width:120px;
+
+    height:auto;
+
+    border: 1px solid #333333;
+
+    display:none;
+
+}
+
+
+
+.divMenuItem
+
+{
+
+    height:17px;
+
+    color:Black;
+
+    font-family:Times;
+
+    vertical-align:middle;
+
+    font-size:10pt;
+
+    margin-bottom:3px;
+
+    cursor:pointer;
+
+    padding-left:30px;
+
+    padding-top:2px;   
+
+}

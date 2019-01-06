@@ -1,0 +1,26 @@
+<html>
+<head>
+	<script type="text/javascript" src='script/dom.js'></script>
+</head>
+
+<body>
+ <p>
+	<button onclick="nodeShow('table1')"> show the node </button>
+	<button onclick="alert(document.getElementById('table1').rows[0].cells[0].childNodes[0].id)"> show the node1 </button>
+	<button onclick="alert(document.getElementById('table1').rows[0].cells[0].childNodes[0])"> show the node2 </button>
+ </p>
+ <!-- <div id ="div1"> -->
+ <table id="table1"> 
+     <tr><td> 
+         <table id="table2">
+             <tr id ="tr1"><td id="td1"><input id ="input1" name="name" value="niexiong" onclick="mouseOver()">123</td></tr> 
+             <tr id ="tr2"><td id="td2">456</td></tr> 
+         </table>
+     </td></tr> 
+ </table>   
+ <!-- </div> -->
+
+ </body>
+
+
+</html>

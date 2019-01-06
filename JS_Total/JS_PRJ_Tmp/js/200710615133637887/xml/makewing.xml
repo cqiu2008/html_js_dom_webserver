@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topStories>
+ <story1 
+  imageURL="images/b-01.jpg"
+  readMore="http://lanren.makewing.com/"
+  thumbURL="images/s-01.jpg"
+  />
+
+ <story2 
+  imageURL="images/b-02.jpg"
+  readMore="http://lanren.makewing.com/"
+  thumbURL="images/s-02.jpg"
+  />
+ 
+ <story3 
+  imageURL="images/b-03.jpg"
+  readMore="http://lanren.makewing.com/"
+  thumbURL="images/s-03.jpg"
+  />
+ 
+ <story4 
+  imageURL="images/b-04.jpg"
+  readMore="http://lanren.makewing.com/"
+  thumbURL="images/s-04.jpg"
+  />
+
+</topStories>

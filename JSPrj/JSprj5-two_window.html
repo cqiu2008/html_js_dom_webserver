@@ -1,0 +1,34 @@
+<html>
+<head>
+<script language=javascript>
+<script defer>
+function browser.onclick(){
+var nW = window.open("","","width=170,height=200");
+nW.moveTo(300,100);
+nW.document.write("<script defer>\r"+
+         "var m=true;\r"+
+        "function insert.onclick(){\r"+
+         "if(m){\r"+
+            "opener.atext.value=btext.value;\rm=false;"+
+            "}else{\r"+
+            "opener.atext.value+='\-'+btext.value;\r"+
+        "}\r}\r"+
+		"<\/script>\r"+
+        "<input name=btext value=111111 size=10 style='BACKGROUND: #ffffff; BORDER-BOTTOM: #0A3EAE
+		1px solid; BORDER-LEFT: #0A3EAE 1px solid; BORDER-RIGHT: #0A3EAE 1px solid; BORDER-TOP:
+		#0A3EAE 1px solid'>\r"+
+        "<input type=button value=选择 name=insert style='background-color: #EBF5FC; border: 1px
+		solid #0099CC'>");
+}
+</script>
+<textarea name="atext" cols="60" rows="4"></textarea>
+<input type=button value=选择参数 name=browser style="background-color: #EBF5FC; border: 1px solid #0099CC">
+</script>
+</head>
+<body>
+	<form>
+       <input type="button" value="click it" ONCLICK=" browser.onclick()">
+	</form>
+</body>
+</html>
+

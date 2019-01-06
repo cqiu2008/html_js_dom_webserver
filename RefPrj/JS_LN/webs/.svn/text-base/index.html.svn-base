@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Cloud Test Web</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="css/common_css_new.css" />
+<link type="text/css" rel="stylesheet" href="css/mainContainer.css" />
+<style type="text/css">
+    * { margin:0; padding:0; }
+	<!--html,body { height:100%; overflow:hidden;}/*height:100%; overflow:hidden; -->当内容高出一屏时，让遮盖层居中显示 */
+	.lightBox,
+	.popupCover,
+	.popupIframe,
+	.popupComponent { position:absolute; left:0; top:0; width:100%; height:100%;}
+	.popupComponent { z-index:2; display:none;}
+	.popupIframe {display:none; _display:block; _filter:alpha(opacity=0);}/*iframe 样式，让select在ie6下隐藏*/
+	.popupCover { border:1px solid #c00; background:#F0F8FF\9; filter:alpha(opacity=30);}/*遮盖背景图 IE7*/
+	.lightBox { text-align:center; overflow:auto;}/*让阴影层显示在屏幕中间显示*/
+	.lightBoxContent { display:inline-block; *display:inline; zoom:1;}/*让阴影层显示在屏幕中间显示*/
+	.lightBoxMaxHeight { display:inline-block; vertical-align:middle; height:100%; *height:99.5%; width:1px; overflow:hidden; margin-left:-1px;}/*让阴影层显示在屏幕中间显示*/
+	.lightBoxWrapper { display:inline-block; *display:inline; zoom:1; width:350px; padding:10px; background:#fff; border:2px solid #00b4ff; vertical-align:middle;}/*让阴影层显示在屏幕中间显示*/ 
+	.processWrapper { display:inline-block; *display:inline;}/*进度条*/ 	
+	.clear{
+		clear:both;
+	}
+</style>
+<script type="text/javascript" src="lib/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="script/JAjax.js?ver=V2.00.03.01"></script>
+<script type="text/javascript" src='script/errorDef.js'></script>
+<script type="text/javascript" src='script/common.js?ver=V2.00.03.01'></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body style="margin: 0; padding: 0;" scroll="no" class="clear" bgcolor="#ffffff"   >  
+
+<div class="clear"></div>
+	<div id="divHead" style=" width: 100%; height:65px; border: none 0px" class="clear">
+		<iframe id="headArea" name="headArea" src="head.htm" SCROLLING="no" style="width:100%; height: 100%" frameborder="0" border="0" marginwidth="0" marginheight="0" ></iframe>
+	</div>
+	<div style="width:100%;height: 83%; border: none 0px">
+		<div id="divMenu" style="width: 16%; height:100%; float: left;">
+			<iframe id="menuArea" name="menuArea" src="menu.html" style="width:100%; height: 100%" frameborder="0" border="0" marginwidth="0" marginheight="0" ></iframe>
+		</div>
+	     <div id="divMain" style="float:left;width:84%; height: 100%; border: none 0px">
+			<iframe id="mainArea" name="mainArea" src="indtroduce.html" width="100%" height="95%" frameborder="0" border="0" marginwidth="0" marginheight="0" ></iframe>
+			</div>
+	</div>
+	<div id="divFoot" style="width: 100%; height: 40px; border: none 0px" class="clear">
+		<iframe id="footArea" name="footArea" SCROLLING="no" src="foot.html" width="100%" height="100%" frameborder="0" border="0" marginwidth="0" marginheight="0" ></iframe>
+	</div>
+
+	<div id="lightBox"  class="popupComponent">
+		<iframe class="popupIframe"></iframe>
+		<div id="popupCover" class="popupCover"></div>
+		<div class="lightBox">
+			<span class="lightBoxMaxHeight"></span>
+			<div class="lightBoxContent">
+				<div id="msgInfo" class="lightBoxWrapper">
+					<div id="messageContent">这里放提示信息。</div>
+					<div id="progressDiv" class="processWrapper">
+						<div align="left" id="progressBoder" class="prog-border" style="vertical-align:baseline; display:inline-block;">
+							<div id="progressBar" class="prog-bar" style="width: 0%;"></div>		
+						</div>
+						<div id="progressPercent" class="prog-percent" style="display:inherit;">0%</div>
+					</div>
+				</div>
+				<div id="msg-window" class="msg-window">
+	                <div class="msg-titlel">
+	                    <div class="msg-titler">
+	                        <div class="msg-titlec"><div id="msg-title" class="msg-title">标题</div></div>
+	                    </div>
+	                </div>
+	                <div class="msg-bodyl">
+	                    <div class="msg-bodyr">
+	                        <div class="msg-bodyc">
+	                            <div id="msg-type" class="msg_alert" style="POSITION: relative; HEIGHT: 116px">
+	                                <div id="msg-content" class="msg-content">内容</div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="msg-bodyl">
+	                    <div class="msg-bodyr">
+	                        <div id="msg-btn" class="msg-btn">
+	                            <INPUT class="btnStyle" type="button" value=" 确 定 " />
+	                        </div>
+	                    </div>
+	                </div>
+                	<div class="msg-footl"><div class="msg-footr"><div class="msg-footc"></div></div></div>
+            	</div>
+			</div>
+        </div>
+	</div>
+</body>
+</html>

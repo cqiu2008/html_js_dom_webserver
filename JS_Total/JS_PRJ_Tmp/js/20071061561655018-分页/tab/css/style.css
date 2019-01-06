@@ -1,0 +1,198 @@
+﻿body{ margin: 0 auto;width:600px;padding: 0;background: #FFF;color: #000;font: normal 12px 宋体,arial,sans-serif;text-align: center;}
+div,form,ul,ol,li,span,p {border: 0;margin: 0;padding: 0;}
+
+
+
+/*清除float*/
+.clear{ clear: both; font-size:1px; visibility: hidden; }
+
+/*空格*/
+.blank2{font-size: 1px;height: 2px;margin: 0 auto;width: 100%;}
+.blank5{font-size: 1px;height: 5px;margin: 0 auto;width: 100%;}
+.sblank2{font-size: 1px;height: 2px;margin: 0 auto;width: 100%;}
+.sblank3{font-size: 1px;height: 3px;margin: 0 auto;width: 100%;}
+.sblank5{font-size: 1px;height: 5px;margin: 0 auto;width: 100%;}
+.sblank7{font-size: 1px;height: 7px;margin: 0 auto;width: 100%;}
+
+/*边距*/
+.margin-right{margin-right: 6px;}
+.margin-right-left{margin-right: 3px; margin-left:3px;}
+
+/*字体颜色*/
+.fcborange{color: #F0741A;font: bold 12px arial,sans-serif;}
+.fcred{color:#FF0000;}
+.fcwhite{color:#FFF;font:normal 13px 宋体,arial,sans-serif;letter-spacing:1px;}
+
+.class_title{float:right;
+	margin: 0 auto;
+	width: 14px;
+	height: 17px;
+	border: 1px solid #9EB1C0;
+	padding: 1px;
+	cursor:pointer;
+background:url(../images/tab_bgs.gif) 5px -113px no-repeat;
+}
+#news_cnt,#tab_cnt{
+  display: block;
+  overflow:hidden;
+}
+
+/*新闻标签导航*/
+
+.news_tabsnav{
+    background:#ffffff url(../images/tab_bgs.gif) left -140px repeat-x;
+	border: solid #B0BEC7;
+	border-width: 0 1px 0 1px;
+	height: 22px;
+	margin: 0 auto;
+	padding: 0;
+	width: 474px;
+}
+
+.news_tabsnav .tabsmenu{
+	height: 22px;
+}
+
+.news_tabsnav .tab_sline {
+	padding-top: 3px;
+	width: 2px;
+}
+
+.news_tabsnav li{
+	color: #18397C;
+	float:left;
+	display:inline;
+	font: normal 12px 宋体,arial,sans-serif;
+	list-style-type: none;
+	margin:0;
+	text-align: center;
+}
+
+
+.news_tabsnav li a{
+display:block;
+float:left;
+padding:4px 32px 0 32px;/*链接左右补白宽度，若要固定宽度，些句可改为：padding-top:4px;width:100px;*/
+padding-top:4px;
+height:18px;
+background:url(../images/tab_bgs.gif) right -88px no-repeat; 
+}
+
+#news_mn li a{padding:4px 16px 0 16px;}/*news组标签链接左右补白宽度*/
+
+
+/*导航菜单点击后的样式
+border:1px #111 solid;*/
+.news_tabsnav .tabactive1{
+	background: url(../images/tab_bgs.gif);
+	color: #F26400;
+}
+.news_tabsnav .tabactive1 a{background:url(../images/tab_bgs.gif) right -60px no-repeat;}
+.news_tabsnav .tabactive2{
+	background: url(../images/tab_bgs.gif) left -30px no-repeat;
+	color: #F26400;
+}
+
+/*最新消息主体*/
+.news_content{
+	clear:both;
+	border: solid #B0BEC7;
+	border-width: 0 1px 1px 1px;
+	margin: 0 auto;
+	width: 474px;
+}
+
+
+.news_content .li1a li a{display:block;float:left;width:210px;overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}
+.news_content .li1a a:hover{background-color:#fff0f0;}
+
+.news_content .li1a2 li a{display:block;float:left;width:160px;overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}
+.news_content .li1a2 a:hover{background-color:#fff0f0;}
+
+
+
+.rightmore{float:right;width:200px;text-align:right;}
+/*推荐新闻列表*/
+.news_list{
+	height: 120px;
+	margin: 0 auto;
+	width: 460px;
+}
+
+.news_list img{
+	border: 1px solid #9EB1C0;
+	float: left;
+	height: 115px;
+	margin: 0;
+	padding: 1px;
+	width: 154px;
+	cursor: pointer;
+}
+
+.news_list .new_top7{
+	float: right;
+	height: 106px;
+	margin: 0;
+	width: 290px;
+}
+
+.news_list .new_top7 li{
+	float: left;
+	font: normal 13px 宋体,sans-serif;
+	height: 12px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 5px 0!important;
+	padding: 0 0 2px 0;
+	width: 290px;
+}
+
+.news_list .new_top7 li a:link,a:visited{
+	color: #18397C;
+}
+
+.news_list .new_top7 li a:hover{
+	color: #FF0000;
+}
+
+/*LOGO广告*/
+.logos{
+	margin: 0 auto;
+	width: 458px;
+	padding: 1px !important;
+	border: 1px solid #9EB1C0;
+}
+
+.logoscnt{
+	margin: 0 auto;
+	width: 458px;
+	padding: 6px 0 7px 0 !important;
+	padding: 4px 0 5px 0;
+	text-align: center;
+	background: url(../images/tab_bgs.gif) 0 -170px repeat-x;
+}
+.logoscnt img{border:0}
+/*基本信息统计*/
+.siteinfo{
+	height: 12px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	padding: 4px 0 4px 0 !important;
+	padding: 2px 0 2px 0;
+	text-align: center;
+	width: 460px;
+}
+
+.loading{
+    margin:0 auto;
+	padding-top:77px;
+	padding-bottom:77px;
+	width:460px;
+	height:18px;
+	text-align:center;
+}
+
+/*链接样式*/
+a:link{color: #000;text-decoration: none;}
+a:visited{color: #000;text-decoration: none;}
+a:hover{color: #16387C;text-decoration: underline;}

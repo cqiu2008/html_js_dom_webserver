@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>CreateTxtFile</title>
+</head>
+<body>
+<script language="JavaScript">
+//var strFile = "E:\\hhh.txt";
+var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+var strFile ="CreateTxtFile.dat";
+// 检查文件是否存在
+if (!objFSO.FileExists(strFile)){
+// 创建文本文件
+var objStream = objFSO.CreateTextFile(strFile, true);
+objStream.WriteLine("Hello");
+objStream.WriteBlankLines(1);// 换行
+document.write("Create Txt File  " + strFile + "<br>");
+var ofile=objFSO.getFile(strFile);
+alert(ofile.path);
+objStream.Close();
+//objStream.Readline();//read one line
+//objStream.ReadAll();//read the whole file
+}
+else
+{
+document.write("Txt File " + strFile + " has been already exit <br>");
+var ofile=objFSO.getFile(strFile);
+alert(ofile.path);
+objStream.Close();
+}
+</script>
+</body>
+</html> 
+

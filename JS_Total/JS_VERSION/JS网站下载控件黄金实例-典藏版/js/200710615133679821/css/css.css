@@ -1,0 +1,14 @@
+BODY {FONT-SIZE: 8pt;  MARGIN: 0px; COLOR: #cb6080; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Tahoma, "ÐÂËÎÌå", "ËÎÌå"; BACKGROUND-COLOR: #fff;}
+
+.li_dot {FONT-SIZE: 12px; COLOR: #ed1264; FONT-FAMILY: Webdings}
+
+#flash_show_out {MARGIN-TOP: 5px; FLOAT: left; WIDTH: 322px;}
+#flash_show {BORDER-TOP-WIDTH: 4px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 4px; BORDER-BOTTOM-WIDTH: 4px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; POSITION: relative; HEIGHT: 240px; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 4px}
+#flash_img {BORDER-RIGHT: #f27e96 1px solid; BORDER-TOP: #f27e96 1px solid; FILTER: progid:DXImageTransform.Microsoft.Fade(Overlap=1.00); OVERFLOW: hidden; BORDER-LEFT: #f27e96 1px solid; WIDTH: 320px; BORDER-BOTTOM: #f27e96 1px solid; HEIGHT: 100%}
+#flash_btn {LEFT: 1px; POSITION: absolute; TOP: 165px}
+#flash_btn DIV {MARGIN: 5px}
+#flash_show_ctl {PADDING-RIGHT: 0px; MARGIN-TOP: 2px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; COLOR: #434343; PADDING-TOP: 3px; HEIGHT: 16px}
+#flash_show_ctl A {COLOR: #434343}
+#flash_show_ctl_msg {FILTER: progid:DXImageTransform.Microsoft.Fade(Overlap=1.00); FLOAT: left; OVERFLOW: hidden; WIDTH: 289px}
+#flash_show_ctl_tuber {Z-INDEX: 100; LEFT: 305px; POSITION: relative; TOP: -17px}
+#flash_show_ctl_arrow {MARGIN-RIGHT: 5px}

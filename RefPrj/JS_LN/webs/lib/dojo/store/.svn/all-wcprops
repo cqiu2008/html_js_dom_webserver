@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store
+END
+Observable.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store/Observable.js
+END
+DataStore.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store/DataStore.js
+END
+JsonRest.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store/JsonRest.js
+END
+Memory.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store/Memory.js
+END
+Cache.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/store/Cache.js
+END

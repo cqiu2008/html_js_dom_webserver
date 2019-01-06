@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../css/cfg_table.css">   
+<link type="text/css" rel="stylesheet" href="../lib/dijit/themes/soria/soria.css">
+<link type="text/css" rel="stylesheet" href="../css/jquery-ui-1.7.2.custom.css">  
+<link type="text/css" rel="stylesheet" href="../css/JTable.css" />                         <!--jTable表格样式  含有JTable表格的页面包含-->
+<link type="text/css" rel="stylesheet" href="../css/cfg_table.css" /> 
+<script type="text/javascript"  src="../lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"  src="../lib/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="../script/JTable.js"></script>
+<script type="text/javascript"  src="../script/cfgTable.js"></script>
+<script type="text/javascript" src="../lib/dojo/dojo.js" djConfig="parseOnLoad:true,isDebug:true,locale:'en-us'"> </script> 
+<script type="text/javascript" src="../lib/dijit/dijit.js"></script>
+<script type="text/javascript" src="../script/localdojo.js"></script> 	
+</head>
+<body class="soria">
+
+<div dojoType="dijit.TitlePane" id="outTitlePane" title='历史任务' closable="false">
+
+<div >
+	<button onClick="task()">
+	删除
+	</button>
+</div>
+
+    <table  class="cfgTable" id="task"  >
+	<tbody>
+	<tr>
+	<th  width="10%">编号</th>
+	<th width="20%">任务队列</th>
+	<th width="20%">版本号</th>
+	<th width="10%">任务时长</th>
+	<th width="20%">执行策略</th>
+	<th width="10%">log</th>
+	<th width="10%">report</th>
+	</tr>
+	<tr>
+	<td align="left" >1#</td>
+  <td align="left" ><a href="#c4">2.3.3版本测试</a></td>
+  <td align="left" >2.3.3</td> 
+   <td align="left" >3小时</td> 
+   <td align="left" >日构建</td>    
+   <td align="left" ><a href="#c4">log</a></td>    
+  <td align="left" ><a href="#c4">report</a></td>   
+ </tr>
+ <tr>
+  <td align="left" >2#</td>
+  <td align="left" ><a href="#c4">2014-06-07冒烟测试</a></td>
+  <td align="left">2.3.2</td>
+  <td align="left">1小时</td>
+  <td align="left" >日构建</td>
+  <td align="left"><a href="#c4">log</a></td>
+  <td align="left" ><a href="#c4">report</a></td>
+ </tr>
+ </tbody>
+	</table>
+	
+	
+  </div>
+ </div>
+
+</body>
+</html>

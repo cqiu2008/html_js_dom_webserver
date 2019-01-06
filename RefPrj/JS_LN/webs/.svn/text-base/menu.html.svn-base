@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Cloud Test Web MENU</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mainContainer.css" />
+<link rel="stylesheet" type="text/css" href="lib/jquery.zmenu/css/zTreeStyle.css" />
+<script type="text/javascript" src="lib/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery.zmenu/js/jquery.ztree.core-3.0.js"></script>
+<style type="text/css">
+
+#menu {
+	margin:0px 5px 10px 5px;
+}
+
+</style>
+
+<script type="text/javascript">
+	var curLanguage;
+	var curVersion;
+	
+	var setting_EN = {
+		view: {
+			dblClickExpand: false
+		},
+		callback: {
+			onClick: onClick
+		},
+		data:{
+			key: {
+				name: 'name'
+			}
+		}
+	};
+	
+	var setting_CN = {
+		view: {
+			dblClickExpand: false
+		},
+		callback: {
+			onClick: onClick
+		},
+		data:{
+			key: {
+				name: 'chineseName'
+			}
+		}
+	};
+
+	function onClick(e,treeId, treeNode) {
+		var zTree = $.fn.zTree.getZTreeObj("menu");
+		if(treeNode.targetPage === "") {
+			zTree.expandNode(treeNode);
+		}else {
+			var navStr = getNavStr(treeNode);
+			//showNavStr(navStr);
+			showPage(treeNode.targetPage);
+		}
+	}
+	
+	//获取选中页面的导航路径
+	function getNavStr(treeNode) {
+		
+			var navStr = treeNode.name;
+			while(treeNode.getParentNode() != null) {
+				navStr = treeNode.getParentNode().name + " >> " + navStr;
+				treeNode = treeNode.getParentNode();
+			}
+		
+		
+		return navStr;
+	}
+	
+	//显示选中页面的导航路径
+	function showNavStr(navStr) {
+		var breadCrumb = window.parent.document.getElementById('breadCrumb');
+		breadCrumb.innerHTML = navStr;
+	}
+	
+	//加载选中页面
+	function showPage(url){
+		var frame = window.parent.document.getElementById('mainArea');
+		frame.src = url;
+	}
+	
+	//展开和收起所有菜单项控制按钮
+	function expandAllMenu() {
+		var optText = document.getElementById('menuCtrl').innerHTML;
+		var treeObj = $.fn.zTree.getZTreeObj("menu");
+		
+		if(optText == 'ExpandAll') {
+			treeObj.expandAll(true);
+			document.getElementById('menuCtrl').innerHTML = 'CollapseAll';
+		}else if(optText == 'CollapseAll') {
+			treeObj.expandAll(false);
+			document.getElementById('menuCtrl').innerHTML = 'ExpandAll';
+		}
+	}
+
+	$(document).ready(function() {
+	    initMenu();
+	});	
+
+
+    	function initMenu() {
+		//中文目录
+		
+				$.fn.zTree.init($("#menu"), setting_CN, menuData_AOU);
+		
+	}
+	
+	var menuData_AOU =
+	[
+	{ name:"Home",  chineseName:"首页",  open:true,  targetPage:"",
+			childs: [
+				{ name:"Home",  chineseName:"首页",  targetPage:"indtroduce.html" }
+			]},
+		{name:"UserManager",  chineseName:"用户管理",  open:true,  targetPage:"",
+			childs: [
+				{ name:"UserManager",  chineseName:"用户管理",  targetPage:"userManager/userManager.html" },
+				{ name:"UserManager",  chineseName:"密码管理",  targetPage:"userManager/keyword.html" }
+			]},
+		{name:"TaskManager",  chineseName:"任务管理",  open:true,  targetPage:"",
+			childs: [
+				{ name:"MyTask",  chineseName:"我的任务",  targetPage:"taskManager/MyTask.html" },
+				
+				{ name:"HistoryTask",  chineseName:"历史任务",  targetPage:"taskManager/HistoryTask.html" }
+			]},
+		{name:"EnvironmentManager",  chineseName:"环境管理",  open:true,  targetPage:"",
+			childs: [
+				{ name:"EnvironmentManager",  chineseName:"环境管理",  targetPage:"environmentManager/environment.html" }
+			]}
+
+	];
+	
+</script>
+</head>
+
+<body class="menubody">
+	<div id="menuCtrl" style="cursor:pointer" onClick="expandAllMenu();">ExpandAll</div>	
+	<ul id="menu" class="ztree"></ul>
+</body>
+</html>

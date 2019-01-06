@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+    <style type="text/css">
+        #cb1 
+        {
+            width: 200px;
+        }
+        #table1 
+        {
+            border: solid 2px #a0a0a0;
+            border-collapse: collapse;
+        }
+        #table1 td
+        {
+            font-size: 12px;
+            padding: 3px;
+            border: solid 1px #a0a0a0;
+        }
+        #table1 th
+        {
+            font-size: 12px;
+            padding: 3px;
+            border: solid 1px #a0a0a0;
+        }
+        p#comment
+        {
+            font-size: 12px;
+            color: #007f00;
+        }
+    </style>
+</head>
+<body>
+    <script src="babu_client/babu.common.js" type="text/javascript"></script>
+    <script src="babu_client/babu.combobox.js" type="text/javascript"></script>
+    <h2>ComboBox 示例</h2>
+    <form method="get" action="trace.aspx" >
+    <table id="table1">
+        <tr>
+            <th>说明</th>
+            <th>实例</th>
+            <th>提交内容</th>
+            <th>数据源</th>
+            <th>当前值</th>
+            <th>style</th>
+            <th>autoComplete</th>
+        </tr>
+        <tr>
+            <td>多选下拉</td>
+            <td><select id="cb1" name="cb1" multiple="multiple">
+            </select></td>
+            <td>cb1: 数据项的值</td>
+            <td>本地数组</td>
+            <td>&nbsp;</td>
+            <td>multiple</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>下拉编辑</td>
+            <td><input id="cb2" name="cb2" value="网友" /></td>
+            <td>cb2: 文本</td>
+            <td>本地数组</td>
+            <td>&nbsp;</td>
+            <td>edit</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>下拉编辑</td>
+            <td><input id="cb5" name="cb5" /></td>
+            <td>cb5: 数据项的值</td>
+            <td>本地数组</td>
+            <td>&nbsp;</td>
+            <td>dropdown</td>
+            <td>local</td>
+        </tr>
+        <tr>
+            <td>下拉编辑</td>
+            <td><select id="cb6" name="cb6" ></select></td>
+            <td>cb6: 数据项的值</td>
+            <td>使用Ajax异步读取数据</td>
+            <td>&nbsp;</td>
+            <td>dropdown</td>
+            <td>remote</td>
+        </tr>
+        <tr>
+            <td>下拉编辑</td>
+            <td><input id="cb4" name="cb4"  /></td>
+            <td>cb4: 数据项的值</td>
+            <td>本地数组</td>
+            <td>&nbsp;</td>
+            <td>dropdown</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>下拉列表</td>
+            <td><select id="cb3" name="sel">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4" selected="selected">Option 4</option>
+    </select></td>
+            <td>cb3: 数据项的值</td>
+            <td>SELECT元素的下拉项</td>
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>文本编辑</td>
+            <td><input id="cb7" name="cb7" /></td>
+            <td>cb7: 文本</td>
+            <td>本地数组</td>
+            <td>&nbsp;</td>
+            <td>simple</td>
+            <td>local</td>
+        </tr>
+    </table>
+    <div id="slider1" style="width: 200px; height: 20px"></div>
+    <p></p>
+    <input type="submit" value="提交" style="width: 80px"/>
+    <p id="comment" >
+        提交后可查看地址中查询字符串的内容是否与表中所说明的情况相同。
+    </p>
+    </form>
+    <script type="text/javascript">
+        var items = [{ text: "同事" }, { text: "家人", value: "2,1", image: "html/002.gif" },
+             { text: "朋友", value: 1 },
+             { text: "朋友", value: 10 },
+             { text: "商业的伙伴", value: 3 },
+             { text: "商业的伙伴的朋友", value: 3 },
+             { text: "我根本不认识这些人", value: 4, image: "html/004.gif" },
+             { text: "网友", value: 5 },
+             { text: "很长很长很长很长很长很长很长很长很长很长很长很长", value:100, image: "html/005.gif" },
+             { text: "网友的网友的同学的校友" },
+             { text: "老师网友的朋友" },
+             { text: "网友的朋友的网友" },
+             { text: "朋友的网友" },
+             { text: "网友6" },
+             { text: "其他" }
+             ];
+
+        function pageLoad() {
+            createComboBox("cb1", { itemSource: items, style: "multiple" });
+             createComboBox("cb4", { itemSource: items, style: "dropdown", checkbox: true });
+             createComboBox("cb5", { itemSource: items, style: "dropdown", autoComplete: "local" });
+             createComboBox("cb6", { itemSource: beginRequestData, style: "dropdown", autoComplete: "remote" });
+             createComboBox("cb2", { itemSource: items, style: "edit", height: 200, width: 400 });
+             createComboBox("cb3", { checkbox: true});
+             createComboBox("cb7", { itemSource: items, style: "simple", autoComplete: "local" });
+         }
+
+         function cb_onValueChanged(sender, e) {
+             var tr = Babu.BrowserHelper.getParentElement(sender.get_element(), "TR");
+
+             Babu.BrowserHelper.setPlainText(tr.cells[4], e.value);
+         }
+
+         function createComboBox(eltid, settings) {
+             var cb = new ComboBox(document.getElementById(eltid), settings);
+
+             cb.onValueChanged = cb_onValueChanged;
+
+             cb_onValueChanged(cb, { value: cb.get_value() });
+         }
+
+         function beginRequestData(key, cb) {
+             ajaxRequestSimulation(key, cb);
+         }
+
+         function ajaxRequestSimulation(key, cb) {
+             var r = [], to = 0;
+             if (key) {
+                 for (var i = 0; i < items.length; i++) {
+                     if (items[i].text.indexOf(key) >= 0)
+                         r.push(items[i]);
+                 }
+                 to = 1000 * Math.random();
+             }
+
+             window.setTimeout(function() { endRequestData(r, cb) }, to);
+                
+         }
+
+         function endRequestData(result, state) {
+             state.setItemSource(result);
+         }
+
+         window.onload = pageLoad;
+
+    </script>
+</body>
+</html>

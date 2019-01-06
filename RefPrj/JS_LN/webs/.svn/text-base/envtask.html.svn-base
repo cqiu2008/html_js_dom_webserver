@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Cloud Test Web</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/checktree.css" />
+<link type="text/css" rel="stylesheet" href="lib/dijit/themes/soria/soria.css">
+<link type="text/css" rel="stylesheet" href="css/jquery-ui-1.7.2.custom.css">  
+<link type="text/css" rel="stylesheet" href="css/JTable.css" />                         <!--jTable������ʽ  ����JTable�����ҳ�����-->
+<link type="text/css" rel="stylesheet" href="css/cfg_table.css" /> 
+<script type="text/javascript"  src="lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"  src="lib/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="script/JTable.js"></script>
+<script type="text/javascript"  src="script/cfgTable.js"></script>
+<script type="text/javascript" src="lib/dojo/dojo.js" djConfig="parseOnLoad:true,isDebug:true,locale:'en-us'"> </script> 
+<script type="text/javascript" src="lib/dijit/dijit.js"></script>
+<script type="text/javascript" src="script/localdojo.js"></script> 	
+
+<body class="soria" >
+  <div dojoType="dijit.TitlePane" id="outTitlePane" title='环境任务' closable="false">
+  <table  class="cfgTable" id="task"  >
+  <tbody>
+	<tr>
+	<th  width="20%">编号</th>
+	<th width="30%">用例名称</th>
+	<th width="20%">用例tag</th>
+	<th width="20%">运行状态</th>
+	<th width="10%">运行结果</th>
+	
+	</tr>
+	<tr>
+	<td align="left" >1#</td>
+  <td align="left" ><a href="#c4">P2P PDH业务测试(RTUB-RTUB)</a></td>
+  <td align="left" >RTUB-RTUB-PDH</td> 
+  <td align="left" >运行中</td>  
+  <td align="left" >--</td>    
+ </tr>
+ <tr>
+  <td align="left" >2#</td>
+  <td align="left" ><a href="#c4">P2P VC12业务测试(RTUB-RTUB)</a></td>
+  <td align="left">RTUB-RTUB-VC12</td>
+  <td align="left">--</td>
+  <td align="left">--</a></td>
+ </tr>
+ </tbody>
+</table>
+  </div>
+
+</body>
+ 
+   
+ </html>  

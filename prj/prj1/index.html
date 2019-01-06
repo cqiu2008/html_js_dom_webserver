@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>10G/1G 以太网发包器</title>
+<!-- javascript using extern file-->
+<script type="text/javascript" src='script/dynamicTable.js'></script>
+<script type="text/javascript" src='script/jQuery.js'></script>
+<!-- javascript using internal code-->
+<script type="text/javascript" language="javascript">
+</script>
+<!-- css using internal code-->
+<style type="text/css">
+h1,h2,tbody,body,div{text-align:center;}
+.cssPrivateTdContent
+{
+	text-align:left;
+	width:250px
+}
+.cssPrivateInputTxtValue
+{
+	text-align:left;
+	width:250px
+}
+.cssPublicTdNumber
+{
+	text-align:center;
+}
+.cssPublicTdContent
+{
+	text-align:left;
+}
+.cssPublicInputTxtContent
+{
+	text-align:left;
+}
+td {font-size: 12px;
+	line-height:160%;
+	text-align:center;
+	}
+</style>
+</head>
+<!--   body   -->
+<body>
+	<h1> 10G/1G 以太网发包器 </h1>
+	<h2><FONT size="5"> 全局 流参数配置 </FONT></h2>
+	<table align="center" id="ethPublicPckTable" style="display:;text-align:center" width="800" border="0" cellspacing="2" cellpadding="0">
+		<tbody>
+			<tr >
+				<td valign="center" bgcolor="#CCCCCC">序号</td>
+				<td onclick="publicTableShow('ethPublicPckTable')" style="color:green"  valign="center" bgcolor="#CCCCCC">描述 >></td>
+				<td valign="center" bgcolor="#CCCCCC">数值</td>
+			</tr>
+			<tr >
+				<td class="cssPublicTdNumber" > 1 </td>
+				<td class="cssPublicTdContent" >[1B][十进制]使能流数目（0-255个）</td>
+				<td ><input class="cssPublicInputTxtContent" type="text" value="1"/> </td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<form>
+		<button onclick="submitRun(	
+									'ethPublicPckTable'
+									)"> 提交 </button>
+	</p>
+</body>
+</html>

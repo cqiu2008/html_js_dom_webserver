@@ -1,0 +1,44 @@
+body{text-align:center;}
+td{font-size:12px}
+.texttitle {COLOR: #C10001}
+.texttitle  A:link {COLOR: #C10001; TEXT-DECORATION: none}
+.texttitle A:visited {COLOR: #C10001; TEXT-DECORATION: none}
+.texttitle A:hover {COLOR: #C10001; TEXT-DECORATION: underline}
+.texttitle A:active {COLOR: #C10001; TEXT-DECORATION: none}
+
+#imgTitle {
+	FILTER: ALPHA(opacity=70); LEFT: 0px; OVERFLOW: hidden; POSITION: relative; TEXT-ALIGN: left
+}
+#imgTitle_up {
+	LEFT: 0px; HEIGHT: 1px; TEXT-ALIGN: left
+}
+#imgTitle_down {
+	LEFT: 0px; TEXT-ALIGN: right
+}
+.imgClass {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BORDER-LEFT: #fff 1px solid; BORDER-BOTTOM: #fff 1px solid
+}
+#txtFrom {
+	VERTICAL-ALIGN: middle; PADDING-TOP: 2px; TEXT-ALIGN: center
+}
+.button {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; BACKGROUND: #7b7b63; PADDING-BOTTOM: 2px; MARGIN: 0px; FONT: bold 9px sans-serif; BORDER-LEFT: #fff 1px solid; PADDING-TOP: 2px; TEXT-DECORATION: none
+}
+A.button {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; BACKGROUND-COLOR: #000000; TEXT-DECORATION: none
+}
+A.button:link {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; BACKGROUND-COLOR: #000000; TEXT-DECORATION: none
+}
+A.button:visited {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; BACKGROUND-COLOR: #000000; TEXT-DECORATION: none
+}
+A.button:hover {
+	BACKGROUND: #fff; COLOR: #fff; FONT-FAMILY: sans-serif; TEXT-DECORATION: none
+}
+.buttonDiv {
+	BACKGROUND: #000000; FLOAT: left; VERTICAL-ALIGN: middle; WIDTH: 21px; HEIGHT: 1px; TEXT-ALIGN: center
+}
+.trans {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(startX=0, startY=0, finishX=100, finishY=100,style=1,opacity=0,finishOpacity=40); WIDTH: 90px; BACKGROUND-COLOR: #000
+}

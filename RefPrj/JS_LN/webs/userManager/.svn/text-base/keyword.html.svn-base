@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Cloud Test Web</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/checktree.css" />
+<link type="text/css" rel="stylesheet" href="../lib/dijit/themes/soria/soria.css">
+<link type="text/css" rel="stylesheet" href="../css/jquery-ui-1.7.2.custom.css">  
+<link type="text/css" rel="stylesheet" href="../css/JTable.css" />                         <!--jTable±í¸ñÑùÊ½  º¬ÓĞJTable±í¸ñµÄÒ³Ãæ°üº¬-->
+<link type="text/css" rel="stylesheet" href="../css/cfg_table.css" />
+<script type="text/javascript"  src="../lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"  src="../lib/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="../script/JTable.js"></script>
+<script type="text/javascript"  src="../script/cfgTable.js"></script> 
+<script type="text/javascript" src="../lib/dojo/dojo.js" djConfig="parseOnLoad:true,isDebug:true,locale:'en-us'"> </script> 
+<script type="text/javascript" src="../lib/dijit/dijit.js"></script>
+<script type="text/javascript" src="../script/localdojo.js"></script> 	
+ <style type="text/css"> 
+	#outTitlePane{
+	   width:100%;
+	}
+	button{
+	width:65px;
+	height:23px;
+	background-color: #d7e5fb;
+	margin:10px 10px;
+	}
+</style>
+<script type="text/javascript">
+function updateKeyword(){
+
+var newKeyword = document.getElementById("newkeyword").value;
+var newKeywordConfirm = document.getElementById("newKeywordAagin").value;
+if (newKeyword !=null&& newKeywordConfirm !=null && newKeyword==newKeywordConfirm){
+confirm("æ˜¯å¦ç¡®è®¤ä¿®æ”¹å¯†ç ");
+
+}else{
+alert("æ–°å¯†ç è¾“å…¥é”™è¯¯");
+}
+}
+
+</script>
+
+ </head>  
+
+ <body class="soria" >
+  <div dojoType="dijit.TitlePane" id="outTitlePane" title='å¯†ç ç®¡ç†' closable="false">
+ <div >
+	         <table class='cfgTable' id="task" style="width:500px;height:100px"> 
+			 <tbody>
+			  <tr style="display:none">
+					<td>#</td>
+					<td>
+					   <input type="text" dojoType="dijit.form.ValidationTextBox" id="Index"   style="width:250px"/>
+					</td>
+			   </tr>
+			   <tr>
+					<td style="width:250px">ç”¨æˆ·å</td>
+					<td>
+					    <input type="text" dojoType="dijit.form.ValidationTextBox" id="userName"   style="width:250px"/>
+					</td>
+			   </tr>
+			   <tr>
+					<td style="width:250px">æ—§å¯†ç </td>
+					<td>
+					   <input type="text" dojoType="dijit.form.ValidationTextBox" id="oldkeyword"   style="width:250px"/>
+					</td>
+			   </tr>
+			     <tr>
+					<td style="width:250px">æ–°å¯†ç </td>
+					<td>
+					    <input type="text" dojoType="dijit.form.ValidationTextBox" id="newkeyword"   style="width:250px"/>
+					</td>
+			   </tr>
+			    <tr>
+					<td style="width:250px">ç¡®è®¤æ–°å¯†ç </td>
+					<td>
+					    <input type="text" dojoType="dijit.form.ValidationTextBox" id="newKeywordAagin"   style="width:250px"/>
+					</td>
+			   </tr>
+			   </tbody>
+			   </table>
+			  <div class="applyDiv">
+		    <button id="submitData" dojoType="dijit.form.Button" type="button" name="submitData" onClick="updateKeyword()">
+			æäº¤
+			</button>
+			 <button id="cancel" dojoType="dijit.form.Button" type="button" name="cancel" onClick="Cancel()">
+	         å–æ¶ˆ
+	   	     </button>
+		  </div>	
+</div>
+  
+  </div>

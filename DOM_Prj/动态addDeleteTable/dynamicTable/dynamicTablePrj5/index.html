@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dynamic and tag table</title>	
+<!-- javascript-->
+<script type="text/javascript" src='script/dynamicTable.js'></script>
+<script type="text/javascript" src='script/tagTable.js'></script>
+
+<script type="text/javascript" language="javascript">
+
+
+</script>
+
+<!-- css -->
+<style type="text/css">
+body{text-align:center;}
+td {font-size: 12px;line-height:160%}
+.dotline{background-image:url(images/dot_line.gif);background-repeat: repeat-x;background-position: bottom;}
+</style>
+
+</head>
+
+<!--   body   -->
+
+<body>
+	<p>
+		<button onclick="addInstanceRow('ethPckTable')"> Add the new row in the table </button>
+		<button onclick="nodeShow('ethPckTable')"> show the node </button>
+	</p>
+
+	<table id="ethPckTable" width="600" border="0" cellspacing="2" cellpadding="0">
+		<tbody>
+			<tr >
+				<td style="color:blue" valign="top" bgcolor="#CCCCCC">Number</td>
+				<td valign="top" bgcolor="#CCCCCC">PacketType</td>
+				<td valign="top" bgcolor="#CCCCCC">Detail</td>
+				<td valign="top" bgcolor="#CCCCCC">Delete</td>
+			</tr>
+			<tr style="display:none;color:red" bgcolor="#CCCCCE">
+				<td valign="top" bgcolor="#FFFFFF"> 1 </td>
+				<td valign="top" bgcolor="#FFFFFF"> 
+					<select onchange="show(this.value)">
+					<!-- <select name="PacketType" onchange="detailTable('ethPckTable',
+						this.parentNode.parentNode.cells[0].innerHTML,
+						this.value)"> -->
+						<option value="ipv4">IPV4</option>
+						<option value="ipv6">IPV6</option>
+						<option value="l2pdu1588" selected="selected" >1588 L2 PDU</option>
+						<option value="l3pdu1588">1588 L3 PDU</option>
+						<option value="oam">OAM </option>
+						<option value="l2other">L2 OTHER</option>
+					</select>
+				</td>
+				<td valign="top" bgcolor="#FFFFFF"> 
+					<button onclick="detailTable('ethPckTable',
+						this.parentNode.parentNode.cells[0].innerHTML,
+						this.parentNode.parentNode.cells[1].childNodes[1].value)"> detail2 </button>
+				</td>
+				<!--Type 1  Begin xxxxxx-->
+				<td style="display:none" height="30" valign="top" bgcolor="#f5f9ed" onClick="show('ethPckTable',this.parentNode)">
+					<table class="formdata"> 
+						<caption> A1 10G Ethernet Packet Generator </caption>
+					<tr>
+						<td> Name  </td>
+						<td> Value </td>
+					</tr>
+					<tr>
+						<td> Preamble (1B) </td>
+						<td><input type="text" name="ethconfig" id="preamble" value="55"/> </td>
+					</tr>
+					<tr>
+						<td> logMessageInterval (1B) </td>
+						<td><input type="text" name="ethconfig" id="logMessageInterval" value="44"/> </td>
+					</tr>
+					</table>
+				</td>
+				<!--Type 1  End xxxxxx-->
+				<!--Type 2  Begin xxxxxx-->
+				<td style="display:none" height="30"  valign="top" bgcolor="#f5f9ed">
+					<table class="formdata"> 
+						<caption> A1 10G Ethernet Packet Generator </caption>
+					<tr>
+						<td> Name  </td>
+						<td> Value </td>
+					</tr>
+					<tr>
+						<td> sfd (1B) </td>
+						<td><input type="text" name="ethconfig" id="sfd" value="d5"/> </td>
+					</tr>
+					<tr>
+						<td> dmac (1B) </td>
+						<td><input type="text" name="ethconfig" id="dmac" value="00 10 20 32 5f 8e"/> </td>
+					</tr>
+					<tr>
+						<td> logMessageInterval (1B) </td>
+						<td><input type="text" name="ethconfig" id="logMessageInterval" value="44"/> </td>
+					</tr>
+					</table>
+				<!--Type 2  End xxxxxx-->
+				</td>
+
+			</tr>
+
+			
+		</tbody>
+	</table>
+
+</body>
+
+</html>
+

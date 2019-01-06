@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<link type="text/css" rel="stylesheet" href="../lib/dijit/themes/soria/soria.css">
+<link type="text/css" rel="stylesheet" href="../css/jquery-ui-1.7.2.custom.css">  
+<link type="text/css" rel="stylesheet" href="../css/JTable.css" />   <!--jTable表格样式  含有JTable表格的页面包含-->
+<link type="text/css" rel="stylesheet" href="../css/cfg_table.css" /> 
+<script type="text/javascript"  src="../lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"  src="../lib/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="../script/JTable.js"></script>
+<script type="text/javascript"  src="../script/cfgTable.js"></script>
+<script type="text/javascript" src="../lib/dojo/dojo.js" djConfig="parseOnLoad:true,isDebug:true,locale:'en-us'"> </script> 
+<script type="text/javascript" src="../lib/dijit/dijit.js"></script>
+<script type="text/javascript" src="../script/localdojo.js"></script> 	
+
+<script type="text/javascript">
+ function cfg()
+{
+    alert('123');
+}
+
+
+</script>
+</head>
+
+<body class="soria">
+<div dojoType="dijit.TitlePane" id="outTitlePane" title='环境详情' closable="false" >
+<div style="width:80%;height:300px;margin-bottom:20px" >
+<img id="picture" class="x" src="../images/h1.JPG" style="width:100%;height:80%">
+</div>
+    <table class="cfgTable" id="task" >
+		<tbody>
+			<tr>
+				<td class="textBold" colspan="2"> 详细信息</td>
+			</tr>
+			<tr>
+				<td>环境标示符</td>
+				<td id="oduRSL">XPIC2+0</td>
+			</tr>
+			<tr>
+				<td width="250px">NE1单板配置</td>
+				<td width="245px" id="oduMute"> <button  id="deleteBtn" type="button" style="margin:0px 0px;width:80px;height:20px;font-size:12px;" onclick="cfg()">
+		       详细配置
+		        </button></td>
+			</tr>
+			<tr >
+				<td>NE1版本</td>
+				<td id="oduLink">2.03.03.02</td>
+			</tr>
+			<tr>
+				<td>NE2配置信息</td>
+				<td id="oduRSL">--</td>
+			</tr>
+			<tr>
+				<td>环境报告</td>
+				<td id="oduRSL">--</td>
+			</tr>
+			<tr>
+				<td>环境日志</td>
+				<td id="oduRSL">--</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</body>			
+</html>

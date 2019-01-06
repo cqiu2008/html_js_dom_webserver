@@ -1,0 +1,1 @@
+&introNum=3&fileName1=flash/01.swf&url1=http://www.makewing.com/lanren/&fileName2=flash/02.swf&url2=http://www.makewing.com/lanren/&fileName3=flash/03.swf&loadOk=true

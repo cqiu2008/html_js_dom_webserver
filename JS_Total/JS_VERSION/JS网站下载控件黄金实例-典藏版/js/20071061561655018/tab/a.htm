@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>标签导航</title>
+<style type="text/css">
+body{background-color:transparent;width:468px;margin:0 auto;padding:0;text-align:center;}
+table,tr,td,p{margin:0 auto;padding:0;}
+table{margin-top:-5px;width:460px;}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+function QueryString( paramName )
+{
+    var oRegex = new RegExp('[\?&]' + paramName + '=([^&]+)','i') ;
+    var oMatch = oRegex.exec(window.location.search) ;
+    if (oMatch && oMatch.length>1) return oMatch[1];
+    else return null;
+}
+var addr=QueryString("j");
+if(addr == null)
+addr="adengine.arkoo.com/lorlo/5AE2F3F001434623A122CD91227D2253";
+try{
+top.document.getElementById("ad_frame").allowTransparency = true; 
+}
+catch(e){}
+document.write('\<script language=javascript src="http://'+addr+'.js"><\/script>');
+//-->
+</script>
+<noscript><a href="http://www.lorlo.com">www.lorlo.com</a></noscript>
+</body>
+</html>

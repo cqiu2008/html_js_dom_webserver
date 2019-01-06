@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/zh-hk
+END
+number.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/zh-hk/number.js
+END
+currency.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/zh-hk/currency.js
+END
+gregorian.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/zh-hk/gregorian.js
+END

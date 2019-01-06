@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<LINK href="css/common_css.css" type=text/css rel=stylesheet>
+<title>PDH pagefoot</title>
+<style type="text/css">
+#foot{
+		color:#FFF;
+		text-align:right;
+		padding: 10px 20px;
+		overflow: hidden;
+		border: 0;
+		background: #01428A;
+	}
+</style>
+<script language="javascript">
+	function init(){
+		var foot = document.getElementById('foot');
+
+		foot.innerHTML = 'ZTE&reg;';
+	}
+</script>
+</head>
+
+<body onload="init()">
+<div id="foot">
+ZTE&reg;
+</div>
+</body>
+</html>

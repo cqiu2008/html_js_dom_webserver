@@ -1,0 +1,5 @@
+如果弹出 no permisson... 的窗口的话就要修改firefox的config了。
+修改方法： 在地址栏输入about:config   --> 找到 signed.applets.codebase_principal_support -->双击 值改为true就可以了。
+此处的path指定的是绝对的地址， 如果使用相对地址， 有兴趣的可以再研究研究。
+
+

@@ -1,0 +1,136 @@
+﻿.ComboBox
+{
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    display: inline-block !important;
+    border-color: #ABADB3 #E2E3EA #E3E9EF #E2E3EA;
+    width: 150px;
+    height: 20px;
+}
+/* Download by http://www.jb51.net*/
+.ComboBoxHover
+{
+    border-color: #5794BF #C7E2F1 #C7E2F1 #C7E2F1;
+}
+
+.ComboBox table.Layout
+{
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none 0px !important;
+}
+
+.ComboBox table.Layout td.Layout
+{
+    border: none 0px !important;
+    padding: 1px !important;
+}
+
+.ComboBox table.Layout td.CheckBoxCell
+{
+    width: 20px;
+}
+
+.ComboBox td.Layout input.TextBox
+{
+    border: none 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
+.ComboBox td.ButtonCell
+{
+    width: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-left: solid 1px white;
+}
+
+.ComboBox td.ButtonCellHover
+{
+    background: url(btn_bg_hover.gif) repeat-x;
+    border-left: solid 1px #c0c0ff;
+}
+
+.ComboBox a.Label 
+{
+    display: block;
+    cursor: pointer;
+    font-size: 12px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: black;
+    text-decoration: none;
+}
+
+div.DropDownWindow
+{
+    position: absolute!important;
+    border: solid 1px #a0a0ff;
+    background: #f0f0ff;
+    z-index: 200;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+div.ListContainer
+{
+    cursor: default;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+div.ListItem
+{
+    height: 20px;
+    white-space: nowrap;
+    position: absolute;
+}
+
+div.ListItemHover
+{
+    background: #a0a0f0;
+}
+
+div.ListItem input.CheckBox 
+{
+    position: absolute !important;
+    top: 0px;
+}
+
+div.ListItem img.Icon
+{
+    width: 16px;
+    height: 16px;
+    position: absolute !important;
+    top: 2px;
+}
+
+div.ListItem span.Label
+{
+    font-size: 12px;
+    white-space: nowrap !important;
+    position: absolute !important;
+    top: 4px;
+}
+
+div.ListItem span.Keyword
+{
+    background: yellow;
+}
+
+div.DropDownWindow img.Loading 
+{
+    position: absolute;
+    left: 8px;
+    top: 8px;
+}

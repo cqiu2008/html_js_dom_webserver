@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dynamic and tag table</title>	
+<!-- javascript-->
+<script type="text/javascript" src='script/dynamicTable.js'></script>
+
+<!-- css -->
+<style type="text/css">
+body{text-align:center;}
+td {font-size: 12px;line-height:160%}
+.dotline{background-image:url(images/dot_line.gif);background-repeat: repeat-x;background-position: bottom;}
+</style>
+
+</head>
+
+
+<body>
+	<p>
+		<button onclick="addInstanceRow('ethPckTable')"> Add the new row in the table </button>
+	</p>
+
+	<table id="ethPckTable" width="600" border="0" cellspacing="2" cellpadding="0">
+		<thead>
+			<tr>
+				<td valign="ethconfig" bgcolor="#CCCCCC">Number</td>
+				<td valign="ethconfig" bgcolor="#CCCCCC">PacketType</td>
+				<td valign="ethconfig" bgcolor="#CCCCCC">Detail</td>
+				<td valign="ethconfig" bgcolor="#CCCCCC">Delete</td>
+			</tr>
+			<tr style="display: none">
+				<td valign="ethconfig" bgcolor="#FFFFFF"> 1 </td>
+				<td valign="ethconfig" bgcolor="#FFFFFF"> 
+					<!--List-->
+					<select id="PacketList"name="PacketType" onchange="show(this.value)">
+						<option value="ipv4"> IPV4</option>
+						<option value="ipv6" selected="selected">IPV6</option>
+						<option value="l2pdu1588">1588 L2 PDU</option>
+						<option value="l3pdu1588">1588 L3 PDU</option>
+						<option value="oam">OAM </option>
+						<option value="l2other">L2 OTHER</option>
+					</select>
+				</td>
+				<td valign="ethconfig" bgcolor="#FFFFFF"> 
+					detail	
+				</td>
+				<td valign="ethconfig" bgcolor="#FFFFFF"> delete </td>
+			</tr>
+		</thead>
+	</table>
+
+</body>
+
+</html>
+

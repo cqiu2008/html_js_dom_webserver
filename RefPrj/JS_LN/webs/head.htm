@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Cloud Test Head</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css"> 
+	#site-head {
+		background:url(images/bg.jpg) repeat-x #4c7ab5;
+		height:75px;
+		width:100%;
+	}
+	
+	#site-logo {
+		float:left;
+		height:50px;
+		width:423px;
+	}
+	
+	#site-actions-wrapper {
+		float:right;	
+	}
+	
+	.site-action {
+		cursor:pointer;
+		margin:0 10px;
+	}
+	
+	.site-action img {
+		height:53px;
+		width:39px;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+</style>
+
+<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="script/JAjax.js"></script>
+<script type="text/javascript" src="script/errorDef.js"></script>
+<script type="text/javascript">
+
+
+function getParentWindow(){
+	var self = window.self;
+	var parent = window.parent;
+    if(typeof(parent) == 'undefined'){
+        return self;
+    }
+    while(!(self == parent)){
+        self = parent;
+        parent = self.parent;
+    }
+    return parent;
+};
+
+    function contentReload(){
+		var parent = getParentWindow();
+        var frame = parent.document.getElementById("mainArea");
+		frame.contentWindow.location.reload();
+    }
+    
+    //发送XMLHttpRequest请求。 注销当前用户。
+	function logout(){
+		var parent = getParentWindow();
+		parent.location.href = "../webs/logon.html";
+	}
+
+
+	 //根据不同的版本显示不同的HomePage
+	function showHomePage() {
+		var frame = window.parent.document.getElementById("mainArea");
+		var breadCrumb = window.parent.document.getElementById("breadCrumb");
+	}
+	
+	function showHelpPage() {
+		window.open("help/helpIndex.asp?currentpage");
+	}
+	
+</script>
+</head>
+<body >
+	<div id="site-head">
+
+		<div id="site-logo">
+			<img src="images/title.jpg" alt="logo" />
+		</div>
+		
+		<div id="site-actions-wrapper">
+			
+			<span class="site-action" onClick="contentReload()">
+				<img src="images/toppic_06.gif" id="Image9"  />
+			</span>
+			
+			<span class="site-action" onclick="logout()">
+				<img src="images/toppic_05.gif" id="Image8" />
+			</span>
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls
+END
+buddhist.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/buddhist.js
+END
+number.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/number.js
+END
+currency.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/currency.js
+END
+hebrew.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/hebrew.js
+END
+gregorian.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/gregorian.js
+END
+islamic.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/cldr/nls/islamic.js
+END

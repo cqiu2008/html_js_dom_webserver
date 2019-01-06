@@ -1,0 +1,253 @@
+
+<head>
+
+<script>
+function addTable()
+{
+  var otable = document.createElement("table");
+  otable.id = "table1";
+  otable.border = "1";
+  var otbody = document.createElement("tbody");
+  var otr = document.createElement("tr");
+  var otd = document.createElement("td");
+  otd.width = "100";
+  otd.height = "30";
+  otd.align = "center";
+  otd.innerHTML = "序号";
+  otr.appendChild(otd);
+  var otd = document.createElement("td");
+  otd.width = "100";
+  otd.height = "30";
+  otd.align = "center";
+  otd.innerHTML = "姓名";
+  otr.appendChild(otd);
+  var otd = document.createElement("td");
+  otd.width = "100";
+  otd.height = "30";
+  otd.align = "center";
+  otd.innerHTML = "年龄";
+  otr.appendChild(otd);
+  var otd = document.createElement("td");
+  otd.width = "100";
+  otd.height = "30";
+  otd.align = "center";
+  otd.innerHTML = "出生日期";
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+  otr = document.createElement("tr");
+  otr.style.backgroundColor = "orange";
+  otr.onmouseover = function(){
+  	  this.style.backgroundColor="blue";
+  	};
+  otr.onmouseout = function(){
+      var table1 = document.getElementById('table1').firstChild;
+      for(var i=0;i<table1.rows.length-1;i++){
+        //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+        if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+        table1.rows[i].nextSibling.style.backgroundColor="gray";	
+        } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	  }
+      }
+  }
+  otd = document.createElement("td");
+  otd.innerHTML = "1";
+  otd.align = "center";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+    otd.align = "center";
+  otd.innerHTML = "小明";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+    otd.align = "center";
+  otd.innerHTML = "21";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+    otd.align = "center";
+  otd.innerHTML = "2011.1.1";
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+  otr = document.createElement("tr");
+  otr.style.backgroundColor = "gray";
+  otr.onmouseover = function(){
+  	  this.style.backgroundColor="blue";
+  	};
+  otr.onmouseout = function(){
+      var table1 = document.getElementById('table1').firstChild;
+      for(var i=0;i<table1.rows.length-1;i++){
+    //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+    if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+      table1.rows[i].nextSibling.style.backgroundColor="gray";	
+    } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	}
+     }
+  }
+  otd = document.createElement("td");
+    otd.align = "center";
+  otd.innerHTML = "2";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "小明";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "22";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "2011.1.1";
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+  otr = document.createElement("tr");
+  otr.style.backgroundColor = "orange";
+  otr.onmouseover = function(){
+  	  this.style.backgroundColor="blue";
+  	};
+  otr.onmouseout = function(){
+      var table1 = document.getElementById('table1').firstChild;
+      for(var i=0;i<table1.rows.length-1;i++){
+    //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+    if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+      table1.rows[i].nextSibling.style.backgroundColor="gray";	
+    } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	}
+     }
+  }
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "3";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "小明";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "23";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "2011.1.1";
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+    otr = document.createElement("tr");
+  otr.style.backgroundColor = "gray";
+  otr.onmouseover = function(){
+  	  this.style.backgroundColor="blue";
+  	};
+  otr.onmouseout = function(){
+      var table1 = document.getElementById('table1').firstChild;
+      for(var i=0;i<table1.rows.length-1;i++){
+    //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+    if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+      table1.rows[i].nextSibling.style.backgroundColor="gray";	
+    } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	}
+     }
+  }
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "4";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "小明";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "24";
+  otr.appendChild(otd);
+  otd = document.createElement("td");
+  otd.align = "center";
+  otd.innerHTML = "2011.1.1";
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+
+  otr.appendChild(otd);
+  otbody.appendChild(otr);
+  
+  otbody.appendChild(otr);
+  otable.appendChild(otbody);
+  document.getElementById('div1').appendChild(otable);
+  //document.body.appendChild(otable);
+  document.getElementById('table1').cellSpacing = "0";
+}
+
+function addTr()
+{
+	var table1 = document.getElementById('table1');
+	//alert(table1.firstChild.outerHTML);
+	var a = table1.lastChild.lastChild.firstChild;
+	var otr = table1.insertRow();
+	if((table1.rows.length-1)%2==0){
+	  otr.style.backgroundColor="gray";	
+	} else{
+	  otr.style.backgroundColor="orange";	
+	}
+	otr.onmouseover = function(){
+  	  this.style.backgroundColor="blue";
+  	};
+  otr.onmouseout = function(){
+      var table1 = document.getElementById('table1').firstChild;
+      for(var i=0;i<table1.rows.length-1;i++){
+    //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+    if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+      table1.rows[i].nextSibling.style.backgroundColor="gray";	
+    } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	}
+     }
+  }
+	var otd = otr.insertCell();
+	otd.align = "center";
+	//otd.innerHTML = parseInt(a.innerHTML)+1;
+	otd.innerHTML = table1.rows.length-1;
+	otd = otr.insertCell();
+	otd.align = "center";
+	otd.innerHTML = "小明";
+	otd = otr.insertCell();
+	otd.align = "center";
+	otd.innerHTML = 20+parseInt(table1.rows.length);
+	otd = otr.insertCell();
+	otd.align = "center";
+	otd.innerHTML = "2011.1.1";
+}
+
+
+function deleteTr()
+{
+  var table1 = document.getElementById('table1').firstChild;
+ try{table1.removeChild(table1.firstChild.nextSibling);}
+ catch(ex){alert("没有可删除的数据");}
+  //alert(table1.rows.length);
+  for(var i=0;i<table1.rows.length-1;i++){
+    table1.rows[i].nextSibling.firstChild.innerHTML = parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)-1;
+  }
+  for(var i=0;i<table1.rows.length-1;i++){
+    //alert(table1.rows[i].nextSibling.firstChild.innerHTML);
+    if(parseInt(table1.rows[i].nextSibling.firstChild.innerHTML)%2==0){
+      table1.rows[i].nextSibling.style.backgroundColor="gray";	
+    } else{
+    	  table1.rows[i].nextSibling.style.backgroundColor="orange";	
+    	}
+  }
+}
+</script>
+</head>
+<body>
+<div align="center">
+<input type="button" value="初始化" onclick="addTable();">
+<input type="button" value="增加" onclick="addTr()">
+<input type="button" value="删除" onclick="deleteTr()">
+</div>
+<div id="div1" align="center"></div>
+</body>

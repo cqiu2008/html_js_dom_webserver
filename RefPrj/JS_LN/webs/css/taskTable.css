@@ -1,0 +1,18 @@
+
+table.taskTable  {
+     border-collapse:collapse;
+     margin-left:20px;
+	 width:100%;
+	
+}
+
+table.taskTable  td, table.taskTable   th{
+	 border:1px solid #4181cf;
+}
+
+table.taskTable   th{
+	 width:30%;
+	 font-size:15px;
+}
+
+

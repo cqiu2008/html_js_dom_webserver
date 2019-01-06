@@ -1,0 +1,1424 @@
+HTML DOM 简介
+Previous Page Next Page HTML 文档对象模型（HTML Document Object Model）定义了访问和处理 HTML 文档的标准方法。
+您应当具备的基础知识
+在继续学习之前，您需要对下面的知识有基本的了解： 
+
+HTML / XHTML 
+JavaScript 
+如果您希望首先学习这些项目，请在我们的首页访问这些教程。
+什么是 DOM？
+通过 JavaScript，您可以重构整个 HTML 文档。您可以添加、移除、改变或重排页面上的项目。
+
+要改变页面的某个东西，JavaScript 就需要获得对 HTML 文档中所有元素进行访问的入口。这个入口，连同对 HTML 元素进行添加、移动、改变或移除的方法和属性，都是通过文档对象模型来获得的（DOM）。
+
+在 1998 年，W3C 发布了第一级的 DOM 规范。这个规范允许访问和操作 HTML 页面中的每一个单独的元素。
+
+所有的浏览器都执行了这个标准，因此，DOM 的兼容性问题也几乎难觅踪影了。
+
+DOM 可被 JavaScript 用来读取、改变 HTML、XHTML 以及 XML 文档。
+
+DOM 被分为不同的部分（核心、XML及HTML）和级别（DOM Level 1/2/3）：
+Core DOM 
+定义了一套标准的针对任何结构化文档的对象 
+XML DOM 
+定义了一套标准的针对 XML 文档的对象 
+HTML DOM 
+定义了一套标准的针对 HTML 文档的对象。 
+您可以在我们的《W3C教程》阅读更多有关 W3C DOM 规范/级别的信息。
+
+
+HTML DOM 节点
+Previous Page Next Page HTML 文档中的每个成分都是一个节点。
+节点
+根据 DOM，HTML 文档中的每个成分都是一个节点。
+
+DOM 是这样规定的：
+
+整个文档是一个文档节点 
+每个 HTML 标签是一个元素节点 
+包含在 HTML 元素中的文本是文本节点 
+每一个 HTML 属性是一个属性节点 
+注释属于注释节点 
+Node 层次
+节点彼此都有等级关系。
+
+HTML 文档中的所有节点组成了一个文档树（或节点树）。HTML 文档中的每个元素、属性、文本等都代表着树中的一个节点。树起始于文档节点，并由此继续伸出枝条，直到处于这棵树最低级别的所有文本节点为止。
+
+下面这个图片表示一个文档树（节点树）：
+
+HTML DOM 节点树
+Previous Page Next Page 一棵节点树中的所有节点彼此都是有关系的。
+文档树（节点数）
+请看下面这个HTML文档：
+
+<html>
+  <head>
+    <title>DOM Tutorial</title> 
+  </head> 
+  <body> 
+    <h1>DOM Lesson one</h1> 
+    <p>Hello world!</p> 
+  </body> 
+</html>上面所有的节点彼此间都存在关系。
+
+除文档节点之外的每个节点都有父节点。举例，<head> 和 <body> 的父节点是 <html> 节点，文本节点 "Hello world!" 的父节点是 <p> 节点。
+
+大部分元素节点都有子节点。比方说，<head> 节点有一个子节点：<title> 节点。<title> 节点也有一个子节点：文本节点 "DOM Tutorial"。
+
+当节点分享同一个父节点时，它们就是同辈（同级节点）。比方说，<h1> 和 <p>是同辈，因为它们的父节点均是 <body> 节点。
+
+节点也可以拥有后代，后代指某个节点的所有子节点，或者这些子节点的子节点，以此类推。比方说，所有的文本节点都是 <html>节点的后代，而第一个文本节点是 <head> 节点的后代。
+
+节点也可以拥有先辈。先辈是某个节点的父节点，或者父节点的父节点，以此类推。比方说，所有的文本节点都可把 <html> 节点作为先辈节点。
+
+HTML DOM 访问节点
+Previous Page Next Page 通过 DOM，您可访问 HTML 文档中的每个节点。
+查找并访问节点
+你可通过若干种方法来查找您希望操作的元素：
+
+通过使用 getElementById() 和 getElementsByTagName() 方法 
+通过使用一个元素节点的 parentNode、firstChild 以及 lastChild 属性 
+getElementById() 和 getElementsByTagName()
+getElementById() 和 getElementsByTagName() 这两种方法，可查找整个 HTML 文档中的任何 HTML 元素。
+
+这两种方法会忽略文档的结构。假如您希望查找文档中所有的 <p> 元素，getElementsByTagName() 会把它们全部找到，不管 <p> 元素处于文档中的哪个层次。同时，getElementById() 方法也会返回正确的元素，不论它被隐藏在文档结构中的什么位置。
+
+这两种方法会像您提供任何你所需要的 HTML 元素，不论它们在文档中所处的位置！
+
+getElementById() 可通过指定的 ID 来返回元素：
+
+getElementById() 语法
+document.getElementById("ID"); 注释：getElementById() 无法工作在 XML 中。在 XML 文档中，您必须通过拥有类型 id 的属性来进行搜索，而此类型必须在 XML DTD 中进行声明。
+
+getElementsByTagName() 方法会使用指定的标签名返回所有的元素（作为一个节点列表），这些元素是您在使用此方法时所处的元素的后代。
+
+getElementsByTagName() 可被用于任何的 HTML 元素：
+
+getElementsByTagName() 语法
+document.getElementsByTagName("标签名称"); 或者：
+
+document.getElementById('ID').getElementsByTagName("标签名称"); 实例 1
+下面这个例子会返回文档中所有 <p> 元素的一个节点列表：
+
+document.getElementsByTagName("p"); 实例 2
+下面这个例子会返回所有 <p> 元素的一个节点列表，且这些 <p> 元素必须是 id 为 "maindiv" 的元素的后代：
+
+document.getElementById('maindiv').getElementsByTagName("p"); 节点列表（nodeList）
+当我们使用节点列表时，通常要把此列表保存在一个变量中，就像这样：
+
+var x=document.getElementsByTagName("p");现在，变量 x 包含着页面中所有 <p> 元素的一个列表，并且我们可以通过它们的索引号来访问这些 <p> 元素。
+
+注释：索引号从 0 开始。
+
+您可以通过使用 length 属性来循环遍历节点列表：
+
+var x=document.getElementsByTagName("p");
+for (var i=0;i<x.length;i++)
+  { 
+  // do something with each paragraph
+  }您也可以通过索引号来访问某个具体的元素。
+
+要访问第三个 <p> 元素，您可以这么写：
+
+var y=x[2];parentNode、firstChild以及lastChild
+这三个属性 parentNode、firstChild 以及 lastChild 可遵循文档的结构，在文档中进行“短距离的旅行”。
+
+请看下面这个 HTML 片段：
+
+<table>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>Alaska</td>
+  </tr>
+</table>在上面的HTML代码中，第一个 <td> 是 <tr> 元素的首个子元素（firstChild），而最后一个 <td> 是 <tr>元素的最后一个子元素（lastChild）。
+
+此外，<tr> 是每个 <td>元 素的父节点（parentNode）。
+
+对 firstChild 最普遍的用法是访问某个元素的文本：
+
+var x=[a paragraph];
+var text=x.firstChild.nodeValue; 
+parentNode 属性常被用来改变文档的结构。假设您希望从文档中删除带有 id 为 "maindiv" 的节点：
+
+var x=document.getElementById("maindiv");
+x.parentNode.removeChild(x); 
+首先，您需要找到带有指定 id 的节点，然后移至其父节点并执行 removeChild() 方法。
+根节点
+有两种特殊的文档属性可用来访问根节点：
+
+document.documentElement 
+document.body 
+第一个属性可返回存在于 XML 以及 HTML 文档中的文档根节点。
+
+第二个属性是对 HTML 页面的特殊扩展，提供了对 <body> 标签的直接访问。
+
+
+HTML DOM 节点信息
+Previous Page Next Page nodeName、nodeValue 以及 nodeType 包含有关于节点的信息。
+节点信息
+每个节点都拥有包含着关于节点某些信息的属性。这些属性是：
+
+nodeName（节点名称） 
+nodeValue（节点值） 
+nodeType（节点类型） 
+nodeName
+nodeName 属性含有某个节点的名称。
+
+元素节点的 nodeName 是标签名称 
+属性节点的 nodeName 是属性名称 
+文本节点的 nodeName 永远是 #text 
+文档节点的 nodeName 永远是 #document 
+注释：nodeName 所包含的 XML 元素的标签名称永远是大写的
+nodeValue
+对于文本节点，nodeValue 属性包含文本。
+
+对于属性节点，nodeValue 属性包含属性值。
+
+nodeValue 属性对于文档节点和元素节点是不可用的。
+nodeType
+nodeType 属性可返回节点的类型。
+
+最重要的节点类型是：
+
+元素类型 节点类型 
+元素 1 
+属性 2 
+文本 3 
+注释 8 
+文档 9
+
+一个 HTML DOM 实例
+Previous Page Next Page 一个 HTML DOM 的实例
+下面这个例子向我们展示了当一个用户在文档中点击时，HTML 文档的背景颜色如何被改变。
+
+<html>
+
+<head>
+<script type="text/javascript">
+function ChangeColor()
+{
+document.body.bgColor="yellow"
+}
+</script>
+</head>
+
+<body onclick="ChangeColor()">
+Click on this document!
+</body>
+
+</html>TIY
+
+
+HTML DOM 参考手册
+Previous Page Next Page Browser 对象参考手册
+点击以下链接，可以获得以下对象的更多信息，包括它们的集合、属性、方法以及事件。其中包含大量实例！
+
+对象 描述 
+Window JavaScript 层级中的顶层对象，表示浏览器窗口。 
+Navigator 包含客户端浏览器的信息。 
+Screen 包含客户端显示屏的信息。 
+History 包含了浏览器窗口访问过的 URL。 
+Location 包含了当前 URL 的信息。 
+HTML DOM 对象参考手册
+请点击下面的链接，学习更多有关对象及其集合、属性、方法和事件的知识。其中包含大量实例！
+
+对象 描述 
+Document 代表整个 HTML 文档，可被用来访问页面中的所有元素 
+Anchor 代表 <a> 元素 
+Area 代表图像映射中的 <area> 元素 
+Base 代表 <base> 元素 
+Body 代表 <body> 元素 
+Button 代表 <button> 元素 
+Event 代表某个事件的状态 
+Form 代表 <form> 元素 
+Frame 代表 <frame> 元素 
+Frameset 代表 <frameset> 元素 
+Iframe 代表 <iframe> 元素 
+Image 代表 <img> 元素 
+Input button 代表 HTML 表单中的一个按钮 
+Input checkbox 代表 HTML 表单中的复选框 
+Input file 代表 HTML 表单中的文件上传 
+Input hidden 代表 HTML 表单中的隐藏域 
+Input password 代表 HTML 表单中的密码域 
+Input radio 代表 HTML 表单中的单选按钮 
+Input reset 代表 HTML 表单中的重置按钮 
+Input submit 代表 HTML 表单中的确认按钮 
+Input text 代表 HTML 表单中的文本输入域（文本框） 
+Link 代表 <link> 元素 
+Meta 代表 <meta> 元素 
+Object 代表 <Object> 元素 
+Option 代表 <option> 元素 
+Select 代表 HTML 表单中的选择列表 
+Style 代表单独的样式声明 
+Table 代表 <table> 元素 
+TableData 代表 <td> 元素 
+TableRow 代表 <tr> 元素 
+Textarea 代表 <textarea> 元素 
+相关页面
+参考手册：JavaScript 参考手册
+
+HTML DOM Document 对象
+Document 对象
+每个载入浏览器的 HTML 文档都会成为 Document 对象。
+
+Document 对象使我们可以从脚本中对 HTML 页面中的所有元素进行访问。
+
+提示：Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Document 对象集合
+集合 描述 IE F O W3C 
+all[] 提供对文档中所有 HTML 元素的访问。 4 1 9 No 
+anchors[] 返回对文档中所有 Anchor 对象的引用。 4 1 9 Yes 
+applets 返回对文档中所有 Applet 对象的引用。 - - - - 
+forms[] 返回对文档中所有 Form 对象引用。 4 1 9 Yes 
+images[] 返回对文档中所有 Image 对象引用。 4 1 9 Yes 
+links[] 返回对文档中所有 Area 和 Link 对象引用。 4 1 9 Yes 
+Document 对象属性
+属性 描述 IE F O W3C 
+body 提供对 <body> 元素的直接访问。
+
+对于定义了框架集的文档，该属性引用最外层的 <frameset>。
+         
+cookie 设置或返回与当前文档有关的所有 cookie。 4 1 9 Yes 
+domain 返回当前文档的域名。 4 1 9 Yes 
+lastModified 返回文档被最后修改的日期和时间。 4 1 No No 
+referrer 返回载入当前文档的文档的 URL。 4 1 9 Yes 
+title 返回当前文档的标题。 4 1 9 Yes 
+URL 返回当前文档的 URL。 4 1 9 Yes 
+Document 对象方法
+方法 描述 IE F O W3C 
+close() 关闭用 document.open() 方法打开的输出流，并显示选定的数据。 4 1 9 Yes 
+getElementById() 返回对拥有指定 id 的第一个对象的引用。 5 1 9 Yes 
+getElementsByName() 返回带有指定名称的对象集合。 5 1 9 Yes 
+getElementsByTagName() 返回带有指定标签名的对象集合。 5 1 9 Yes 
+open() 打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。 4 1 9 Yes 
+write() 向文档写 HTML 表达式 或 JavaScript 代码。 4 1 9 Yes 
+writeln() 等同于 write() 方法，不同的是在每个表达式之后写一个换行符。 4 1 9 Yes 
+Document 对象描述
+HTMLDocument 接口对 DOM Document 接口进行了扩展，定义 HTML 专用的属性和方法。
+
+很多属性和方法都是 HTMLCollection 对象（实际上是可以用数组或名称索引的只读数组），其中保存了对锚、表单、链接以及其他可脚本元素的引用。
+
+这些集合属性都源自于 0 级 DOM。它们已经被 Document.getElementsByTagName() 所取代，但是仍然常常使用，因为他们很方便。
+
+write() 方法值得注意，在文档载入和解析的时候，它允许一个脚本向文档中插入动态生成的内容。
+
+注意，在 1 级 DOM 中，HTMLDocument 定义了一个名为 getElementById() 的非常有用的方法。在 2 级 DOM 中，该方法已经被转移到了 Document 接口，它现在由 HTMLDocument 继承而不是由它定义了。
+Anchor 对象
+Anchor 对象表示 HTML 超链接。
+
+在 HTML 文档中 <a> 标签每出现一次，就会创建 Anchor 对象。
+
+锚可用于创建指向另一个文档的链接（通过 href 属性），或者创建文档内的书签（通过 name 属性）。 
+
+您可以通过搜索 Document 对象中的 anchors[] 数组来访问锚，或者使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Anchor 对象的属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问一个链接的快捷键。 5 1 No Yes 
+charset 设置或返回被链接资源的字符集。 6 1 9 Yes 
+coords 设置或返回逗号分隔列表，包含了图像映射中链接的坐标。 6 1 9 Yes 
+href 设置或返回被链接资源的 URL。 5 1 9 Yes 
+hreflang 设置或返回被链接资源的语言代码。 6 1 9 Yes 
+id 设置或返回一个链接的 id。 4 1 9 Yes 
+innerHTML 设置或返回一个链接的内容。 4 1 9 No 
+name 设置或返回一个链接的名称。 4 1 9 Yes 
+rel 设置或返回当前文档与目标 URL 之间的关系。 5 1 No Yes 
+rev 设置或返回目标 URL 与之间当前文档的关系。 5 1 No Yes 
+shape 设置或返回图像映射中某个链接的形状。 6 1 9 Yes 
+tabIndex 设置或返回某个链接的 Tab 键控制次序。 6 1 9 Yes 
+target 设置或返回在何处打开链接。 5 1 9 Yes 
+type 设置或返回被链接资源的 MIME 类型。 6 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Anchor 对象的方法
+方法 描述 IE F O W3C 
+blur() 把焦点从链接上移开。 5 1 9 Yes 
+focus() 给链接应用焦点。 5 1 9 Yes
+HTML DOM Area 对象
+Area 对象
+Area 对象代表图像映射的一个区域（图像映射指的是带有可点击区域的图像）
+
+在 HTML 文档中 <area> 标签每出现一次，就会创建一个 Area 对象。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Area 对象的属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问某个区域的快捷键。 5 1 No Yes 
+alt 设置或返回当浏览器无法显示某个区域时的替换文字。 5 1 9 Yes 
+coords 设置或返回图像映射中可点击区域的坐标。 5 1 9 Yes 
+hash 设置或返回某个区域中 URL 的锚部分。 4 1 No No 
+host 设置或返回某个区域中 URL 的主机名和端口。 4 1 No No 
+href 设置或返回图像映射中链接的 URL。 4 1 9 Yes 
+id 设置或返回某个区域的 id。 4 1 9 Yes 
+noHref 设置或返回某个区域是否应是活动的还是非活动的。 5 1 9 Yes 
+pathname 设置或返回某个区域中的 URL 的路径名。 4 1 9 No 
+protocol 设置或返回某个区域中的 URL 的协议。 4 1 9 No 
+search 设置或返回某个区域中 URL 的查询字符串部分。 4 1 9 No 
+shape 设置或返回图像映射中某个区域的形状。 5 1 9 Yes 
+tabIndex 设置或返回某个区域的 tab 键控制次序。 5 1 9 Yes 
+target 设置或返回在何处打开区域中的 link-URL。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title。 5 1 9 Yes
+HTML DOM Base 对象
+Base 对象
+Base 对象代表 HTML 的 base 元素。
+
+在 HTML 文档中 <base> 每出现一次，Base 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Base 对象属性
+属性 描述 IE F O W3C 
+href 设置或返回针对页面中所有链接的基准 URL。 5 1 9 Yes 
+id 设置或返回 <base> 元素的 id。 4 1 9 Yes 
+target 设置或返回针对页面中所有链接的默认目标框架。 5 1 9 Yes
+HTML DOM Base 对象
+Base 对象
+Base 对象代表 HTML 的 base 元素。
+
+在 HTML 文档中 <base> 每出现一次，Base 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Base 对象属性
+属性 描述 IE F O W3C 
+href 设置或返回针对页面中所有链接的基准 URL。 5 1 9 Yes 
+id 设置或返回 <base> 元素的 id。 4 1 9 Yes 
+target 设置或返回针对页面中所有链接的默认目标框架。 5 1 9 Yes
+HTML DOM Button 对象
+Button 对象
+Button 对象代表一个按钮。
+
+在 HTML 文档中 <button> 标签每出现一次，Button 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Button 对象的属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问某个按钮的快捷键。 6 1 9 Yes 
+disabled 设置或返回是否禁用按钮。 6 1 9 Yes 
+form 返回对包含按钮的表单的引用。 6 1 9 Yes 
+id 设置或返回按钮的 id。 6 1 9 Yes 
+name 设置或返回按钮的名称。 6 1 9 Yes 
+tabIndex 设置或返回按钮的 Tab 键控制次序。 6 1 9 Yes 
+type 返回按钮的表单类型。 6 1 9 Yes 
+value 设置或返回显示在按钮上的文本。 6 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Canvas 对象
+Canvas 对象
+Canvas 对象表示一个 HTML 画布元素 - <canvas>。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作。
+
+你可以直接在该对象上指定宽度和高度，但是，其大多数功能都可以通过 CanvasRenderingContext2D 对象获得。这是通过 Canvas 对象的 getContext() 方法并且把直接量字符串 "2d" 作为唯一的参数传递给它而获得的。
+
+<canvas> 标记在 Safari 1.3 中引入，在制作此参考页时，它在 Firefox 1.5 和 Opera 9 中也得到了支持。在 IE 中，<canvas> 标记及其 API 可以使用位于 excanvas.sourceforge.net 的 ExplorerCanvas 开源项目来模拟。
+
+提示：如果希望学习如何使用 <canvas> 来绘制图形，可以访问 Mozilla 提供的 Canvas 教程（英文）以及相应的 中文 Canvas 教程。
+Canvas 对象的属性
+height 属性
+画布的高度。和一幅图像一样，这个属性可以指定为一个整数像素值或者是窗口高度的百分比。当这个值改变的时候，在该画布上已经完成的任何绘图都会擦除掉。默认值是 300。
+
+width 属性
+画布的宽度。和一幅图像一样，这个属性可以指定为一个整数像素值或者是窗口宽度的百分比。当这个值改变的时候，在该画布上已经完成的任何绘图都会擦除掉。默认值是 300。
+Canvas 对象的方法
+方法 描述 
+getContext() 返回一个用于在画布上绘图的环境。 
+参阅
+HTML 5 <canvas> 标签
+
+HTML 5 Canvas 教程
+HTML DOM Event 对象
+实例
+哪个鼠标按钮被点击？
+
+光标的坐标是？
+
+被按的按键的 unicode 是？
+
+相对于屏幕，光标的坐标是？
+
+shift 键被按了吗？
+
+哪个元素被点击了？
+
+哪个事件类型发生了？
+Event 对象
+Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
+
+事件通常与函数结合使用，函数不会在事件发生前被执行！
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+事件句柄　(Event Handlers)
+HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比如当用户点击某个 HTML 元素时启动一段 JavaScript。下面是一个属性列表，可将之插入 HTML 标签以定义事件的行为。
+
+属性 此事件发生在何时... IE F O W3C 
+onabort 图像的加载被中断。 4 1 9 Yes 
+onblur 元素失去焦点。 3 1 9 Yes 
+onchange 域的内容被改变。 3 1 9 Yes 
+onclick 当用户点击某个对象时调用的事件句柄。 3 1 9 Yes 
+ondblclick 当用户双击某个对象时调用的事件句柄。 4 1 9 Yes 
+onerror 在加载文档或图像时发生错误。 4 1 9 Yes 
+onfocus 元素获得焦点。 3 1 9 Yes 
+onkeydown 某个键盘按键被按下。 3 1 No Yes 
+onkeypress 某个键盘按键被按下并松开。 3 1 9 Yes 
+onkeyup 某个键盘按键被松开。 3 1 9 Yes 
+onload 一张页面或一幅图像完成加载。 3 1 9 Yes 
+onmousedown 鼠标按钮被按下。 4 1 9 Yes 
+onmousemove 鼠标被移动。 3 1 9 Yes 
+onmouseout 鼠标从某元素移开。 4 1 9 Yes 
+onmouseover 鼠标移到某元素之上。 3 1 9 Yes 
+onmouseup 鼠标按键被松开。 4 1 9 Yes 
+onreset 重置按钮被点击。 4 1 9 Yes 
+onresize 窗口或框架被重新调整大小。 4 1 9 Yes 
+onselect 文本被选中。 3 1 9 Yes 
+onsubmit 确认按钮被点击。 3 1 9 Yes 
+onunload 用户退出页面。 3 1 9 Yes 
+鼠标 / 键盘属性
+属性 描述 IE F O W3C 
+altKey 返回当事件被触发时，"ALT" 是否被按下。 6 1 9 Yes 
+button 返回当事件被触发时，哪个鼠标按钮被点击。 6 1 9 Yes 
+clientX 返回当事件被触发时，鼠标指针的水平坐标。 6 1 9 Yes 
+clientY 返回当事件被触发时，鼠标指针的垂直坐标。 6 1 9 Yes 
+ctrlKey 返回当事件被触发时，"CTRL" 键是否被按下。 6 1 9 Yes 
+metaKey 返回当事件被触发时，"meta" 键是否被按下。 No 1 9 Yes 
+relatedTarget 返回与事件的目标节点相关的节点。 No 1 9 Yes 
+screenX 返回当某个事件被触发时，鼠标指针的水平坐标。 6 1 9 Yes 
+screenY 返回当某个事件被触发时，鼠标指针的垂直坐标。 6 1 9 Yes 
+shiftKey 返回当事件被触发时，"SHIFT" 键是否被按下。 6 1 9 Yes
+HTML DOM Form 对象
+Form 对象
+Form 对象代表一个 HTML 表单。
+
+在 HTML 文档中 <form> 每出现一次，Form 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Form 对象集合
+集合 描述 IE F O W3C 
+elements[] 包含表单中所有元素的数组。 5 1 9 Yes 
+Form 对象属性
+属性 描述 IE F O W3C 
+acceptCharset 服务器可接受的字符集。 No No No Yes 
+action 设置或返回表单的 action 属性。 5 1 9 Yes 
+enctype 设置或返回表单用来编码内容的 MIME 类型。 6 1 9 Yes 
+id 设置或返回表单的 id。 5 1 9 Yes 
+length 返回表单中的元素数目。 5 1 9 Yes 
+method 设置或返回将数据发送到服务器的 HTTP 方法。 5 1 9 Yes 
+name 设置或返回表单的名称。 5 1 9 Yes 
+target 设置或返回表单提交结果的 Frame 或 Window 名。 5 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Form 对象方法
+方法 描述 IE F O W3C 
+reset() 把表单的所有输入元素重置为它们的默认值。 5 1 9 Yes 
+submit() 提交表单。 5 1 9 Yes 
+Form 对象事件句柄
+事件句柄 描述 IE F O W3C 
+onreset 在重置表单元素之前调用。 5 1 9 Yes 
+onsubmit 在提交表单之前调用。 5 1 9 Yes
+HTML DOM Frame 对象
+Frame 对象
+Frame 对象代表一个 HTML 框架。
+
+在 HTML 文档中 <frame> 每出现一次，就会创建一个 Frame对象。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Frame 对象的属性
+属性 描述 IE F O W3C 
+contentDocument 容纳框架的内容的文档。 No 1 9 Yes 
+frameBorder 设置或返回是否显示框架周围的边框。 5 1 9 Yes 
+id 设置或返回框架的 id。 4 1 9 Yes 
+longDesc 设置或返回指向包含框架内容描述文档的 URL。 6 1 9 Yes 
+marginHeight 设置或返回框架的顶部和底部页空白。 5 1 9 Yes 
+marginWidth 设置或返回框架的左边缘和右边缘的空白。 5 1 9 Yes 
+name 设置或返回框架的名称。 5 1 9 Yes 
+noResize 设置或返回框架是否可调整大小。 5 1 9 Yes 
+scrolling 设置或返回框架是否可拥有滚动条。 No 1 No Yes 
+src 设置或返回应被加载到框架中的文档的 URL。 5 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Frameset 对象
+Frameset 对象
+Frameset 对象代表 HTML 框架集。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Frameset 对象的属性
+属性 描述 IE F O W3C 
+cols 设置或返回框架集中列的数目。 5 1 9  Yes 
+id 设置或返回框架集的 id。 4 1 9 Yes 
+rows 设置或返回框架集中行的数目。 5 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM IFrame 对象
+IFrame 对象
+IFrame 对象代表一个 HTML 的内联框架。
+
+在 HTML 文档中 <iframe> 每出现一次，一个 IFrame 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+IFrame 对象的属性
+属性 描述 IE F O W3C 
+align 根据周围的文字排列 iframe。 6 1 9 Yes 
+contentDocument 容纳框架的内容的文档。 No 1 9 Yes 
+frameBorder 设置或返回是否显示 iframe 周围的边框。 No 1 9 Yes 
+height 设置或返回 iframe 的高度。 5 1 9 Yes 
+id 设置或返回 iframe 的 id。 4 1 9 Yes 
+longDesc 设置或返回描述 iframe 内容的文档的 URL。 6 1 9 Yes 
+marginHeight 设置或返回 iframe 的顶部和底部的页空白。 5 1 9 Yes 
+marginWidth 设置或返回 iframe 的左侧和右侧的页空白。 5 1 9 Yes 
+name 设置或返回 iframe 的名称。 5 1 9 Yes 
+scrolling 设置或返回 iframe 是否可拥有滚动条。 No 1 No Yes 
+src 设置或返回应载入 iframe 中的文档的 URL。 5 1 9 Yes 
+width 设置或返回 iframe 的宽度。 5 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Image 对象
+Image 对象
+Image 对象代表嵌入的图像。
+
+<img> 标签每出现一次，一个 Image 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Image 对象的属性
+属性 描述 IE F O W3C 
+align 设置或返回与内联内容的对齐方式。 5 1 9 Yes 
+alt 设置或返回无法显示图像时的替代文本。 5 1 9 Yes 
+border 设置或返回图像周围的边框。 4 1 9 Yes 
+complete 返回浏览器是否已完成对图像的加载。 4 1 9 No 
+height 设置或返回图像的高度。 4 1 9 Yes 
+hspace 设置或返回图像左侧和右侧的空白。 4 1 9 Yes 
+id 设置或返回图像的 id。 4 1 9 Yes 
+isMap 返回图像是否是服务器端的图像映射。 5 1 9 Yes 
+longDesc 设置或返回指向包含图像描述的文档的 URL。 6 1 9 Yes 
+lowsrc 设置或返回指向图像的低分辨率版本的 URL。 4 1 9 No 
+name 设置或返回图像的名称。 4 1 9 Yes 
+src 设置或返回图像的 URL。 4 1 9 Yes 
+useMap 设置或返回客户端图像映射的 usemap 属性的值。 5 1 9 Yes 
+vspace 设置或返回图像的顶部和底部的空白。 4 1 9 Yes 
+width 设置或返回图像的宽度。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+title 设置或返回元素的 title。 5 1 9 Yes 
+Image 对象的事件句柄
+事件句柄 描述 IE F O W3C 
+onabort 当用户放弃图像的装载时调用的事件句柄。 5 1 9 Yes 
+onerror 在装载图像的过程中发生错误时调用的事件句柄。 5 1 9 Yes 
+onload 当图像装载完毕时调用的事件句柄。 5 1 9 Yes
+HTML DOM Button 对象
+Button 对象
+Button 对象代表 HTML 文档中的一个按钮。
+
+该元素没有默认的行为，但是必须有一个 onclick 事件句柄以便使用。
+
+在 HTML 文档中 <input type="button"> 标签每出现一次，一个 Button 对象 就会被创建。
+
+您可以通过遍历表单的 elements[] 数组来访问某个按钮，或者通过使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Button 对象的属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问按钮的快捷键。 5 1 9 Yes 
+alt 设置或返回当浏览器无法显示按钮时供显示的替代文本。 5 1 9 Yes 
+disabled 设置或返回是否禁用按钮。 5 1 9 Yes 
+form 返回对包含该按钮的表单对象的引用。 4 1 9 Yes 
+id 设置或返回按钮的 id。 4 1 9 Yes 
+name 设置或返回按钮的名称。 4 1 9 Yes 
+tabIndex 设置或返回按钮的 tab 键控制次序。 5 1 9 Yes 
+type 返回按钮的表单元素类型。 4 1 9 Yes 
+value 设置或返回在按钮上显示的文本。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Button 对象的方法
+方法 描述 IE F O W3C 
+blur() 把焦点从元素上移开。 4 1 9 Yes 
+click() 在某个按钮上模拟一次鼠标单击。 4 1 9 Yes 
+focus() 为某个按钮赋予焦点。 4 1 9 Yes
+HTML DOM Checkbox 对象
+Checkbox 对象
+Checkbox 对象代表一个 HTML 表单中的 一个选择框。
+
+在 HTML 文档中 <input type="checkbox"> 每出现一次，Checkbox 对象就会被创建。
+
+您可以通过遍历表单的 elements[] 数组来访问某个选择框，或者通过使用 document.getElementById() 。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Checkbox 对象的属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问 checkbox 的快捷键。 4 1 9 Yes 
+alt 设置或返回不支持 checkbox 时显示的替代文本。 5 1 9 Yes 
+checked 设置或返回 checkbox 是否应被选中。 4 1 9 Yes 
+defaultChecked 返回 checked 属性的默认值。 4 1 9 Yes 
+disabled 设置或返回 checkbox 是否应被禁用。 4 1 9 Yes 
+form 返回对包含 checkbox 的表单的引用。 4 1 9 Yes 
+id 设置或返回 checkbox 的 id。 4 1 9 Yes 
+name 设置或返回 checkbox 的名称。 4 1 9 Yes 
+tabIndex 设置或返回 checkbox 的 tab 键控制次序。 4 1 9 Yes 
+type 返回 checkbox 的表单元素类型。 4 1 9 Yes 
+value 设置或返回 checkbox 的 value 属性的值 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Checkbox 对象的方法
+方法 描述 IE F O W3C 
+blur() 从 checkbox 上移开焦点。 4 1 9 Yes 
+click() 模拟在 checkbox 中的一次鼠标点击。 4 1 9 Yes 
+focus() 为 checkbox 赋予焦点。 4 1 9 Yes
+HTML DOM FileUpload 对象
+FileUpload 对象
+在 HTML 文档中 <input type="file"> 标签每出现一次，一个 FileUpload 对象就会被创建。
+
+该元素包含一个文本输入字段，用来输入文件名，还有一个按钮，用来打开文件选择对话框以便图形化选择文件。
+
+该元素的 value 属性保存了用户指定的文件的名称，但是当包含一个 file-upload 元素的表单被提交的时候，浏览器会向服务器发送选中的文件的内容而不仅仅是发送文件名。
+
+为安全起见，file-upload 元素不允许 HTML 作者或 JavaScript 程序员指定一个默认的文件名。HTML value 属性被忽略，并且对于此类元素来说，value 属性是只读的，这意味着只有用户可以输入一个文件名。当用户选择或编辑一个文件名，file-upload 元素触发 onchange 事件句柄。
+
+您可以通过遍历表单的 elements[] 数组，或者通过使用 document.getElementById()来访问 FileUpload 对象。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+FileUpload 对象的属性
+属性 描述 IE F O W3C 
+accept 设置或返回指示文件传输的 MIME 类型的列表（逗号分隔）。       Yes 
+accessKey 设置或返回访问 FileUpload 对象的快捷键。 4     Yes 
+alt 设置或返回不支持 <input type="file"> 时显示的替代文字。       Yes 
+defaultValue 设置或返回 FileUpload 对象的初始值。 4 1   Yes 
+disabled 设置或返回是否禁用 FileUpload 对象。 4     Yes 
+form 返回对包含 FileUpload 对象的表单的引用。 4 1   Yes 
+id 设置或返回 FileUpload 对象的 id。 4 1   Yes 
+name 设置或返回 FileUpload 对象的名称。 4 1   Yes 
+tabIndex 设置或返回定义 FileUpload 对象的 tab 键控制次序的索引号。 4     Yes 
+type 返回表单元素的类型。对于 FileUpload ，则是 "file" 。 4 1   Yes 
+value 返回由用户输入设置的文本后，FileUpload 对象的文件名。 4 1   Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+FileUpload 对象的方法
+方法 描述 IE F O W3C 
+blur() 从 FileUpload 对象上移开焦点。 4 1   Yes 
+focus() 为 FileUpload 对象赋予焦点。 4 1   Yes 
+select() 选取 FileUpload 对象。 4     Yes
+HTML DOM Hidden 对象
+Hidden 对象
+Hidden 对象代表一个 HTML 表单中的某个隐藏输入域。
+
+这种类型的输入元素实际上是隐藏的。这个不可见的表单元素的 value 属性保存了一个要提交给 Web 服务器的任意字符串。如果想要提交并非用户直接输入的数据的话，就是用这种类型的元素。
+
+在 HTML 表单中 <input type="hidden"> 标签每出现一次，一个 Hidden 对象就会被创建。
+
+您可通过遍历表单的 elements[] 数组来访问某个隐藏输入域，或者通过使用document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Hidden 对象的属性
+属性 描述 IE F O W3C 
+alt 设置或返回当不支持隐藏输入域时显示的替代文本。 5 1 9 Yes 
+form 返回一个对包含隐藏域的表单的引用。 4 1 9 Yes 
+id 设置或返回隐藏域的 id。 4 1 9 Yes 
+name 设置或返回隐藏域的名称。 4 1 9 Yes 
+type 返回隐藏输入域的表单类型。 4 1 9 Yes 
+value 设置或返回隐藏域的 value 属性的值。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Password 对象
+Password 对象
+Password 对象代表 HTML 表单中的密码字段。
+
+HTML 的 <input type="password"> 标签在表单上每出现一次，一个 Password 对象就会被创建。
+
+该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号*），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单提交时，输入是用明文发送的。
+
+与类型为 "text" 的元素类似，当用户改变显示值时，它会触发 onchange 事件句柄。
+
+您可以通过遍历表单的 elements[] array 来访问密码字段，或者通过使用 document.getElementById() 。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Password 对象属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问密码字段的快捷键。 4 1 9 Yes 
+alt 设置或返回当不支持密码字段时显示的替代文字。 5 1 9 Yes 
+defaultValue 设置或返回密码字段的默认值。 4 1 9 Yes 
+disabled 设置或返回是否应被禁用密码字段。 5 1 9 Yes 
+form 返回对包含此密码字段的表单的引用。 4 1 9 Yes 
+id 设置或返回密码字段的 id。 4 1 9 Yes 
+maxLength 设置或返回密码字段中字符的最大数目。 4 1 9 Yes 
+name 设置或返回密码字段的名称。 4 1 9 Yes 
+readOnly 设置或返回密码字段是否应当是只读的。 4 1 9 Yes 
+size 设置或返回密码字段的长度。 4 1 9 Yes 
+tabIndex 设置或返回密码字段的 tab 键控制次序。 4 1 9 Yes 
+type 返回密码字段的表单元素类型。 4 1 9 Yes 
+value 设置或返回密码字段的 value 属性的值。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Password 对象方法
+属性 描述 IE F O W3C 
+blur() 从密码字段移开焦点。 4 1 9 Yes 
+focus() 为密码字段赋予焦点。 4 1 9 Yes 
+select() 选取密码字段中的文本。 4 1 9 Yes
+HTML DOM Radio 对象
+Radio 对象
+Radio 对象代表 HTML 表单中的单选按钮。
+
+在 HTML 表单中 <input type="radio"> 每出现一次，一个 Radio 对象就会被创建。
+
+单选按钮是表示一组互斥选项按钮中的一个。当一个按钮被选中，之前选中的按钮就变为非选中的。
+
+当单选按钮被选中或不选中时，该按钮就会触发 onclick 事件句柄。
+
+您可通过遍历表单的 elements[] 数组来访问 Radio 对象，或者通过使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Radio 对象属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问单选按钮的快捷键。 4 1 9 Yes 
+alt 设置或返回在不支持单选按钮时显示的替代文本。 5 1 9 Yes 
+checked 设置或返回单选按钮的状态。 4 1 9 Yes 
+defaultChecked 返回单选按钮的默认状态。 4 1 9 Yes 
+disabled 设置或返回是否禁用单选按钮。 5 1 9 Yes 
+form 返回一个对包含此单选按钮的表单的引用。 4 1 9 Yes 
+id 设置或返回单选按钮的 id。 4 1 9 Yes 
+name 设置或返回单选按钮的名称。 4 1 9 Yes 
+tabIndex 设置或返回单选按钮的 tab 键控制次序。 4 1 9 Yes 
+type 返回单选按钮的表单类型。 4 1 9 Yes 
+value 设置或返回单选按钮的 value 属性的值。 4 1 9  Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Radio 对象方法
+方法 描述 IE F O W3C 
+blur() 从单选按钮移开焦点。 No 1 9 Yes 
+click() 在单选按钮上模拟一次鼠标点击。 No 2 9 Yes 
+focus() 为单选按钮赋予焦点。 No 1 9 Yes
+HTML DOM Reset 对象
+Reset 对象
+Reset 对象代表 HTML 表单中的一个重置按钮。
+
+在 HTML 表单中 <input type="reset"> 标签每出现一次，一个 Reset 对象就会被创建。
+
+当重置按钮被点击，包含它的表单中所有输入元素的值都重置为它们的默认值。默认值由 HTML value 属性或 JavaScript 的 defaultValue 属性指定。
+
+重置按钮在重置表单之前触发 onclick 句柄，并且这个句柄可以通过返回 fasle 来取消。
+
+参阅 Form.reset() 方法 和 Form.onreset 事件句柄。
+
+您可以通过遍历表单的 elements[] 数组来访问某个重置按钮，或者通过使用document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Reset 对象属性
+属性 描述 IE F O W3C 
+accesskey 设置或返回访问重置按钮的快捷键。 4 1 9 Yes 
+alt 设置或返回当浏览器不支持重置按钮时供显示的替代文本。 5 1 9 Yes 
+disabled 设置或返回重置按钮是否应被禁用。 5 1 9 Yes 
+form 返回一个对包含此重置按钮的表单对象的引用。 4 1 9 Yes 
+id 设置或返回重置按钮的 id。 4 1 9 Yes 
+name 设置或返回重置按钮的名称。 4 1 9 Yes 
+tabIndex 设置或返回重置按钮的 tab 键控制次序。 4 1 9 Yes 
+type 返回重置按钮的表单元素类型。 4 1 9 Yes 
+value 设置或返回重置按钮上显示的文本。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Reset 对象方法
+方法 描述 IE F O W3C 
+blur() 从重置按钮上移开焦点。 4 1 9 Yes 
+click() 在重置按钮上模拟一次鼠标点击。 4 1 9 Yes 
+focus() 为重置按钮赋予焦点。 4 1 9 Yes
+HTML DOM Submit 对象
+Submit 对象
+Submit 对象代表 HTML 表单中的一个提交按钮 (submit button)。
+
+在 HTML 表单中 <input type="submit"> 标签每出现一次，一个 Submit 对象就会被创建。
+
+在表单提交之前，触发 onclick 事件句柄，并且一个句柄可以通过返回 fasle 来取消表单提交。
+
+参阅 Form.submit() 方法 和 Form.onsubmit 事件句柄。
+
+实例：表单验证
+
+您可以通过遍历表单的 elements[] 数组来访问某个提交按钮，或者通过使用document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Submit 对象属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问提交按钮的快捷键。 4 1 9 Yes 
+alt 设置或返回当浏览器不支持提交按钮时供显示的替代文本。 5 1 9 Yes 
+disabled 设置或返回提交按钮是否应被禁用。 5 1 9 Yes 
+form 返回一个对包含此提交按钮的表单的引用。 4 1 9 Yes 
+id 设置或返回提交按钮的 id。 4 1 9 Yes 
+name 设置或返回提交按钮的名称。 4 1 9 Yes 
+tabIndex 设置或返回提交按钮的 tab 键控制次序。 4 1 9 Yes 
+type 返回提交按钮的表单元素类型。 4 1 9 Yes 
+value 设置或返回在提交按钮上显示的文本。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Submit 对象方法
+方法 描述 IE F O W3C 
+blur() 从提交按钮上移开焦点。 4 1 9 Yes 
+click() 在提交按钮上模拟一次鼠标点击。 4 1 9 Yes 
+focus() 为提交按钮赋予焦点。 4 1 9 Yes
+Text 对象
+Text 对象代表 HTML 表单中的文本输入域。
+
+在 HTML 表单中 <input type="text"> 每出现一次，Text 对象就会被创建。
+
+该元素可创建一个单行的文本输入字段。当用户编辑显示的文本并随后把输入焦点转移到其他元素的时候，会触发 onchange 事件句柄。
+
+您可以使用 HTML <textarea> 标记来创建多行文本输入。参阅 Textarea 对象。
+
+对于掩码文本输入，把 <input type="text"> 中的 type 设置为 "password"。参阅 Input Password。
+
+您可以通过表单的 elements[] 数组来访问文本输入域，或者通过使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Text 对象属性
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问文本域的快捷键。 4 1 9 Yes 
+alt 设置或返回当浏览器不支持文本域时供显示的替代文本。 5 1 9 Yes 
+defaultValue 设置或返回文本域的默认值。 4 1 9 Yes 
+disabled 设置或返回文本域是否应被禁用。 5 1 9 Yes 
+form 返回一个对包含文本域的表单对象的引用。 4 1 9 Yes 
+id 设置或返回文本域的 id。 4 1 9 Yes 
+maxLength 设置或返回文本域中的最大字符数。 4 1 9 Yes 
+name 设置或返回文本域的名称。 4 1 9 Yes 
+readOnly 设置或返回文本域是否应是只读的。 4 1 9 Yes 
+size 设置或返回文本域的尺寸。 4 1 9 Yes 
+tabIndex 设置或返回文本域的 tab 键控制次序。 4 1 9 Yes 
+type 返回文本域的表单元素类型。 4 1 9 Yes 
+value 设置或返回文本域的 value 属性的值。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Text 对象方法
+方法 描述 IE F O W3C 
+blur() 从文本域上移开焦点。 4 1 9 Yes 
+focus() 在文本域上设置焦点。 4 1 9 Yes 
+select() 选取文本域中的内容。 4 1 9 Yes
+HTML DOM Link 对象
+Link 对象
+Link 对象代表某个 HTML 的 <link> 元素。<link> 元素可定义两个链接文档之间的关系。
+
+<link> 元素被定义于 HTML 文档的 head 部分。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Link 对象属性
+属性 描述 IE F O W3C 
+charset 设置或返回目标 URL 的字符编码。 4 1 9 Yes 
+disabled 设置或返回目标 URL 是否当被禁用。 4 1 9 Yes 
+href 设置或返回被链接资源的 URL。 4 1 9 Yes 
+hreflang 设置或返回目标 URL 的基准语言。 4 1 9 Yes 
+id 设置或返回某个 <link> 元素的 id。 4 1 9 Yes 
+media 设置或返回文档显示的设备类型。 6 1 9 Yes 
+name 设置或返回 <link> 元素的名称。 4 No No Yes 
+rel 设置或返回当前文档与目标 URL之间的关系。 4 1 9 Yes 
+rev 设置或返回目标 URL 与当前文档之间的关系。 4 1 9 Yes 
+type 设置或返回目标 URL 的 MIME 类型。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes
+HTML DOM Meta 对象
+Meta 对象
+Meta 对象代表 HTML 的 一个 <meta> 元素。
+
+<meta> 元素可提供有关某个 HTML 元素的元信息 (meta-information)，比如描述、针对搜索引擎的关键词以及刷新频率。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Meta 对象属性
+属性 描述 IE F O W3C 
+content 设置或返回 <meta> 元素的 content 属性的值。 5 1 9 Yes 
+httpEquiv 把 content 属性连接到一个 HTTP 头部。 5 1 9 Yes 
+name 把 content 属性连接到某个名称。 5 1 9 Yes 
+scheme 设置或返回用于解释 content 属性的值的格式。 6 1 9 Yes
+HTML DOM Object 对象
+Link 对象
+Object 对象代表 HTML 的 <object> 元素。
+
+<object> 元素用于嵌入的可执行内容。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Link 对象属性
+属性 描述 IE F O W3C 
+align Sets or returns the alignment of the object according to the surrounding text 5 1 9 Yes 
+archive Sets or returns a string that can be used to implement your own archive functionality for the object 6 1 9 Yes 
+border Sets or returns the border around the object       Yes 
+code Sets or returns the URL of the file that contains the compiled Java class 5 1 9 Yes 
+codeBase Sets or returns the URL of the component 5 1 9 Yes 
+codeType         Yes 
+data     1 9 Yes 
+declare         Yes 
+form Returns a reference to the object's parent form       Yes 
+height Sets or returns the height of the object   1 9 Yes 
+hspace Sets or returns the horizontal margin of the object 5 1 9 Yes 
+id Sets or returns the id of the object 4 1 9 Yes 
+name Sets or returns the name of the object 5 1 9 Yes 
+standby Sets or returns a message when loading the object       Yes 
+tabIndex Sets or returns the tab order for the object 5     Yes 
+type Sets or returns the content type for data downloaded via the data attribute   1 9 Yes 
+useMap     1 9 Yes 
+vspace Sets or returns the vertical margin of the object 5 1 9 Yes 
+width Sets or returns the width of the object   1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Option 对象
+Option 对象
+Option 对象代表 HTML 表单中下拉列表中的一个选项。
+
+在 HTML 表单中 <option> 标签每出现一次，一个 Option 对象就会被创建。
+
+您可通过表单的 elements[] 数组访问一个 Option 对象，或者通过使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Option 对象的属性
+属性 描述 IE F O W3C 
+defaultSelected 返回 selected 属性的默认值。 4 1 9 Yes 
+disabled 设置或返回选项是否应被禁用。 4 1 9 Yes 
+form 返回对包含该元素的 <form> 元素的引用。 4 1 9 Yes 
+id 设置或返回选项的 id。 4 1 9 Yes 
+index 返回下拉列表中某个选项的索引位置。 4 1 9 Yes 
+label 设置或返回选项的标记 （仅用于选项组）。 6     Yes 
+selected 设置或返回 selected 属性的值。 4 1 9 Yes 
+text 设置或返回某个选项的纯文本值。 4 1 9 Yes 
+value 设置或返回被送往服务器的值。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM Select 对象
+Select 对象
+Select 对象代表 HTML 表单中的一个下拉列表。
+
+在 HTML 表单中，<select> 标签每出现一次，一个 Select 对象就会被创建。
+
+您可通过遍历表单的 elements[] 数组来访问某个 Select 对象，或者使用 document.getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Select 对象集合
+集合 描述 IE F O W3C 
+options[] 返回包含下拉列表中的所有选项的一个数组。 4 1 9 Yes 
+Select 对象属性
+属性 描述 IE F O W3C 
+disabled 设置或返回是否应禁用下拉列表。 5 1 9 Yes 
+form 返回对包含下拉列表的表单的引用。 4 1 9 Yes 
+id 设置或返回下拉列表的 id。 4 1 9 Yes 
+length 返回下拉列表中的选项数目。 4 1 9 Yes 
+multiple 设置或返回是否选择多个项目。 4 1 9 Yes 
+name 设置或返回下拉列表的名称。 4 1 9 Yes 
+selectedIndex 设置或返回下拉列表中被选项目的索引号。 4 1 9 Yes 
+size 设置或返回下拉列表中的可见行数。 4 1 9 Yes 
+tabIndex 设置或返回下拉列表的 tab 键控制次序。 5 1 9 Yes 
+type 返回下拉列表的表单类型。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Select 对象方法
+方法 描述 IE F O W3C 
+add() 向下拉列表添加一个选项。 4 1 9 Yes 
+blur() 从下拉列表移开焦点。 4 1 9 Yes 
+focus() 在下拉列表上设置焦点。 4 1 9 Yes 
+remove() 从下拉列表中删除一个选项。 4 1 9 Yes 
+Select 对象事件句柄
+事件句柄 描述 IE F O W3C 
+onchange 当改变选择时调用的事件句柄。 4 1 9 Yes
+HTML DOM Style 对象
+Style 对象
+Style 对象代表一个单独的样式声明。可从应用样式的文档或元素访问 Style 对象。
+
+使用 Style 对象属性的语法：
+document.getElementById("id").style.property="值"Style 对象的属性：
+背景 
+边框和边距 
+布局 
+列表 
+杂项 
+定位 
+打印 
+滚动条 
+表格 
+文本 
+规范 
+IE: Internet Explorer, M: 仅适用于 Mac IE, W: 仅适用于 Windows IE, F: Firefox, O: Opera
+
+W3C: 万维网联盟 World Wide Web Consortium (Internet 标准).
+
+Background 属性
+属性 描述 IE F O W3C 
+background 在一行中设置所有的背景属性 4 1 9 Yes 
+backgroundAttachment 设置背景图像是否固定或随页面滚动 4 1 9 Yes 
+backgroundColor 设置元素的背景颜色 4 1 9 Yes 
+backgroundImage 设置元素的背景图像 4 1 9 Yes 
+backgroundPosition 设置背景图像的起始位置 4 No No Yes 
+backgroundPositionX 设置backgroundPosition属性的X坐标 4 No No No 
+backgroundPositionY 设置backgroundPosition属性的Y坐标 4 No No No 
+backgroundRepeat 设置是否及如何重复背景图像 4 1 9 Yes 
+
+Border 和 Margin 属性
+属性 描述 IE F O W3C 
+border 在一行设置四个边框的所有属性 4 1 9 Yes 
+borderBottom 在一行设置底边框的所有属性 4 1 9 Yes 
+borderBottomColor 设置底边框的颜色 4 1 9 Yes 
+borderBottomStyle 设置底边框的样式 4 1 9 Yes 
+borderBottomWidth 设置底边框的宽度 4 1 9 Yes 
+borderColor 设置所有四个边框的颜色 (可设置四种颜色) 4 1 9 Yes 
+borderLeft 在一行设置左边框的所有属性 4 1 9 Yes 
+borderLeftColor 设置左边框的颜色 4 1 9 Yes 
+borderLeftStyle 设置左边框的样式 4 1 9 Yes 
+borderLeftWidth 设置左边框的宽度 4 1 9 Yes 
+borderRight 在一行设置右边框的所有属性 4 1 9 Yes 
+borderRightColor 设置右边框的颜色 4 1 9 Yes 
+borderRightStyle 设置右边框的样式 4 1 9 Yes 
+borderRightWidth 设置右边框的宽度 4 1 9 Yes 
+borderStyle 设置所有四个边框的样式 (可设置四种样式) 4 1 9 Yes 
+borderTop 在一行设置顶边框的所有属性 4 1 9 Yes 
+borderTopColor 设置顶边框的颜色 4 1 9 Yes 
+borderTopStyle 设置顶边框的样式 4 1 9 Yes 
+borderTopWidth 设置顶边框的宽度 4 1 9 Yes 
+borderWidth 设置所有四条边框的宽度 (可设置四种宽度) 4 1 9 Yes 
+margin 设置元素的边距 (可设置四个值) 4 1 9 Yes 
+marginBottom 设置元素的底边距 4 1 9 Yes 
+marginLeft 设置元素的左边距 4 1 9 Yes 
+marginRight 设置元素的右边据 4 1 9 Yes 
+marginTop 设置元素的顶边距 4 1 9 Yes 
+outline 在一行设置所有的outline属性 5M 1 9 Yes 
+outlineColor 设置围绕元素的轮廓颜色 5M 1 9 Yes 
+outlineStyle 设置围绕元素的轮廓样式 5M 1 9 Yes 
+outlineWidth 设置围绕元素的轮廓宽度 5M 1 9 Yes 
+padding 设置元素的填充 (可设置四个值) 4 1 9 Yes 
+paddingBottom 设置元素的下填充 4 1 9 Yes 
+paddingLeft 设置元素的左填充 4 1 9 Yes 
+paddingRight 设置元素的右填充 4 1 9 Yes 
+paddingTop 设置元素的顶填充 4 1 9 Yes 
+
+Layout 属性
+属性 描述 IE F O W3C 
+clear 设置在元素的哪边不允许其他的浮动元素 4 1 9 Yes 
+clip 设置元素的形状 4 1 9 Yes 
+content 设置元信息 5M 1   Yes 
+counterIncrement 设置其后是正数的计数器名称的列表。其中整数指示每当元素出现时计数器的增量。默认是1。 5M 1   Yes 
+counterReset 设置其后是正数的计数器名称的列表。其中整数指示每当元素出现时计数器被设置的值。默认是0。 5M 1   Yes 
+cssFloat 设置图像或文本将出现（浮动）在另一元素中的何处。 5M 1 9 Yes 
+cursor 设置显示的指针类型 4 1 9 Yes 
+direction 设置元素的文本方向 5 1 9 Yes 
+display 设置元素如何被显示 4 1 9 Yes 
+height 设置元素的高度 4 1 9 Yes 
+markerOffset 设置marker box的principal box距离其最近的边框边缘的距离 5M 1   Yes 
+marks 设置是否cross marks或crop marks应仅仅被呈现于page box边缘之外 5M 1   Yes 
+maxHeight 设置元素的最大高度 5M 1 9 Yes 
+maxWidth 设置元素的最大宽度 5M 1 9 Yes 
+minHeight 设置元素的最小高度 5M 1 9 Yes 
+minWidth 设置元素的最小宽度 5M 1 9 Yes 
+overflow 规定如何处理不适合元素盒的内容 4 1 9 Yes 
+verticalAlign 设置对元素中的内容进行垂直排列 4 1 No Yes 
+visibility 设置元素是否可见 4 1 9 Yes 
+width 设置元素的宽度 4 1 9 Yes 
+
+List 属性
+属性 描述 IE F O W3C 
+listStyle 在一行设置列表的所有属性 4 1 9 Yes 
+listStyleImage 把图像设置为列表项标记 4 1 No Yes 
+listStylePosition 改变列表项标记的位置 4 1 9 Yes 
+listStyleType 设置列表项标记的类型 4 1 9 Yes 
+
+Positioning 属性
+属性 描述 IE F O W3C 
+bottom 设置元素的底边缘距离父元素底边缘的之上或之下的距离 5 1 9 Yes 
+left 置元素的左边缘距离父元素左边缘的左边或右边的距离 4 1 9 Yes 
+position 把元素放置在static, relative, absolute 或 fixed 的位置 4 1 9 Yes 
+right 置元素的右边缘距离父元素右边缘的左边或右边的距离 5 1 9 Yes 
+top 设置元素的顶边缘距离父元素顶边缘的之上或之下的距离 4 1 9 Yes 
+zIndex 设置元素的堆叠次序 4 1 9 Yes 
+
+Printing 属性
+属性 描述 IE F O W3C 
+orphans 设置段落留到页面底部的最小行数 5M 1 9 Yes 
+page 设置显示某元素时使用的页面类型 5M 1 9 Yes 
+pageBreakAfter 设置某元素之后的分页行为 4 1 9 Yes 
+pageBreakBefore 设置某元素之前的分页行为 4 1 9 Yes 
+pageBreakInside 设置某元素内部的分页行为 5M 1 9 Yes 
+size 设置页面的方向和尺寸   1 9 Yes 
+widows 设置段落必须留到页面顶部的最小行数 5M 1 9 Yes 
+
+Scrollbar 属性 (IE-only)
+属性 描述 IE F O W3C 
+scrollbar3dLightColor 设置箭头和滚动条左侧和顶边的颜色 5W No No No 
+scrollbarArrowColor 设置滚动条上的箭头颜色 5W No No No 
+scrollbarBaseColor 设置滚动条的底色 5W No No No 
+scrollbarDarkShadowColor 设置箭头和滚动条右侧和底边的颜色 5W No No No 
+scrollbarFaceColor 设置滚动条的表色 5W No No No 
+scrollbarHighlightColor 设置箭头和滚动条左侧和顶边的颜色，以及滚动条的背景 5W No No No 
+scrollbarShadowColor 设置箭头和滚动条右侧和底边的颜色 5W No No No 
+scrollbarTrackColor 设置滚动条的背景色 5W No No No 
+
+Table 属性
+属性 描述 IE F O W3C 
+borderCollapse 设置表格边框是否合并为单边框，或者像在标准的HTML中那样分离。 5 1 9 Yes 
+borderSpacing 设置分隔单元格边框的距离 5M 1 9 Yes 
+captionSide 设置表格标题的位置 5M No No Yes 
+emptyCells 设置是否显示表格中的空单元格 5M 1 9 Yes 
+tableLayout 设置用来显示表格单元格、行以及列的算法 5 No No Yes 
+
+Text 属性
+属性 描述 IE F O W3C 
+color 设置文本的颜色 4 1 9 Yes 
+font 在一行设置所有的字体属性 4 1 9 Yes 
+fontFamily 设置元素的字体系列。 4 1 9 Yes 
+fontSize 设置元素的字体大小。 4 1 9 Yes 
+fontSizeAdjust 设置/调整文本的尺寸 5M 1 No Yes 
+fontStretch 设置如何紧缩或伸展字体 5M No No Yes 
+fontStyle 设置元素的字体样式 4 1 9 Yes 
+fontVariant 用小型大写字母字体来显示文本 4 1 9 Yes 
+fontWeight 设置字体的粗细 4 1 9 Yes 
+letterSpacing 设置字符间距 4 1 9 Yes 
+lineHeight 设置行间距 4 1 9 Yes 
+quotes 设置在文本中使用哪种引号 5M 1   Yes 
+textAlign 排列文本 4 1 9 Yes 
+textDecoration 设置文本的修饰 4 1 9 Yes 
+textIndent 缩紧首行的文本 4 1 9 Yes 
+textShadow 设置文本的阴影效果 5M 1   Yes 
+textTransform 对文本设置大写效果 4 1 9 Yes 
+unicodeBidi   5 1   Yes 
+whiteSpace 设置如何设置文本中的折行和空白符 4 1 9 Yes 
+wordSpacing 设置文本中的词间距 6 1 9 Yes 
+
+标准属性
+属性 描述 IE F O W3C 
+dir 设置或返回文本的方向 5 1 9 Yes 
+lang 设置或返回元素的语言代码 5 1 9 Yes 
+title 设置或返回元素的咨询性的标题 5 1 9 Yes 
+
+cssText 属性
+它是一组样式属性及其值的文本表示。这个文本格式化为一个 CSS 样式表，去掉了包围属性和值的元素选择器的花括号。
+
+将这一属性设置为非法的值将会抛出一个代码为 SYNTAX_ERR 的 DOMException 异常。当 CSS2Properties 对象是只读的时候，试图设置这一属性将会抛出一个代码为 NO_MODIFICATION_ALLOWED_ERR 的 DOMException 异常。
+关于 CSS2Properties 对象
+CSS2Properties 对象表示一组 CSS 样式属性及其值。它为 CSS 规范定义的每一个 CSS 属性都定义一个 JavaScript 属性。
+
+一个 HTMLElement 的 style 属性是一个可读可写的 CSS2Properties 对象，就好像 CSSRule 对象的 style 属性一样。不过，Window.getComputedStyle() 的返回值是一个 CSS2Properties 对象，其属性是只读的。
+HTML DOM Table 对象
+Table 对象
+Table 对象代表一个 HTML 表格。
+
+在 HTML 文档中 <table> 标签每出现一次，一个 Table 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Table 对象集合
+集合 描述 IE F O W3C 
+cells[] 返回包含表格中所有单元格的一个数组。 5 1 1 No 
+rows[] 返回包含表格中所有行的一个数组。 4 1 9 Yes 
+tBodies[] 返回包含表格中所有 tbody 的一个数组。 4     Yes 
+Table 对象属性
+属性 描述 IE F O W3C 
+align 表在文档中的水平对齐方式。（已废弃） - - - - 
+bgColor 表的背景颜色。（已废弃） - - - - 
+border 设置或返回表格边框的宽度。 4 1 9 Yes 
+caption 对表格的 <caption> 元素的引用。 4 1 9 Yes 
+cellPadding 设置或返回单元格内容和单元格边框之间的空白量。 4 1 9 Yes 
+cellSpacing 设置或返回在表格中的单元格之间的空白量。 4 1 9 Yes 
+frame 设置或返回表格的外部边框。 4 1 9 Yes 
+id 设置或返回表格的 id。 4 1 9 Yes 
+rules 设置或返回表格的内部边框（行线）。 4 1 9 Yes 
+summary 设置或返回对表格的描述（概述）。 6 1 9 Yes 
+tFoot 返回表格的 TFoot 对象。如果不存在该元素，则为 null。 4 1 9 Yes 
+tHead 返回表格的 THead 对象。如果不存在该元素，则为 null。 4 1 9 Yes 
+width 设置或返回表格的宽度。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Table 对象方法
+方法 描述 IE F O W3C 
+createCaption() 为表格创建一个 caption 元素。 4 1 9 Yes 
+createTFoot() 在表格中创建一个空的 tFoot 元素。 4 1 9 Yes 
+createTHead() 在表格中创建一个空的 tHead 元素。 4 1 9 Yes 
+deleteCaption() 从表格删除 caption 元素以及其内容。 4 1 9 Yes 
+deleteRow() 从表格删除一行。 4 1 9 Yes 
+deleteTFoot() 从表格删除 tFoot 元素及其内容。 4 1 9 Yes 
+deleteTHead() 从表格删除 tHead 元素及其内容。 4 1 9 Yes 
+insertRow() 在表格中插入一个新行。 4 1 9 Yes
+HTML DOM TableCell 对象
+TableCell 对象
+TableCell 对象代表一个 HTML 表格单元格。
+
+在一个 HTML 文档中 <td> 标签每出现一次，一个 TableCell 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+TableCell 对象属性
+属性 描述 IE F O W3C 
+abbr 设置或返回单元格中内容的缩写版本。 6 1 9 Yes 
+align 设置或返回单元格内部数据的水平排列方式。 4 1 9 Yes 
+axis 设置或返回相关单元格的一个逗号分隔的列表。 6 1 9 Yes 
+cellIndex 返回单元格在某行的单元格集合中的位置。 4 1 9 Yes 
+ch 设置或返回单元格的对齐字符。       Yes 
+chOff 设置或返回单元格的对齐字符的偏移量。       Yes 
+colSpan 单元格横跨的列数。 4 1 9 Yes 
+headers 设置或返回 header-cell 的 id 值。       Yes 
+id 设置或返回单元格的 id。 4 1 9 Yes 
+innerHTML 设置或返回单元格的开始标签和结束标签之间的 HTML。 4 1 9 No 
+rowSpan 设置或返回单元格可横跨的行数。 4 1 9 Yes 
+scope 设置或返回此单元格是否可提供标签信息。       Yes 
+vAlign 设置或返回表格单元格内数据的垂直排列方式。 4 1 9 Yes 
+width 设置或返回单元格的宽度。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes
+HTML DOM TableRow 对象
+TableRow 对象
+TableRow 对象代表一个 HTML 表格行。
+
+在 HTML 文档中 <tr> 标签每出现一次，一个 TableRow 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+TableRow 对象集合
+集合 描述 IE F O W3C 
+cells[] 返回包含行中所有单元格的一个数组。 4 1 9 Yes 
+TableRow 对象属性
+属性 描述 IE F O W3C 
+align 设置或返回在行中数据的水平排列。 4 1 9 Yes 
+ch 设置或返回在行中单元格的对齐字符。       Yes 
+chOff 设置或返回在行中单元格的对齐字符的偏移量。       Yes 
+id 设置或返回行的 id。 4 1 9 Yes 
+innerHTML 设置或返回行的开始标签和结束标签之间的 HTML。 5 1 9 No 
+rowIndex 返回该行在表中的位置。 4 1 9 Yes 
+sectionRowIndex 返回在 tBody 、tHead 或 tFoot 中，行的位置。       Yes 
+vAlign 设置或返回在行中的数据的垂直排列方式。 4 1 9 Yes 
+TableRow 对象方法
+方法 描述 IE F O W3C 
+deleteCell() 删除行中的指定的单元格。 4 1 9 Yes 
+insertCell() 在一行中的指定位置插入一个空的 <td> 元素。 4 1 9 Yes
+HTML DOM TableRow 对象
+TableRow 对象
+TableRow 对象代表一个 HTML 表格行。
+
+在 HTML 文档中 <tr> 标签每出现一次，一个 TableRow 对象就会被创建。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+TableRow 对象集合
+集合 描述 IE F O W3C 
+cells[] 返回包含行中所有单元格的一个数组。 4 1 9 Yes 
+TableRow 对象属性
+属性 描述 IE F O W3C 
+align 设置或返回在行中数据的水平排列。 4 1 9 Yes 
+ch 设置或返回在行中单元格的对齐字符。       Yes 
+chOff 设置或返回在行中单元格的对齐字符的偏移量。       Yes 
+id 设置或返回行的 id。 4 1 9 Yes 
+innerHTML 设置或返回行的开始标签和结束标签之间的 HTML。 5 1 9 No 
+rowIndex 返回该行在表中的位置。 4 1 9 Yes 
+sectionRowIndex 返回在 tBody 、tHead 或 tFoot 中，行的位置。       Yes 
+vAlign 设置或返回在行中的数据的垂直排列方式。 4 1 9 Yes 
+TableRow 对象方法
+方法 描述 IE F O W3C 
+deleteCell() 删除行中的指定的单元格。 4 1 9 Yes 
+insertCell() 在一行中的指定位置插入一个空的 <td> 元素。 4 1 9 Yes 
+Search:
+
+
+
+  
+
+HTML DOM 参考手册HTML DOM 实例赞助商链接
+HTML DOM Textarea 对象
+Textarea 对象
+Textarea 对象代表 HTML 表单中的一个文本区 (text-area)。在表单中 <textarea> 标签每出现一次，一个 Textarea 对象就会被创建。
+
+您可以通过索引相应表单的元素数组来访问某个 Textarea 对象，或者使用 getElementById()。
+
+IE: Internet Explorer, F: Firefox, O: Opera, W3C: W3C 标准.
+Textarea Object Properties
+属性 描述 IE F O W3C 
+accessKey 设置或返回访问 textarea 的键盘快捷键。 4 1 9 Yes 
+cols 设置或返回 textarea 的宽度。 4 1 9 Yes 
+defaultValue 设置或返回文本框中的初始内容。 4 1 9 Yes 
+disabled 设置或返回 textarea 是否应当被禁用。 5 1 9 Yes 
+form 返回对包含该 textarea 的表单对象的引用。 4 1 9 Yes 
+id 设置或返回某个 textarea 的 id。 4 1 9 Yes 
+name 设置或返回 textarea 的名称。 4 1 9 Yes 
+readOnly 设置或返回 textarea 是否应当是只读的。 4 1 9 Yes 
+rows 设置或返回 textarea 的高度。 4 1 9 Yes 
+tabIndex 设置或返回 textarea 的 tab 键控制次序。 4 1 9 Yes 
+type 返回该文本框的表单类型。 4 1 9 Yes 
+value 设置或返回在 textarea 中的文本。 4 1 9 Yes 
+标准属性
+属性 描述 IE F O W3C 
+className 设置或返回元素的 class 属性。 5 1 9 Yes 
+dir 设置或返回文本的方向。 5 1 9 Yes 
+lang 设置或返回元素的语言代码。 5 1 9 Yes 
+title 设置或返回元素的 title 属性。 5 1 9 Yes 
+Textarea 对象方法
+方法 描述 IE F O W3C 
+blur() 从 textarea 移开焦点。 4 1 9 Yes 
+focus() 在 textarea 上设置焦点。 4 1 9 Yes 
+select() 选择 textarea 中的文本。 4 1 9 Yes 
+Textarea 对象事件句柄
+事件句柄 描述 IE F O W3C 
+onchange 当输入值改变时调用的事件句柄 4 1 9 Yes

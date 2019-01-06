@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>CreateTxtFile</title>
+</head>
+<body>
+<script language="JavaScript">
+//var strFile = "E:\\hhh.txt";
+var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+var strFile ="E:\\SIM_FPGA_CFG_HTML\\CreateTxtFile.dat";
+// 检查文件是否存在
+if (!objFSO.FileExists(strFile)){
+// 创建文本文件
+var objStream = objFSO.CreateTextFile(strFile, true);
+objStream.WriteLine("Hello");
+objStream.WriteBlankLines(1);// 换行
+document.write("Create Txt File  " + strFile + "<br>");
+objStream.Close();
+//objStream.Readline();//read one line
+//objStream.ReadAll();//read the whole file
+}
+else
+document.write("Txt File " + strFile + " has been already exit <br>");
+</script>
+</body>
+</html> 
+

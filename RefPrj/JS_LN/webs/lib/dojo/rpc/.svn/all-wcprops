@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/rpc
+END
+RpcService.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/rpc/RpcService.js
+END
+JsonService.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/rpc/JsonService.js
+END
+JsonpService.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/rpc/JsonpService.js
+END

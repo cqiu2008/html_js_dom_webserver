@@ -1,0 +1,9 @@
+/*	Copyright WebFX
+	Modified by HFUT
+*/
+
+
+dojoType.outTitlePane{
+	   width:100%;
+	}
+

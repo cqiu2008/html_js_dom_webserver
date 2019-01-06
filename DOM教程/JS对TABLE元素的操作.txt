@@ -1,0 +1,802 @@
+
+    表格行、列删除  
+    【一】、 doTableRowDelete 说明：默认根据当前事件指向的对象，向上寻找TR，进行删除（可选参数：表格对象；删除的行的行号，按升序方式以逗号分割，如2，3，5；向上遍历TD几次，默认为1次）  
+      
+    合并表格 ******  
+    【一】、  conbainTableRow  说明：纵向单元格的内容相同的合并，传入表格对象，需要合并的列，（可选的参数，从第几行开始）；  
+    【二】、  combineCell  说明：横向单元格合并，传入单元格内一对象，（可选的参数，合并几个单元格<向右>；是否保留原单元格的值）；  
+          
+    单元格与行的移动 ******  
+    【一】、  moveUp  说明：进行上移，（可选参数，最上移动到第几行，默认为第零行；需要移动的行或者td对象或者td内的子对象，默认获取当前事件指向的行）  
+    【二】、  moveDown  说明：进行下移，（可选参数，最低移动到倒数第几行，默认为倒数第零行；需要移动的行或者td对象或者td内的子对象，默认获取当前事件指向的行）  
+    【三】、  moveCell  说明：行交换，表格对象、交换的行的行号   
+      
+    赋值单元格样式 ******  
+    【一】、 cloneStyle  说明：将模板单元格的样式COPY到目标单元格上，模板单元格，要修正样式的单元格      
+      
+    新增行、列 ******   
+    【一】、  insertTableRow  说明：新增行，表格对象，添加行的内容的数组（可选参数，每个单元格的colSpan的数组参数，默认取前一行的属性； 添加到的行的行号，默认是最后一行）  
+    【二】、  insertTableCol  说明：新增列，表格对象，添加行的内容的数组（可选参数，每个单元格的rowSpan的数组参数，默认取前一列的属性；添加到的列的列号，默认是最后一列）  
+      
+    获取表格中一行的元素 ******  
+    【一】、  doGetRowObj  说明： 获取表格中行内的元素 ，表格对象，行号，（可选参数，是否copy对象，默认为false；是否获取单元格对象，默认false）  
+      
+    其他验证与参数获取 ******  
+    【一】、  doFetchBaseCols   说明：获取列号在表格内行中的实际位置，表格对象，列号；返回一个数组，记录每行中指定的单元格的cellIndex  
+    【二】、  doFetchEffectCells  说明：获取插入当前行，被影响到rowSpan属性的单元格集合  
+    【三】、  calculateSpanWidth 说明：计算Span的宽度，根据当前span外的单元格的宽度，（可选参数：容器对象，容器对象为空时，取当前document，即遍历页面上所有的Span对象）  
+      
+
+实例 
+       
+    /**  
+    * 删除表格的行  
+    *  
+    * tdCount 根据当前event事件向上追溯TD对象几次，默认为1次   
+    *   
+    * 说明：event事件需要附着在将要删除的TD内部，且不能有多重TD的嵌套；否则需要指定嵌套几层TD对象  
+    */  
+    function doTableRowDelete(){   
+        var tablObj = arguments[0];   
+        var trIndexs = arguments[1];   
+        var tdCount = arguments[2]==undefined?1:parseFloat(arguments[2]);   
+        if(trIndexs==undefined){   
+            tdCount = tdCount-1;    
+            var tdObj = event.srcElement;   
+            var trObj,tableObj;   
+            while(tdCount > 0){   
+                tdCount--;   
+                while(tdObj.tagName != 'TD'){   
+                    tdObj = tdObj.parentNode;   
+                }   
+                tdObj = tdObj.parentNode;   
+            }   
+            while(tdObj.tagName != 'TD'){   
+                tdObj = tdObj.parentNode;   
+            }   
+            trObj = tdObj.parentNode;   
+            tableObj = trObj.parentNode;   
+            if(tableObj.tagName != 'TABLE'){   
+                tableObj = tableObj.parentNode;   
+            }   
+            var cellIndex = tdObj.cellIndex;   
+            var rowIndex = trObj.rowIndex;   
+            var effectCells = doFetchEffectCells(tableObj,rowIndex);   
+            for(var i=0;i<effectCells.length;i++){   
+                effectCells[i].rowSpan = effectCells[i].rowSpan - 1;   
+            }   
+            tableObj.deleteRow(rowIndex);   
+        }else{   
+            var delIndexArr = trIndexs.split(",");   
+            for(var i=delIndexArr.length-1;i>-1;i--){   
+                tablObj.deleteRow(delIndexArr[i]);   
+            }   
+        }   
+        isDeleteFlag = true;   
+        return isDeleteFlag;   
+    }   
+       
+    /**  
+    * 删除表格的列  
+    *  
+    * tdCount 根据当前event事件向上追溯TD对象几次，默认为1次   
+    *   
+    * 说明：event事件需要附着在将要删除的TD内部，且不能有多重TD的嵌套；否则需要指定嵌套几层TD对象  
+    */  
+    function doTableColDelete(){   
+        var isDeleteFlag = false;   
+        var tdCount = arguments[0]==undefined?1:parseFloat(arguments[0]);   
+        var tdObj = event.srcElement;   
+        while(tdCount!=0){   
+            tdCount--;   
+            while(tdObj.tagName != 'TD'){   
+                tdObj = tdObj.parentNode;   
+            }   
+        }   
+        var trObj = tdObj.parentNode;   
+        var tableObj = trObj.parentNode;   
+        var cellIndex = tdObj.cellIndex;   
+        var rowIndex = trObj.rowIndex;   
+        tableObj.deleteRow(rowIndex);   
+        isDeleteFlag = true;   
+        return isDeleteFlag;   
+    }   
+       
+    /**  
+    * 根据Span外最临近的TD的宽度计算重置当前Span的宽度  
+    *  
+    * obj 可以是页面上一个容器对象，TR、TD、TABLE，此项为空，则会遍历页面上所有的Span对象  
+    */  
+    function calculateSpanWidth(){   
+        var obj = arguments[0];    
+        var spanObjs;   
+        if(obj!=undefined){    
+            spanObjs = obj.getElementsByTagName('span');   
+        }else{   
+            spanObjs = document.getElementsByTagName('span');   
+        }   
+        for(var i=0;i<spanObjs.length;i++){   
+            var tdObj = spanObjs[i].parentNode;   
+            while(tdObj.tagName!='TD'&&typeof(tdObj)=='Object'){   
+                tdObj = tdObj.parentNode;   
+            }   
+            if(tdObj.tagName=='TD'){   
+                var offsetWidth = tdObj.offsetWidth;   
+                spanObjs[i].style.width = offsetWidth-5;   
+            }    
+        }   
+    }   
+       
+    /**  
+     * 合并表格中纵向相邻单元格的内容相同的项  
+     *  
+     * tableObj 表格对象（必须）  
+     * combainCols 需要合并的列 (格式：从小到大，连续的用-分割，独立的用逗号; 例如：1-5,7,9)  
+     * beginRowIndex 从第几行开始合并， 默认从第零行开始  
+     */  
+    function conbainTableRow(){   
+        var tableObj = arguments[0];   
+        var combainCols = arguments[1];   
+        var beginRowIndex = arguments[2]==undefined?0:arguments[2];   
+           
+        //var beginColIndex = arguments[3]==undefined?0:arguments[3];   
+        var colsArr = combainCols.split(",");   
+        var cols = new Array();   
+        var index = 0;   
+        for(var i=0;i<colsArr.length;i++){   
+            var indexChar = colsArr[i].indexOf("-");   
+            if(indexChar!=-1){   
+                var beginIndex = parseInt(colsArr[i].substring(0,indexChar));   
+                var endIndex = parseInt(colsArr[i].substring(indexChar+1));   
+                for(var j=beginIndex;j<=endIndex;j++){   
+                    cols[index++] = j;   
+                }   
+            }   
+            else{   
+                cols[index++] = parseInt(colsArr[i]);   
+            }   
+        }    
+        if(tableObj.rows.length>beginRowIndex){   
+            var modelArr = new Array();   
+            for(var i=beginRowIndex;i<tableObj.rows.length;i++){   
+                var row = tableObj.rows[i];   
+                for(var k=cols.length-1;k>=0;k--){   
+                    var j = cols[k];   
+                    if(modelArr[j]==undefined){   
+                        modelArr[j] = row.cells[j];   
+                    }else{   
+                        if(row.cells[j].outerText == modelArr[j].outerText){   
+                            modelArr[j].rowSpan = modelArr[j].rowSpan + 1;   
+                            row.deleteCell(j);   
+                        }else{   
+                            modelArr[j] = row.cells[j];   
+                        }   
+                    }   
+                }   
+            }   
+        }   
+    }   
+       
+    /**  
+     * 行上移  
+     *  
+     *minRowIndex 向上移动到的最小行号，默认时零  
+     * Elm 可以缺省，如果当前需要移动的行与激发本函数的位置有比较复杂的关系时，需要自行指名tr对象或者当前行的td对象传入  
+     *   
+     * 返回，移动成功返回true，如果当前时第minRowIndex行则返回false  
+     */  
+    function moveUp(){   
+        //传入的对象   
+        var minRowIndex = arguments[0]==undefined?0:arguments[0];   
+        //传入的对象   
+        var Elm = arguments[1];   
+        //返回值   
+        var isSuccess = false;   
+        //表格对象   
+        var myTable;   
+        if(Elm==undefined){   
+            Elm=event.srcElement;   
+        }   
+        while(Elm&&Elm.tagName!="TR"){   
+            Elm=Elm.parentElement;      
+        }   
+        //当前行号   
+        var x = Elm.rowIndex;   
+        //获取表格对象   
+        myTable = Elm.parentElement;   
+        if(myTable.tagName!='TABLE'){   
+            myTable = myTable.parentNode;   
+        }   
+        //移到上一行   
+        if (x > minRowIndex){   
+            moveCell(myTable, x, x-1);   
+            isSuccess = true;   
+        }   
+        return isSuccess;   
+    }   
+  
+   /**  
+     * 行下移  
+     *  
+     *minRowIndex 向下移动到表格的倒数几行，默认是零，即表格的最后一行  
+     * Elm 可以缺省，如果当前需要移动的行与激发本函数的位置有比较复杂的关系时，需要自行指名tr对象或者当前行的td对象传入  
+     *   
+     * 返回，移动成功返回true，如果当前时最后一行则返回false  
+     */  
+    function moveDown(){   
+            //传入的对象   
+            var minRowIndex = arguments[0]==undefined?0:arguments[0];   
+            //传入的对象   
+            var Elm = arguments[1];   
+            //返回值   
+            var isSuccess = false;   
+            //表格对象   
+            var myTable;   
+            if(Elm==undefined){   
+                Elm=event.srcElement;   
+            }   
+            while(Elm&&Elm.tagName!="TR"){   
+                Elm=Elm.parentElement;      
+            }   
+            //当前行号   
+            var x = Elm.rowIndex;   
+            //获取表格对象   
+            myTable = Elm.parentElement;   
+            if(myTable.tagName!='TABLE'){   
+                myTable = myTable.parentNode;   
+            }   
+            var tableLength = myTable.rows.length;   
+            //移到下一行   
+            if (x < tableLength-minRowIndex-1){   
+                moveCell(myTable, x, x+1);   
+                isSuccess = true;   
+            }   
+            return isSuccess;   
+    }   
+  
+    /**  
+     * 行交换，处理了checkbox丢值的问题  
+     *  
+     *myTable 表格对象  
+     * a 行号  
+     * b 行号  
+     */  
+    function moveCell(myTable, a, b){   
+          var e2 = myTable.rows[a].all.tags("input");   
+          var e3 = myTable.rows[b].all.tags("input");   
+          var arr = [];   
+          //遍历a行的所有input控件   
+          for(i = 0; i < e2.length; i++) {   
+              if(e2[i].type == "checkbox"){   
+                  //对所有checkbox控件添加到数组中   
+                  arr.push(e2[i], e2[i].checked);   
+              }   
+          }   
+          //遍历b行的所有input控件   
+          for(i = 0; i < e3.length; i++) {   
+              if(e3[i].type == "checkbox"){   
+                  //对所有checkbox控件添加到数组中   
+                  arr.push(e3[i], e3[i].checked);   
+              }   
+          }   
+          myTable.moveRow(a, b);   
+          //对数组中所有元素获得对象并对引用的对象赋原值   
+          while(arr.length > 0){   
+              arr.shift().checked = arr.shift();   
+          }   
+    }   
+       
+    /**  
+    *替换单元格的样式为传入的单元格样式  
+    *  
+    *tdObj 模板单元格  
+    *targetTdObj 目标替换的单元格  
+    *  
+    */  
+    function cloneStyle(){   
+        //单元格中对象   
+        var tdObj = arguments[0];   
+        //合并列数   
+        var targetTdObj = arguments[1];   
+        //克隆传入的对象   
+        var tempObj = tdObj.cloneNode(false);   
+        //克隆目标对象   
+        var targetHtml = targetTdObj.innerHTML;   
+        //横向合并的个数   
+        var colspan = targetTdObj.colSpan;   
+        //纵向合并的个数   
+        var rowspan = targetTdObj.rowSpan;   
+        //宽度   
+        var width = targetTdObj.width;   
+           
+        //行对象   
+        var  rowObj = tdObj.parentNode;   
+        //替换当前单元格   
+        rowObj.replaceChild(tempObj, targetTdObj);   
+        //for(var i=0;i<targetObj.childNodes.length;i++){   
+        //  tempObj.appendChild(targetObj.childNodes[i]);   
+        //}   
+        tempObj.innerHTML = targetHtml;   
+        tempObj.colSpan = colspan;   
+        tempObj.rowSpan = rowspan;   
+        tempObj.width = width;   
+    }   
+  
+    /**  
+     * 合并单元格,TODO:行合并暂未实现  
+     *  
+     * obj 单元格中对象  
+     * colspan 合并列数  
+     * rowspan 合并的行数  
+      *keepFlag 是否保留每个单元格的值  
+     */  
+    function combineCell(){   
+        //单元格中对象   
+        var obj = arguments[0];   
+        //合并列数   
+        var colspan = arguments[1]==undefined?1:arguments[1];   
+        //合并的行数   
+        var rowspan = arguments[2]==undefined?1:arguments[2];   
+        //是否保留每个单元格的值   
+        var keepFlag = arguments[3]==undefined?false:arguments[3];   
+  
+        var elementObjs = new Array();   
+        var tdObj = obj.tagName!='TD'?obj.parentNode:obj;   
+        var trObj = tdObj.parentNode;   
+        var tableObj = trObj.parentNode;   
+        if(tableObj.tagName!='TABLE'){   
+            tableObj = tableObj.parentNode;   
+        }   
+        //当前单元格的原来的格式   
+        var colIndex = tdObj.cellIndex;   
+        var rowIndex = trObj.rowIndex;   
+        //   
+        //var colIndexs;   
+        //if(rowspan>1){   
+        //  colIndexs = doFetchBaseCols(tableObj,doGetColIndex(obj));   
+        //}   
+        for(var i=colspan-1;i>0;i--){   
+            //alert("i+colIndex="+(i+colIndex));   
+            //alert("trObj.cells.length="+trObj.cells.length);   
+            var tempObj = trObj.cells[i+colIndex].cloneNode(true);   
+            elementObjs[elementObjs.length] = tempObj;   
+            trObj.removeChild(trObj.cells[i+colIndex]);   
+        }   
+        tdObj.colSpan = tdObj.colSpan + colspan - 1;   
+        //alert("keepFlag="+keepFlag);   
+        //alert("elementObjs.length="+elementObjs.length);   
+        //添加每个单元格的对象   
+        if(keepFlag&&elementObjs.length>0){   
+            for(var i=elementObjs.length-1;i>-1;i--){   
+                var tempObj = elementObjs[i];   
+                for(var j=0;j<tempObj.childNodes.length;j++){   
+                    tdObj.appendChild(tempObj.childNodes[j]);   
+                }      
+            }   
+               
+        }   
+    }   
+  
+    /**  
+     * 对表格新增一行  
+     *  
+     * tableObj 被新增的表格对象  
+     * htmlArr添加内容对象数组，  
+     * htmlCols 每个td的元素对应的colSpan参数，为空则获取之前的Tr信息，否则根据htmlCols生成  
+     * rowIndex 行号 默认方式在最后一行新增行，从零开始  
+     *  
+     *返回新增成功、失败  
+     */  
+    function insertTableRow(){   
+        //表格对象   
+        var tableObj = arguments[0];   
+        //增加对象集   
+        var htmlArr = arguments[1];   
+        //元素的TD的colSpan属性   
+        var htmlCols = arguments[2]==undefined?new Array():arguments[2];   
+        //增加的行位置   
+        var rowIndex = arguments[3];   
+        //根据当前table表的行数，进行参数的处理   
+        if(tableObj==undefined||tableObj.rows==undefined){   
+            rowIndex = 0;   
+        }else if(rowIndex==undefined||rowIndex>tableObj.rows.length){   
+            rowIndex = tableObj.rows.length;   
+        }   
+        //新增行成功标志，默认失败   
+        var isSuccess = doCheckPara(tableObj,htmlArr,htmlCols,rowIndex);   
+        if(isSuccess){   
+            //新增行   
+            //alert("tableObj="+tableObj.rows.length+"\nrowIndex="+rowIndex);   
+            //alert("htmlArr.length="+htmlArr.length);   
+            var newTrObj = tableObj.insertRow(rowIndex);   
+            for(var i=0;i<htmlArr.length;i++){   
+                var cellObj = newTrObj.insertCell(i);    
+                //判断传入参数不为空，添加对象   
+                if(htmlArr[i]!=undefined && htmlArr[i]!=null){   
+                    if(htmlArr[i].constructor == Array){   
+                        var childHtmlArr = htmlArr[i];   
+                        for(var k=0;k<childHtmlArr.length;k++){   
+                            if(typeof(childHtmlArr[k])=='object'){   
+                                cellObj.appendChild(childHtmlArr[k]);   
+                            }   
+                        }   
+                    }else{   
+                        if(typeof(htmlArr[i])=='object'){   
+                            cellObj.appendChild(htmlArr[i]);   
+                        }else{   
+                            cellObj.innerHTML = htmlArr[i];   
+                        }   
+                    }   
+                }   
+                if(htmlCols[i]!=undefined && htmlCols[i]!="" && htmlCols[i]!="1"){   
+                    cell.colSpan=htmlCols[i];   
+                }   
+            }   
+            isSuccess = true;   
+        }   
+        return isSuccess;   
+    }   
+       
+    /**  
+     * 对表格新增一行  
+     *  
+     * tableObj 被新增的表格对象  
+     * htmlArr 添加内容对象数组，  
+     * htmlRows 每个td的元素对应的rowSpan参数，为空则获取之前的Td信息，否则根据htmlRows生成  
+     * colIndex 行号 默认方式在最后一列新增列(此处的指定列进行插入，在表格中存在rowSpan!=1的情况下会有有问题)，从零开始  
+     *  
+     *返回新增成功、失败  
+     */  
+    function insertTableCol(){   
+        //表格对象   
+        var tableObj = arguments[0];   
+        //增加对象集   
+        var htmlArr = arguments[1];   
+        //元素的TD的rowSpan属性   
+        var htmlRows = arguments[2]==undefined?new Array():arguments[2];   
+        //增加的列位置   
+        var colIndex = arguments[3];   
+        //alert(colIndex);   
+        var baseHtmlCols = doFetchBaseCols(tableObj,colIndex);   
+        //判断返回为undefined，则表示当前不可进行插入操作   
+        if(baseHtmlCols==undefined){   
+            return false;   
+        }   
+        //新增行成功标志，默认失败   
+        var isSuccess = doCheckPara(tableObj,htmlArr,htmlRows,colIndex,false,baseHtmlCols);   
+           
+        if(isSuccess){   
+            //新增行   
+            var rowSpanCount = 0;   
+            var rowIndex = 0;   
+            //alert("htmlArr.length="+htmlArr.length);   
+            for(var i=0,rowIndex=0;rowIndex<tableObj.rows.length&&rowIndex<htmlArr.length;i++){   
+                var trObj = tableObj.rows[rowIndex];   
+                var index = baseHtmlCols[rowIndex];   
+                var cellObj = trObj.insertCell(index);   
+                //判断传入参数不为空，添加对象   
+                if(htmlArr[i]!=undefined && htmlArr[i]!=null){   
+                    if(htmlArr[i].constructor == Array){   
+                        var childHtmlArr = htmlArr[i];   
+                        for(var k=0;k<childHtmlArr.length;k++){   
+                            if(typeof(childHtmlArr[k])=='object'){   
+                                cellObj.appendChild(childHtmlArr[k]);   
+                            }   
+                        }   
+                    }else{   
+                        if(typeof(htmlArr[i])=='object'){   
+                            cellObj.appendChild(htmlArr[i]);   
+                        }else{   
+                            cellObj.innerHTML = htmlArr[i];   
+                        }   
+                    }   
+                }   
+                if(htmlRows[i]!=undefined && htmlRows[i]!="" && htmlRows[i]!="1"){   
+                    cellObj.rowSpan=htmlRows[i];   
+                }   
+                //alert(htmlRows[0]+"\n"+htmlRows[1]+"\n"+htmlRows[2]+"\n"+htmlRows[3]+"\n");   
+                //跳过已经被合并的行   
+                rowIndex = rowIndex + (htmlRows[i]!=undefined?parseFloat(htmlRows[i]):1);   
+                //alert(rowIndex);   
+            }   
+            isSuccess = true;   
+        }   
+        return isSuccess;   
+    }   
+       
+   /**  
+    *获取表格中一行的元素，对象数组，返回单元格对象数组、单元格的第一个子对象数组  
+    *   
+    * tableObj 表格对象  
+    * rowIndex 获取的行号 ，从零开始  
+    * isCopy  获取copy对象，默认为false，不进行copy  
+    * isCellObj  获取单元格对象数组标志，,默认为false,返回单元格的子对象  
+    */  
+    function doGetRowObj(){   
+        var objArr = new Array();   
+        //表格对象   
+        var tableObj = arguments[0];   
+        //增加对象集   
+        var rowIndex = arguments[1];   
+        //是否获取COPY对象   
+        var isCopy = arguments[2]==undefined?false:arguments[2];   
+        //是否为单元格对象   
+        var isCellObj = arguments[3]==undefined?false:arguments[3];   
+           
+        //c判断为当前为拷贝时   
+        if(isCopy){   
+            //var copyTable = document.body.createTextRange();   
+            //copyTable.moveToElementText(tableObj);   
+            var memeoryTable = tableObj.cloneNode(true);    
+            tableObj = memeoryTable;   
+        }   
+        //判断对象为空或者不是一个表格对象时   
+        if(tableObj==undefined || tableObj.tagName!="TABLE"){   
+            alert("传入表格(tableObj)不是一个对象或表格！");   
+            return objArr;   
+        }   
+        //判断表格内容为空时   
+        if(tableObj.rows==undefined||tableObj.rows.length==0){   
+            alert("当前表格对象为空！");   
+            return objArr;   
+        }   
+        //判断要读取的行参数为空   
+        if(rowIndex==undefined){   
+            alert("未指名获取的行号！");   
+            return objArr;   
+        }   
+        //判断当前要获取的行超过表格对象的范围   
+        if(rowIndex<0 || rowIndex>=tableObj.rows.length){   
+            alert("要获取的行号不在当前的表格对象内！");   
+            return objArr;   
+        }   
+        //进行行内容提取，返回对象   
+        var rowObj = tableObj.rows[rowIndex];   
+        for(var i=0;i<rowObj.cells.length;i++){   
+            var cellObj = rowObj.cells[i];   
+            var objCopy;   
+            //返回当前单元格   
+            if(isCellObj){   
+                objCopy = cellObj;   
+            }   
+            else{   
+                objCopy = cellObj.childNodes!=undefined?cellObj.childNodes[0]:undefined;   
+            }   
+            objArr[i] = objCopy;   
+        }   
+        return objArr;   
+    }   
+       
+    /**  
+    *进行列或者行插入前的check，如果默认的colSpan与rowSpan不存在则根据行去前一行、列取前一列的思路获取默认值  
+    *  
+     * tableObj 表格对象  
+     * htmlArr 内容对象数组，  
+     * htmlSpan 元素的TD的colSpan、rowSpan属性  
+     * index 行号 增加的行、列位置，从零开始  
+    */  
+    function doCheckPara(){   
+        //表格对象   
+        var tableObj = arguments[0];   
+        //增加对象集   
+        var htmlArr = arguments[1];   
+        //元素的TD的colSpan、rowSpan属性   
+        var htmlSpan = arguments[2];   
+        //增加的行、列位置   
+        var index = arguments[3];   
+        //alert("tableObj="+tableObj+"\nhtmlArr.length="+htmlArr.length+"\nhtmlSpan.length="+htmlSpan.length+"\nindex="+index);   
+        //新增列、行标志，默认为行追加   
+        var isRowInsert = arguments[4]==undefined?true:false;   
+        var baseHtmlCols = arguments[5];   
+        //新增行成功标志，默认失败   
+        var isSuccess = false;   
+        if(tableObj==undefined||tableObj.tagName!="TABLE"){   
+            alert("传入表格(tableObj)不是一个对象或表格！");   
+            return isSuccess;   
+        }   
+        //传入的为表格   
+        else{   
+            //验证逻辑上的错误   
+            if(htmlArr==undefined){   
+                alert("传入的对象数组(htmlArr)为空或未定义！");   
+                return isSuccess;   
+            }else if(htmlSpan.length>0 && htmlSpan.length!=htmlArr.length){   
+                alert("传入的属性(htmlCols)与增加对象集(htmlArr)的长度不等！");   
+                return isSuccess;   
+            }   
+            //行追加   
+            if(isRowInsert){   
+                var tableRowLength = tableObj.rows!=undefined?tableObj.rows.length:0;   
+                //设置初始值   
+                //设置元素对应的colSpan的属性，默认取当前要插入行的前一行的属性   
+                if(htmlSpan.length==0 && index>0 && index<tableRowLength){   
+                    //获取临近一行对象   
+                    var lastTrObj = tableObj.rows[index-1];   
+                    //获取默认TD样式与当前存入元素不对应，无法插入   
+                    if(lastTrObj.childNodes.length!=htmlArr.length){   
+                        alert("插入失败，获取默认单元格的colSpan属性的个数与传入对象的个数不相等！");   
+                        return isSuccess;   
+                    }else {   
+                        for(var i=0;i<lastTrObj.childNodes.length;i++){   
+                            var cellObj = lastTrObj.childNodes[i];   
+                            //列属性   
+                            htmlSpan[i] = cellObj.colSpan!=undefined?cellObj.colSpan:"1";   
+                        }   
+                    }   
+                }   
+            }   
+            //列追加时   
+            else{   
+                var tableRowLength = tableObj.rows!=undefined?tableObj.rows.length:0;   
+                if(index!=undefined && index>0 && htmlSpan.length==0){      
+                    for(var i=0,k=0;i<tableRowLength;i++){   
+                        if(baseHtmlCols[i]!=undefined && baseHtmlCols[i]>0){   
+                            var lastTrObj = tableObj.rows[i];   
+                            //alert("baseHtmlCols[i]="+baseHtmlCols[i]);   
+                            //alert("lastTrObj.cells.length="+lastTrObj.cells.length);   
+                            var lastTdRowSpan = lastTrObj.cells[parseInt(baseHtmlCols[i])-1].rowSpan;   
+                            htmlSpan[k++] = lastTdRowSpan;   
+                        }   
+                    }   
+                    if(htmlSpan.length!=htmlArr.length){   
+                        alert("插入失败，获取默认单元格的rowSpan属性的个数与传入对象的个数不相等！");   
+                        return isSuccess;   
+                    }   
+                }   
+            }   
+        }   
+        isSuccess = true;   
+        return isSuccess;   
+    }   
+       
+    /**  
+    *获取表格在指定列在实际行中位置  
+    *  
+    *tableObj 表格对象 （必须项）  
+    *index 指定的列，数值（必须项），从零开始  
+    *  
+    *return baseHtmlCols行中指定列的实际位置，一般情况下返回一个数组，出错时返回一个undefined对象  
+    */  
+    function doFetchBaseCols(){   
+        var tableObj = arguments[0];   
+        var index = arguments[1];   
+        var noAlert = arguments[2]==undefined?false:arguments[2];   
+        // 需要返回的行实际位置   
+        var baseHtmlCols = new Array();   
+           
+        //alert("tableObj="+tableObj);   
+        //获取初始值，指定的列   
+        for(var i=0;i<tableObj.rows.length;i++){   
+            baseHtmlCols[i] = index;   
+        }   
+        if(index!=0){   
+            //进行值获取   
+            for(var i=0;i<tableObj.rows.length;i++){   
+                var row = tableObj.rows[i];   
+                //默认插入列   
+                if(index==undefined){   
+                    baseHtmlCols[i] = row.cells.length;   
+                }   
+                //生成实际的列值   
+                else{   
+                    var colsIndex = 0;   
+                    //计算当前行的个数   
+                    for(var j=0;j<row.cells.length;j++){   
+                        if(j==baseHtmlCols[i]){   
+                            break;   
+                        }   
+                        var cell = row.cells[j];   
+                        //合并的行数   
+                        var rowSpanIndex = cell.rowSpan!=undefined?cell.rowSpan:0;   
+                        //合并的列数   
+                        var colSpanIndex = cell.colSpan!=undefined?cell.colSpan:1;   
+                        //将当前行减去该TD的colspan参数的影响   
+                        baseHtmlCols[i] = baseHtmlCols[i] - (colSpanIndex-1);   
+                        //循环行，将当前合并的列影响到的列，均调整相应的个数   
+                        for(var k=1;k<rowSpanIndex;k++){   
+                            baseHtmlCols[i+k] = baseHtmlCols[i+k] - colSpanIndex;   
+                        }      
+                        //判断当前指定的列被跳过，因为当前列已经被合并   
+                        if(j+(colSpanIndex-1) > baseHtmlCols[i]){   
+                            if(!noAlert){   
+                                alert("遍历到第"+i+"行时，因为当前插入的列包含在第"+j+"列合并的单元格内，无法在此处进行操作！");   
+                            }   
+                            return undefined;   
+                        }   
+                        //判断当前行遍历到指定的列时   
+                        else if(j == baseHtmlCols[i]){   
+                            break;   
+                        }   
+                    }   
+                }   
+            }   
+        }   
+        return baseHtmlCols;   
+    }   
+  
+    /**  
+    * 根据表格的一个td的子项，返回当前对象所在列的每个单元格对应的行的位置  
+    *  
+    *obj 传入的表格中某个td的一个子对象  
+    *isComplexTable 是否复杂表格标志，默认下都使用false，  
+           1、简单表格，根据该单元格之前的部分就能计算出当前列在表格中的绝对位置的，就设置成false，或者不定义  
+           2、针对删除的单元格所在的行存在受之前行中单元格的rowspan与colspan影响，而使得得到的colIndex列的绝对位置  
+    *  
+    *返回一个长度为表格的行个数，存有该列在每行中的位置  
+    *  
+    *缺陷，如果表格比较复杂，页面上显示的一列但是在实际行中不是相等的位置  
+    */  
+    function doGetColIndex(obj){   
+        var obj = arguments[0];   
+        var isComplexTable = arguments[1]==undefined?false:arguments[1];   
+           
+        var tdObj = obj.parentNode;   
+        var trObj = tdObj.parentNode;   
+        var tableObj = trObj.parentNode;   
+        if(tableObj.tagName!='TABLE'){   
+            tableObj = tableObj.parentNode;   
+        }   
+        //当前行下的第几列   
+        var colIndex = tdObj.cellIndex;   
+        //当前行是第几行   
+        var rowIndex = trObj.rowIndex;   
+        //定义一个需要返回的值   
+        var arrColsIndex;   
+        //alert("colIndex="+colIndex);   
+        //alert("rowIndex="+rowIndex);   
+        //alert("isComplexTable="+isComplexTable);   
+        if(isComplexTable){   
+            for(var i=0;true;i++){   
+                arrColsIndex = doFetchBaseCols(tableObj,i);   
+                if(arrColsIndex!=undefined){   
+                    if(arrColsIndex[rowIndex]==colIndex){   
+                        break;   
+                    }else if(arrColsIndex[rowIndex]>colIndex){   
+                        alert("出错当前方法不支持合并列的操作！");   
+                        return undefined;   
+                    }   
+                }   
+            }   
+        }else{   
+            for(var i=colIndex-1;i>-1;i--){   
+                //alert("colIndex="+colIndex);   
+                var ChildObj = trObj.cells[i];   
+                var colspanIndex = ChildObj.colSpan-1;   
+                //alert("colspanIndex="+colspanIndex);   
+                colIndex = colIndex + colspanIndex;   
+            }   
+            //alert('begin');   
+            //alert("colIndex="+colIndex);   
+            arrColsIndex = doFetchBaseCols(tableObj,colIndex);   
+        }   
+        return arrColsIndex;   
+    }   
+       
+    /**  
+    *获取删除当前行，影响到单元格rowSpan属性的单元格集，此处只能遍历到该行之前的受影响的单元格；如果当前行存在rowSpan属性存在大于1的，本方法未遍历到  
+    *  
+    *tableObj 表格对象 （必须项）  
+    *index 指定的行，数值（必须项）  
+    *  
+    *return effectCells，一般情况下返回一个数组，出错时返回一个undefined对象  
+    */  
+    function doFetchEffectCells(){   
+        var tableObj = arguments[0];   
+        var index = arguments[1];   
+        //插入当前会影响到rowSpan属性的单元格对象集   
+        var effectCells = new Array();   
+        //判断新增的行在表格的中间时   
+        if(index>0&&index<tableObj.rows.length){   
+            for(var i=0,k=0;i<index;i++){   
+                var row = tableObj.rows[i];   
+                for(var j=0;j<row.cells.length;j++){   
+                    var cellObj = row.cells[j];   
+                    var rowSpanIndex = cellObj.rowSpan!=undefined?cellObj.rowSpan:1;   
+                    if(i+rowSpanIndex>index){   
+                        effectCells[k++] = cellObj;   
+                    }   
+                }   
+            }   
+        }   
+        return effectCells;   
+    }

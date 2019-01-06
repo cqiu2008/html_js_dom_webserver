@@ -1,0 +1,90 @@
+<splashgrid>
+	<images>
+		<image small="flash_img/splash_grid_images/thumbs/00.jpg" large="flash_img/splash_grid_images/images/00.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/01.jpg" large="flash_img/splash_grid_images/images/01.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/02.jpg" large="flash_img/splash_grid_images/images/02.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/03.jpg" large="flash_img/splash_grid_images/images/03.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/04.jpg" large="flash_img/splash_grid_images/images/04.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/05.jpg" large="flash_img/splash_grid_images/images/05.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/06.jpg" large="flash_img/splash_grid_images/images/06.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/07.jpg" large="flash_img/splash_grid_images/images/07.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/08.jpg" large="flash_img/splash_grid_images/images/08.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/09.jpg" large="flash_img/splash_grid_images/images/09.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/10.jpg" large="flash_img/splash_grid_images/images/10.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/11.jpg" large="flash_img/splash_grid_images/images/11.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/12.jpg" large="flash_img/splash_grid_images/images/12.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/13.jpg" large="flash_img/splash_grid_images/images/13.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/14.jpg" large="flash_img/splash_grid_images/images/14.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/15.jpg" large="flash_img/splash_grid_images/images/15.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/16.jpg" large="flash_img/splash_grid_images/images/16.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/17.jpg" large="flash_img/splash_grid_images/images/17.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/18.jpg" large="flash_img/splash_grid_images/images/18.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/19.jpg" large="flash_img/splash_grid_images/images/19.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/20.jpg" large="flash_img/splash_grid_images/images/20.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/21.jpg" large="flash_img/splash_grid_images/images/21.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/22.jpg" large="flash_img/splash_grid_images/images/22.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/23.jpg" large="flash_img/splash_grid_images/images/23.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/24.jpg" large="flash_img/splash_grid_images/images/24.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/25.jpg" large="flash_img/splash_grid_images/images/25.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/26.jpg" large="flash_img/splash_grid_images/images/26.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/27.jpg" large="flash_img/splash_grid_images/images/27.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/28.jpg" large="flash_img/splash_grid_images/images/28.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/29.jpg" large="flash_img/splash_grid_images/images/29.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/30.jpg" large="flash_img/splash_grid_images/images/30.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/31.jpg" large="flash_img/splash_grid_images/images/31.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/32.jpg" large="flash_img/splash_grid_images/images/32.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/33.jpg" large="flash_img/splash_grid_images/images/33.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/34.jpg" large="flash_img/splash_grid_images/images/34.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/35.jpg" large="flash_img/splash_grid_images/images/35.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/36.jpg" large="flash_img/splash_grid_images/images/36.jpg"/>
+		<image small="flash_img/splash_grid_images/thumbs/37.jpg" large="flash_img/splash_grid_images/images/37.jpg"/>
+	</images>
+	
+	<sketches>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/01.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/06.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/11.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/16.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/21.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/26.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/31.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/02.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/07.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/12.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/17.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/22.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/27.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/32.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/03.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/08.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/13.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/18.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/23.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/28.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/33.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/04.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/09.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/14.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/19.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/24.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/29.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/34.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/05.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/10.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/15.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/20.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/25.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/30.jpg"/>
+		<image small="flash_img/splash_grid_images/sketch_thumbs/00.jpg"/>
+	</sketches>
+	
+	<layout>
+		<!-- 
+			s = sketch
+			i = image
+		-->
+		<row>i,i,i,s,i,i</row>
+		<row>s,i,s,i,s,i</row>
+		<row>i,s,i,s,i,s</row>
+	</layout>
+</splashgrid>

@@ -1,0 +1,92 @@
+<html>
+ <head>
+  <script>
+  function get(event){
+   e=event.srcElement;
+   if(e.nodeName=="TD"){
+    txt="<input type='text' onblur='set(event)' size='5' value='"+e.innerHTML+"'/>";
+    e.innerHTML=txt;
+    e.firstChild.focus();
+   }
+  }
+  function set(event){
+   e=event.srcElement;
+   if(e.nodeName=="INPUT"){
+    txt=e.value;
+    e.parentNode.innerHTML=txt;
+   }
+  }
+
+  function add(){
+   var tr1=document.getElementById('itable').insertRow();
+   var c0=tr1.insertCell(0);
+   var c1=tr1.insertCell(1);
+   var c2=tr1.insertCell(2);
+   var c3=tr1.insertCell(3);
+   var c4=tr1.insertCell(4);
+   c0.innerHTML="<input type='checkbox' name='ck'/>";
+   c1.innerHTML=document.getElementById("name").value;
+   c2.innerHTML=document.getElementById("age").value;
+   c3.innerHTML=document.getElementById("score").value;
+   c4.innerHTML="<input type='button' value='删除' onclick='del(this)' />";   
+  }
+  function del(r){
+   var i=r.parentNode.parentNode.rowIndex;
+   document.getElementById('itable').deleteRow(i);
+  }
+
+  function seleteReserve(){
+   var ch=document.getElementsByName('ck');
+   for(i=ch.length-1;i>=0;i--){
+    if(ch[i].checked==true){
+     ch[i].checked=false;
+    }else{ 
+     ch[i].checked=true;
+    }
+   }
+  }
+  function deleteAll(){
+   var flag=0;
+   var tb=document.getElementById('itable');
+   var ch=document.getElementsByName('ck');
+   for(i=ch.length-1;i>=0;i--){
+    var tr=ch[i].parentNode.parentNode;
+    var index=tr.rowIndex;
+    if(ch[i].checked==true){
+     tb.deleteRow(index);
+     flag=flag+1;
+    }
+   }
+   if(flag<=0){
+    alert("请选定要删除的行！");
+   }
+  }
+
+  function selectAll(){
+   var ch=document.getElementsByName('ck');
+   for(i=ch.length-1;i>=0;i--){ 
+    ch[i].checked=true;
+   }
+  }
+
+  </script>
+ </head>
+ <body>
+name:<input type="text" id="name" size='5'/>
+age:<input type="text" id="age" size='5' />
+score:<input type="text" id="score" size='5'/>
+<input type="button" value="insert" onclick="add();" />
+<table id="itable" border="1" ondblclick="get(event);" >
+<tr>
+<th>选择</th>
+<th>姓名</th>
+<th>年龄</th>
+<th>成绩</th>
+<th>删除</th>
+</tr>
+</table>
+<input type="button" value="select all" onclick="selectAll();" />
+<input type="button" value="delete all" onclick="deleteAll();" />
+<input type="button" value="select reserve" onclick="seleteReserve();" />
+ </body>
+</html>

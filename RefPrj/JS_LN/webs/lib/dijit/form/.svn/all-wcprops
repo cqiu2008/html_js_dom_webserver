@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form
+END
+NumberTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/NumberTextBox.js
+END
+_FormWidget.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/_FormWidget.js
+END
+ValidationTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/ValidationTextBox.js
+END
+ComboBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/ComboBox.js
+END
+CurrencyTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/CurrencyTextBox.js
+END
+TimeTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/TimeTextBox.js
+END
+Textarea.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/Textarea.js
+END
+_Spinner.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/_Spinner.js
+END
+VerticalRuleLabels.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/VerticalRuleLabels.js
+END
+NumberSpinner.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/NumberSpinner.js
+END
+DateTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/DateTextBox.js
+END
+TextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/TextBox.js
+END
+VerticalRule.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/VerticalRule.js
+END
+Form.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/Form.js
+END
+HorizontalRuleLabels.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/HorizontalRuleLabels.js
+END
+_FormSelectWidget.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/_FormSelectWidget.js
+END
+_FormMixin.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/_FormMixin.js
+END
+_DateTimeTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/_DateTimeTextBox.js
+END
+Button.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/Button.js
+END
+VerticalSlider.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/VerticalSlider.js
+END
+ToggleButton.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/ToggleButton.js
+END
+Select.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/Select.js
+END
+HorizontalRule.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/HorizontalRule.js
+END
+Slider.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/Slider.js
+END
+FilteringSelect.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/FilteringSelect.js
+END
+MappedTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/MappedTextBox.js
+END
+CheckBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/CheckBox.js
+END
+SimpleTextarea.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/SimpleTextarea.js
+END
+DropDownButton.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/DropDownButton.js
+END
+MultiSelect.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/MultiSelect.js
+END
+RadioButton.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/RadioButton.js
+END
+ComboButton.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/ComboButton.js
+END
+HorizontalSlider.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/HorizontalSlider.js
+END
+RangeBoundTextBox.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dijit/form/RangeBoundTextBox.js
+END

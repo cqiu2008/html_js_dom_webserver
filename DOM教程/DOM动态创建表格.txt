@@ -1,0 +1,221 @@
+﻿使用JavaScript和DOM动态创建表格（翻译）
+　　第一次翻译技术文章，本身英语水平很烂，翻译的也是自己刚开始学习的技术，所以能勉强看懂英文的话都要尽量读 原文 而不要看我的翻译，免得被误导。阅读原文
+简介
+　　这篇文章简单介绍了DOM 
+1.0一些基本而强大的方法以及如何在JavaScript中使用它们。你可以学到如何动态地创建、获取、控制和删除HTML元素。这些DOM方法同样适用于XML。所有全面支持DOM 
+1.0的浏览器都能很好地运行本篇的实例，比如IE5，Firefox等。
+概况 － Sample1.html
+　　这篇文章通过实例代码介绍DOM。请从尝试下面的HTML例子开始。它使用DOM 
+1的方法由JavaScript动态创建一个HTML表格。它创建一个由四个包含文本内容的单元格组成的小表格。单元格的文字内容是：“单元格是第y行第x列”，表示单元格在表格中的行数和列数。<html>
+<head>
+<title>实例代码 - 使用JavaScript和DOM创建HTML表格</title>
+<script>function start() {
+//获取body标签
+var mybody = document.getElementsByTagName("body")[0];
+ 
+// 创建一个<table>元素和一个<tbody>元素
+mytable     = document.createElement("table");
+mytablebody = document.createElement("tbody");
+ 
+//创建所有的单元格
+for(var j = 0; j < 2; j++) {
+    // 创建一个<tr>元素
+    mycurrent_row = document.createElement("tr");
+    for(var i = 0; i < 2; i++) {
+    // 创建一个<td>元素
+    mycurrent_cell = document.createElement("td");
+    //创建一个文本节点
+    currenttext = document.createTextNode("单元格是第"+j+"行，第"+i+"列");
+    // 将创建的文本节点添加到<td>里
+    mycurrent_cell.appendChild(currenttext);
+    // 将列<td>添加到行<tr>
+    mycurrent_row.appendChild(mycurrent_cell);
+    }
+    // 将行<tr>添加到<tbody>
+    mytablebody.appendChild(mycurrent_row);
+}
+// 将<tbody>添加到<table>
+mytable.appendChild(mytablebody);
+//将<table>添加到<body>
+mybody.appendChild(mytable);
+// 将表格mytable的border属性设置为2
+mytable.setAttribute("border", "2");
+}</script>
+</head>
+<body onload="start()">
+</body>
+</html>注意我们创建各元素和文字节点的顺序：
+  1.创建< table >元素
+  2.创建< table >的子元素< tbody >
+  3.使用一个循环来创建< tbody >的子元素< tr >
+  4.分别使用循环为每一个< tr >创建子元素< tb >
+  5.为每一个< tb >创建文本节点
+　　创建完< table >,< tbody >,< tr >,< td >元素和文本节点，我们使用相反的顺序把它们分别添加到自己的父节点。
+1.将创建的文本节点添加到< td >里
+mycurrent_cell.appendChild(currenttext);2.将列< td >添加到行< tr >
+mycurrent_row.appendChild(mycurrent_cell);3.将行< tr >添加到< tbody >
+mytablebody.appendChild(mycurrent_row);4.将< tbody >添加到< table >
+mytable.appendChild(mytablebody);5.将< table >添加到< body >
+mybody.appendChild(mytable);记住这个方法。当你使用W3C 
+DOM时会经常用到它。首先，你从上向下建立元素；然后从下向上把它们添加到父节点。
+这是JavaScript代码生成的HTML：
+...
+<table border=5>
+<tr><td>单元格是第0行，第0列</td><td>单元格是第0行，第1列</td></tr>
+<tr><td>单元格是第1行，第0列</td><td>单元格是第1行，第1列</td></tr>
+</table>
+...这是代码生成的表格元素和它的子元素的DOM对象树：
+
+　　你只需使用少量的DOM方法就可以构造这样一个表格和他的子元素。记住要时刻谨记你将创建的构造的模型树；这样会使编写代码更加简单。在图中的< table 
+>树里，< table >有一个子元素< tbody >。< tbody >有两个子元素。< tbody >的每个子元素（< tr >）都有两个子元素< td 
+>。最后，每个< td >有一个子元素：一个文本节点。　　
+基本的DOM方法 － Sample2.html
+　　getElementByTagName方法适用于文档和元素，所以文档根对象和所有的元素对象一样有 getElementByTagName 方法。你可以使用 
+element.getElementsByTagName(tagname) 来获取某个元素所有子元素的列表，使用标签名选择它们。
+　　element.getElementsByTagName 
+返回一个有特定标签名的子元素的列表。你可以通过调用一个item方法（传递一个index参数给它）来从这个子元素列表中获取一个元素。请注意列表第一个子元素的index为0。下一个主题继续前面的Table例子。下面这个实例更加简单，显示了一些基本的方法：
+<html>
+  <head>
+  <title>实例代码 - 使用JavaScript和DOM创建HTML表格</title>
+  <script>function start() {
+  // 获取一个包含所有body元素的列表（将只有一个）
+  // 然后选择列表里的第一个元素
+  myBody = document.getElementsByTagName("body")[0];
+ 
+  // 获取body字元素中所有的p元素
+  myBodyElements = myBody.getElementsByTagName("p");
+ 
+  //获取p元素列表的第二个元素（索引从0开始）
+  myP = myBodyElements[1];
+}</script>
+  </head>
+  <body onload="start()">
+  <p>hi</p>
+  <p>hello</p>
+  </body>
+</html>在这个例子里，我们设置myP变量为表示body里第二个p元素的DOM对象。
+1.获取一个包含所有body元素的列表
+myBody = 
+document.getElementsByTagName("body")[0];因为一个有效的html文档只有一个body元素，这个列表讲只有一项。我们通过使用 
+[0] 选取列表的第一个元素来得到它。
+2.获取blog子元素里所有的p元素
+myBodyElements = myBody.getElementsByTagName("p");3.选取p元素列表的第二项
+myP = myBodyElements[1];
+一旦获得一个html元素的DOM对象，你就可以设置它的属性。比如，你想设置style background color属性，只需要添加：
+myP.style.background = "rgb(255,0,0)";使用document.createTextNode("..")创建文本节点
+使用文档对象调用createTextNode方法建立你的文本节点。你只需要输入文本内容。返回值是一个表示这个文本节点的对象。
+myTextNode = 
+document.createTextNode("world");以上代码创建一个文本数据是“word”的TEXT_NODE类型（文字块）节点，变量myTextNode指向这个节点对象。你需要设置这个文本节点为其他节点元素的字节点来插入这个文本到你的html页面里。
+使用appendChild(..)插入元素
+所以，通过调用myP.appendChild([node_element])，你设置这个文本节点为第二个p元素的字节点。
+myP.appendChild(myTextNode);测试这个例子，注意“hello”和“world”两个词是连在一起的：“helloworld”。所以在当你看到html页面时两个文本节点hello和world看起来好像是一个节点，而实际上在这个文档模型里有两个节点。第二个节点是一个新的TEXT_NODE类型节点，并且是第二个p标签的第二个字节点。下图在文档树里显示了刚创建的文本节点。
+
+  createTextNode和appendChild是在hello和world之间添加空格的一种简单的方法。需要特别注意的是appendChild方法将添加在最后一个子节点后面，就像world被添加到hello后面。所以如果你想在hello和world之间添加一个文本节点需要使用insertBefore方法而不是appendChild。
+使用文档对象和createElement(..)方法创建新元素
+　　你可以使用createElement方法创建新的HTML元素或者其他任何你想要的其他元素。例如，如果你想为< body >元素添加一个字节点< p 
+>元素，可以使用前例中的myBody添加一个新的元素节点。创建一个节点只需要调用document.createElement("tagname")。例如：
+myNewPTAGnode = document.createElement("p");
+myBody.appendChild(myNewPTAGnode);
+使用removeChild(..)方法删除节点
+　　每个节点都可以删除。下面这行代码删除myP（第二个< p >元素）里包含单词world的文本节点。
+myP.removeChild(myTextNode);　　最后你可以把包含单词world的文本节点myTextNode添加到新创建的< p >元素里：
+myNewPTAGnode.appendChild(myTextNode);　　修正的对象树最后像这样：
+
+动态创建一个表格（回到Sample1.html）
+　　文章的剩余部分将回到Sample1.html。下图显示了例子中创建的表格的对象树结构。
+回顾HTML表格结构
+
+创建元素节点并把它们添加到文档树
+创建sample1.html里的表格的基本步骤：
+  获取body对象（文档对象的第一项）
+  创建所有的元素
+  最后，按照上图的表格结构添加每一个字节点下面的源代码是sample1.html的注释
+  start函数的最后有一行新代码，使用另一个DOM方法setAttribute设置了表格的border属性。setAttribute方法有两个参数：属性名和属性值。你可以使用setAttribute方法设置任何元素的任何属性。
+<head>
+<title>实例代码 - 使用JavaScript和DOM创建HTML表格</title>
+<script>function start() {
+// 获取body
+var mybody = document.getElementsByTagName("body")[0];
+ 
+// 创建<table>和<tbody>元素
+mytable     = document.createElement("table");
+mytablebody = document.createElement("tbody");
+ 
+//创建所有的单元格
+for(var j = 0; j < 2; j++) {
+    // 创建一个 <tr> 元素
+    mycurrent_row = document.createElement("tr");
+ 
+    for(var i = 0; i < 2; i++) {
+    // 创建一个<td> 元素
+    mycurrent_cell = document.createElement("td");
+    // 创建一个文本节点
+    currenttext = document.createTextNode("单元格是第" + j + "行，第" + i + "列");
+    // 把创建的文本节点添加到<td>元素
+    mycurrent_cell.appendChild(currenttext);
+    // 把<td>添加到<tr>行
+    mycurrent_row.appendChild(mycurrent_cell);
+    }
+    // 把<tr>行添加到<tbody>
+    mytablebody.appendChild(mycurrent_row);
+}
+ 
+// 把 <tbody> 添加到 <table>
+mytable.appendChild(mytablebody);
+// 把 <table> 添加到 <body>
+mybody.appendChild(mytable);
+// 把mytable的border属性设置为2;
+mytable.setAttribute("border","2");
+}</script>
+</head>
+<body onload="start()">
+</body>
+</html>使用DOM和CSS处理表格
+从表格中获取一个文本节点
+　　这个例子介绍两个新的DOM属性。首先使用childNodes属性获取mycel的字节点列表。这个childNodes列表包含所有的字节点，不管它们的名称和类型是什么。像getElementsByTagName方法一样，它返回一个字节点列表，使用 
+[ x ] 来获取想要的字节点项。这个例子将myceltext存储为表格第二行第二个单元格的文本节点。最后，它创建一个新的包含myceltext 的data 
+属性 的文本节点，并使它成为< body >元素的子节点，来显示这个例子的最后结果。
+  如果你的对象是文本节点，你可以使用data属性来获取它的内容
+mybody      = document.getElementsByTagName("body")[0];
+mytable     = mybody.getElementsByTagName("table")[0];
+mytablebody = mytable.getElementsByTagName("tbody")[0];
+myrow       = mytablebody.getElementsByTagName("tr")[1];
+mycel       = myrow.getElementsByTagName("td")[1];
+ 
+// mycel的字节点列表的第一项
+myceltext=mycel.childNodes[0];
+ 
+// currenttext的内容是myceltext的data
+currenttext=document.createTextNode(myceltext.data);
+mybody.appendChild(currenttext);获取一个属性值
+　　在sample1的最后有一个单元格使用了mytable对象的setAttribute方法。这个单元格用来设置这个表格的border属性。使用getAttribute方法来获取这个属性：
+mytable.getAttribute("border");通过改变style属性隐藏列
+　　当你使用一个JavaScript变量指向对象，你可以立即设置它的style属性。下面的代码是sample1.html的修改，第二列的单元格都被隐藏，第一列的单元格背景改为红色。注意style属性是直接设置的。
+<html>
+<body onload="start()">
+</body>
+<script>function start() {
+var mybody =document.getElementsByTagName("body")[0];
+mytable     = document.createElement("table");
+mytablebody = document.createElement("tbody");
+ 
+for(var j = 0; j < 2; j++) {
+   mycurrent_row=document.createElement("tr");
+   for(var i = 0; i < 2; i++) {
+       mycurrent_cell = document.createElement("td");
+       currenttext = document.createTextNode("单元格是:" + i + j);
+       mycurrent_cell.appendChild(currenttext);
+       mycurrent_row.appendChild(mycurrent_cell);
+       // 如果在第0列设置单元格背景色
+       // 如果在第1列隐藏单元格
+       if (i == 0) {
+       mycurrent_cell.style.background = "rgb(255,0,0)";
+       } else {
+       mycurrent_cell.style.display = "none";
+       }
+   }
+   mytablebody.appendChild(mycurrent_row);
+}
+mytable.appendChild(mytablebody);
+mybody.appendChild(mytable);
+}</script>

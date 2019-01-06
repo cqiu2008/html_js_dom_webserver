@@ -1,0 +1,48 @@
+<html>
+<head>
+ <script type="text/javascript"> 
+	function view(){ 
+		var childs1=$('FirstDiv').childNodes; 
+		var childs2=$('SecondDiv').childNodes;   
+		alert("length of FirstDiv: "+childs1.length+"--length of SecondDiv: "+childs2.length); 
+	}  
+	var $=function(id)  
+	{ return document.getElementById(id); } 
+</script> 
+
+</head>
+
+<body>
+ <p>
+	<button onclick="nodeShow('table1')"> show the node </button>
+	<button onclick="alert(document.getElementById('table1').rows[0].cells[0].childNodes[0].id)"> show the node1 </button>
+	<button onclick="alert(document.getElementById('table1').rows[0].cells[0].childNodes[1].id)"> show the node2 </button>
+	<button onclick="view();">show the node3 </button>
+ </p>
+
+
+
+<div id="FirstDiv"> 
+<div>1</div> 
+<div>2</div> 
+<div>3</div> 
+</div> 
+
+<div id="SecondDiv"><div>first</div><div>second</div><div>third</div></div> 
+
+
+ <!-- <div id ="div1"> -->
+ <table id="table1"> 
+     <tr><td> 
+         <table id="table2">
+             <tr id ="tr1"><td id="td1"><input id ="input1" name="name" value="niexiong" onclick="mouseOver()">123</td></tr> 
+             <tr id ="tr2"><td id="td2">456</td></tr> 
+         </table>
+     </td></tr> 
+ </table>   
+ <!-- </div> -->
+
+ </body>
+
+
+</html>

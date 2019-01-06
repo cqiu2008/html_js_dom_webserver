@@ -1,0 +1,931 @@
+/************************************************************************
+* 版权所有 (C)2001, 中兴通讯股份有限公司。
+* 
+* 文件名称：  common_css_new.css
+* 文件标识：  
+* 内容摘要：  通用CSS样式设置表
+* 其它说明：  无
+* 当前版本：  1.0
+* 作    者：  顾凤嫱
+* 完成日期：  2009年11月05日
+* 
+* 修改记录1：// 修改历史记录，包括修改日期、修改者及修改内容
+* 修改日期：
+* 版 本 号：V1.0
+* 修 改 人：
+* 修改内容： 
+* 修改记录2：…
+************************************************************************/
+/*****************************老界面样式定义*******************************************/
+body{
+	font:14px/20px Arial,Verdana, Tahoma;
+	background-color:#ffffff;
+	padding:5px;
+}
+
+input,select{
+	font:14px/20px Arial,Verdana, Tahoma;
+}
+/** 通用DIV层样式设置,百分之百宽度设置 */
+.divStyle {	 
+	display:block;
+	padding-right: 5px; 
+	padding-left:  5px;
+	padding-bottom: 5px; 
+	overflow:     hidden; 
+	width: 100%; 
+	padding-top: 5px;
+}
+
+/** 通用DIV层样式设置，百分之八十宽度设置 */
+.divStyle80 {	 
+	display:block;
+	padding-right: 5px; 
+	padding-left:  5px;
+	padding-bottom: 5px; 
+	overflow:     hidden; 
+	width: 80%; 
+	padding-top: 5px;
+	margin:auto;
+}
+
+/*通用下拉菜单设置-----
+.select{
+	width:100%;
+	font-size:14px;
+	height:18px;
+}
+*/
+/** 通用按钮的设置----- 
+.button{
+	width: 				80px;
+	height: 			18px;
+	font-size: 			12px;
+	font-weight:		bold;
+	background-image: url(../images/button.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #1874CD;
+	border-width: 0px;
+	border-style: none;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	cursor:pointer;
+}*/
+
+/*通用文本框设置
+.text{
+	width:100%;
+	height:20px;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	line-height:normal;
+	border:0px solid #ffffff;
+}*/
+
+/*通用body体背景设置*/
+body.banner {
+	margin: 			0PX; 
+	font-style:			normal; 
+	background-color:#FFFFFF;
+	width: 100%;
+	
+}
+
+/** 通用表格的外层边框设置 ,简单无背景设置*/
+table.tableStyleSimple{
+	width: 				100%;
+	margin:				0;
+	border:				1px; 
+}
+
+
+/** 通用表格的外层边框设置,表底色为蓝 */
+table.tableStyle{
+	width: 				100%;
+    table-layout: fixed;
+	/*word-break:break-all;*/
+	word-wrap:   break-word;
+	margin:				0;
+	border:				1px solid #104E8B; 
+	background-color:#1874CD;
+}
+
+/** 通用表格的外层边框设置 ，表底色为白*/
+table.tableStyleWhite{
+	width: 				100%;
+    table-layout: fixed;
+	word-wrap:break-word;
+	margin:				0;
+	border:				1px solid #104E8B; 
+	background-color:#FFFFFF;
+}
+
+/** 通用表格的外层边框设置 ,简单无背景设置,80%宽度*/
+table.tableStyleSimple80{
+	width: 				80%;
+	margin:				0;
+	border:				1px; 
+}
+
+
+/** 通用表格的外层边框设置,表底色为蓝，100%宽度 */
+table.tableStyle80{
+	width: 				80%;
+    table-layout: fixed;
+	word-wrap:break-word;
+	margin:				0;
+	border:				1px solid #104E8B; 
+	background-color:#1874CD;
+}
+
+/** 通用表格的外层边框设置 ，表底色为白，100%宽度*/
+table.tableStyleWhite80{
+	width: 				80%;
+    table-layout: fixed;
+	word-wrap:break-word;
+	margin:				0;
+	border:				1px solid #104E8B; 
+	background-color:#FFFFFF;
+}
+
+/*通用表头浅灰色风格设置*/
+.thead{
+	/*color: 				#004DA1;*/
+	font-size: 			14PX;
+	/*font-weight:		bold;*/
+	text-align: 		center;
+	height: 20px;	
+	width: 				100%;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/*通用表体风格设置*/
+.tbody{
+	color: 				#ffffff;
+	font-size: 			12PX;
+	/*font-weight:		bold;*/
+	text-align: 		center;
+	height: 16px;
+	text-indent: 0px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+
+/*通用表格th头一级标题风格，100%宽度设置**/
+th.tableThTitle{
+	color: 				#000000;
+	font-size: 			25PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				100%;
+	height: 			50px;
+	text-indent: 0px;
+	background-color: #1874CD;
+	border: 1px solid #CCCCCC;
+}
+
+/*通用表格th头一级标题风格,80%宽度**/
+th.tableThTitle80{
+	color: 				#000000;
+	font-size: 			25PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				80%;
+	height: 			50px;
+	text-indent: 0px;
+	background-color: #1874CD;
+	border: 1px solid #CCCCCC;
+}
+
+/*通用表格一级标题风格，100%宽度设置**/
+td.tableTitle{
+	color: 				#000000;
+	font-size: 			25PX;
+	font-weight:		bold;
+	text-align:		    center;
+	width: 				100%;
+	height: 			50px;
+	text-indent: 0px;
+	background-color: #1874CD;
+	border: 1px solid #CCCCCC;
+}
+
+/*通用表格一级标题风格,80%宽度**/
+td.tableTitle80{
+	color: 				#000000;
+	font-size: 			25PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				80%;
+	height: 			50px;
+	text-indent: 0px;
+	background-color: #1874CD;
+	border: 1px solid #CCCCCC;
+}
+
+/*通用单元格风格设置
+td{
+	color: 				#004DA1;  
+	font-size: 			12PX;
+	padding:0px;
+	margin:0px;
+	overflow: hidden;
+	font-family:Verdana;
+}*/
+
+/** 表格内部设置，针对四分格左右间隔表格的左边菜单栏,P2P交叉行*/
+td.tableSubLeftTd4 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				25%;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对四分格左右间隔表格的右边文本栏 ,P2P交叉行*/
+td.tableSubRightTd_Text4 {
+	font-size: 			14PX;
+	font-weight:		normal;
+	text-align: 		left;
+	width: 				25%;
+	EMPTY-CELLS: 		show;
+	text-indent: 		4px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对六分格左右间隔表格的左边菜单栏sncp收端交叉行 */
+td.tableSubLeftTd6 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				16.6%;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对六分格左右间隔表格的右边文本栏，例 sncp收端交叉行*/
+td.tableSubRightTd_Text6 {
+	font-size: 			14PX;
+	font-weight:		normal;
+	text-align: 		left;
+	width: 				16.6%;
+	height: 18px;
+	empty-cells: 		show;
+	text-indent: 		4px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+/** 表格内部设置，针对六分格上下分隔表格的上方菜单栏，例SNCP收端工作状态行*/
+td.tableSubTitleTd6 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				16.6%;
+	height: 22px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对六分格左右分隔表格的左边菜单栏，例SNCP收端源端状态行*/
+td.tableSubTitleLeftTd6 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	height: 18px;
+	width:9%;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对六分格左右分隔表格的右边文本栏 ，例SNCP收端源端状态行*/
+td.tableSubTextRightTd6 {
+	font-size: 			14PX;
+	font-weight:		normal;
+	text-align: 		left;
+	width: 				16.6%;
+	height: 18px;
+	EMPTY-CELLS: 		show;
+	text-indent: 		4px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/** 表格内部设置，针对十分格左右间隔表格的左边菜单栏，例P2P */
+td.tableSubLeftTd10 {
+	font-size: 			12PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				10%;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+/** 表格内部设置，针对十分格左右分隔表格的右边文本栏，例P2P*/
+td.tableSubTextRightTd10{
+	font-size: 			12PX;
+	font-weight:		bold;
+	text-align: 		left;
+	width: 				10%;
+	height: 18px;
+	text-indent: 4px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+/** 表格内部设置，针对两分格左右分隔表格的左边菜单栏，例SNCP保护类型处理*/
+/*td.tableSubLeftTd2 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				30%;
+	height: 20px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border: 1px solid #CCCCCC;
+}
+*/
+td.tableSubLeftTd2{
+	background-color:#F6F6F6;
+	/*filter: alpha( opacity = 100 finishopacity = 50);
+	opacity:1.0;*/
+	text-align:left;
+	text-indent:4px;
+}
+
+/** 表格内部设置，针对两分格左右分隔表格的右边菜单栏，例SNCP保护类型处理 */
+td.tableSubRightTitleTd2 {
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		center;
+	width: 				70%;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border: 1px solid #CCCCCC;
+}
+
+
+
+/** 表格内部设置，针对两分格左右分隔表格的右边文本栏，例SNCP保护类型处理 */
+/*td.tableSubTextRightTd2{
+	font-size: 			14PX;
+	font-weight:		bold;
+	text-align: 		left;
+	width:				70%;
+	height: 18px;
+	text-indent: 4px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}*/
+
+td.tableSubTextRightTd2{
+	width:				70%;
+	background-color:#F6F6F6;
+}
+
+
+
+/****************************************************************************************/
+/*	       若上述样式不能满足要求，可以调用下列通用菜单样式设置表单，其中表格宽度可以根据需要自行添加进去，
+ * 命名方式按照如下模式，各模块可在XXXX中替换对应标示信息，注意请勿改动其他设置。*/
+/***************************************************************************************/
+/** 表格内部设置，通用表格左边索引栏/菜单栏---------------- */
+td.tableSubLeftTd_XXXX {
+	font-size: 			12PX;
+	font-weight:		bold;
+	text-align: 		center;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #EDEDED;
+	border: 1px solid #CCCCCC;
+	/*在下列省略号处添加宽度内容，设置方法按照：width: 10px;  */
+	/*..................................*/
+}
+
+/** 表格内部设置，通用表格右边文本栏 */
+td.tableSubTextRightTd_XXXX{
+	font-size: 			12PX;
+	font-weight:		bold;
+	text-align: 		left;
+	height: 18px;
+	text-indent: 0px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	
+	/*在下列省略号处添加宽度内容，设置方法按照：width: 10px;  */
+	/*..................................*/
+	
+}
+
+/** 表格内部设置，针对上下分隔表格的上方菜单栏*/
+td.tableSubTitleTd {
+font-size: 			14PX;
+/*font-weight:		bold;*/
+text-align: 		center;
+height: 22px;
+text-indent: 0px;
+background-color: #EDEDED;
+border-bottom: 1px solid #CCCCCC;
+}
+
+/*以太网标题行风格设置*/
+.captionEth{
+color: 				#000000;
+font-size: 			14PX;
+font-weight:		bold;
+text-align: 		center;
+width: 				100%;
+height: 			22px;
+text-indent: 0px;
+background-color: #1874CD;
+border: 1px solid #CCCCCC;
+}
+
+/* 消息窗口 */
+.msg-window{
+	background:#fff;overflow:hidden;
+	font-size:12px;	text-align:left;
+}
+
+/* 窗口标题 */
+.msg-titlel{padding-left:3px;background:#CFD7EC url(../images/title_bg_left.gif) no-repeat 0 0}
+.msg-titler{padding-right:3px;background:#CFD7EC url(../images/title_bg_right.gif) no-repeat right 0;}
+.msg-titlec{background:#CFD7EC url(../images/title_bg_center.gif) repeat-x 0 0;overflow:hidden;height:25px;line-height:25px;CURSOR: move}
+.msg-title{font-size:12px;font-weight:bold;color:#fff;margin-left:5px;float:left}
+.msg-tools{float:right;margin-top:5px}
+.msg-tools strong{display:none}
+
+/* 窗口体 */
+.msg-bodyl{background:url(../images/win_l.gif) repeat-y 0 0;padding-left:3px;}
+.msg-bodyr{background:url(../images/win_r.gif) repeat-y right 0;padding-right:3px;}
+.msg-bodyc{background:url(../images/content_bg.gif) repeat-x 0 0;padding:0;overflow:auto;padding:0;font-size:12px;}
+
+/* 按钮 */
+.msg-btn{text-align:center}
+
+/*窗口尾*/
+.msg-footl{background:url(../images/win_lb.gif) no-repeat 0 bottom;padding-left:3px}
+.msg-footr{background:url(../images/win_rb.gif) no-repeat right bottom;padding-right:3px}
+.msg-footc{background:url(../images/win_b.gif) repeat-x 0 bottom;height:3px;font-size:3px}
+
+/* 窗口提示图标 */
+.msg_alert{
+	padding-left:90px;
+	background:url(../images/info.gif) no-repeat 20px 50%
+}
+.msg_succeed{
+	padding-left:90px;
+	background:url(../images/right.gif) no-repeat 20px 50%
+}
+.msg_error{
+	padding-left:90px;
+	background:url(../images/err.gif) no-repeat 20px 50%
+}
+.msg_confirm{
+	padding-left:90px;
+	background:url(../images/ask.gif) no-repeat 20px 50%
+}
+.msg_alert .msg-content,.msg_succeed .msg-content,.msg_error .msg-content,.msg_confirm .msg-content{padding:50px 0 0}
+/*图标公共定义*/
+.msg-tools div{
+	cursor:pointer;
+	width:16px;height:16px;float:left;margin:0 1px;
+	background:url(../images/ico.gif) no-repeat 0 0;
+}
+.msg_close{
+	background-position:-16px 0 !important;
+}
+.msg_max{
+	background-position:0 -16px !important;
+}
+.msg_min{
+	background-position:0 0 !important;
+}
+.msg_normal{
+	background-position:-16px -16px !important;
+}
+
+/*取消确认按钮样式*/
+input.btnStyle{
+	background:url(../images/btn_bg.gif) no-repeat;
+	width:80px;height:21px;line-height:21px;
+	font-size:12px;color:#183C94;border:0;
+	cursor: pointer; margin:10px 0
+}
+
+.theadTtm{
+	color: 				#004DA1;
+	font-weight:		bold;
+	word-wrap:break-word;
+	font-size: 			12PX;
+	/*word-break:break-all;
+	/*overflow:     hidden;*/
+	text-align: 		center;
+	width: 				100%;
+	background-color: #EDEDED;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.tbodyTtm{
+	color: 				#ffffff;
+	font-size: 			18PX;
+	font-weight:		bold;
+	text-align: 		center;
+	word-break:break-all;
+	word-wrap:break-word;
+	/*overflow:     hidden;*/
+	/*text-indent: 4px;*/
+	background-color: #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+
+/*****************************老界面样式定义完*******************************************/
+/****************************************************************************************/
+/*****************************新界面样式定义*******************************************/
+
+text {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+}
+
+.body{
+	background-color:#ffffff
+}
+
+/** 通用按钮的设置----- margin: 0px;
+ padding: 0px;
+ text-indent: 0px;background-position: center center;*/
+.button {
+    width: 80px;
+    height: 22px;
+    font-size: 12px;
+    font-weight: bold;
+    background-image: url(../images/btn_bg.gif);
+    background-repeat: no-repeat;
+    border-width: 0px;
+    border-style: none;
+    cursor: pointer;
+}
+
+
+/*长Bttton 样式*/
+.longBtn{
+            width:200px;
+		    height: 22px;
+            background-image: url(../images/btn_bg_long.gif);
+            background-repeat: no-repeat;
+            border-width: 0px;
+            border-style: none;
+            cursor: pointer;
+}
+
+/*通用单元格风格设置color:#004DA1;*/
+td {
+    font-size: 14px;
+	
+
+font-family:Verdana;
+
+padding:
+    0px;
+
+margin:
+    0px;
+
+overflow:hidden;
+}
+
+td.defaultColor {
+    background-color: #F6F6F6;
+}
+
+.divOutLine {
+    width: 900px;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 0 10px;
+    border: 0;
+}
+
+/*包括一个标题和一张表的DIV层边框设计#87cefa（1），#ECF4FD（浅天蓝），#E8F2FE（标签色）*/
+.divTblTl {
+    margin: 8px 0px 5px 0px;
+    padding: 0;
+    border: 0px;
+    border-top: 1px solid #B6E1FB;
+    border-bottom: 1px solid #B6E1FB;
+    border-left: 0px solid #B6E1FB;
+    border-right: 0px solid #B6E1FB;
+}
+
+/*标题颜色#E8F2FE table切换标签色#B9CDE6*/
+.divTitle {
+  filter: alpha( opacity = 100, finishopacity = 50);
+  opacity: 1.0;            
+/*background:#CFD7EC url(../images/title_bg_center.gif) repeat-x 0 0;overflow:hidden;line-height:25px;*/
+font-weight:bold;
+height:  22px;
+font-family:Verdana;
+text-align:left;
+text-indent:5px;
+font-size:
+    14px;
+
+background-color:
+    #C5DEFA;
+}
+
+td.titleColor {
+    background-color: #f5f5f5;
+   /* filter: alpha( opacity = 80, finishopacity = 50);
+
+opacity:
+    0.8;*/
+}
+
+.t1 {
+    background-color: #FFFFFF;
+}
+
+/* 第一行的背景色 */
+.t2 {
+    background-color: #F6F6F6;
+}
+
+/* 第二行的背景色 */
+.t3 {
+    background-color: #ccc;
+}
+
+/* 鼠标经过时的背景色 */
+
+/*******************************机框图样式表*******************************************/
+.shelf {
+	margin-left: 100px;
+	border: solid 1px #000066;
+	/*width:516px;*/
+	height:127px;
+	background-color:#375F91;
+	text-align:center;
+	vertical-align:middle;
+	float: left;
+	display:inline;
+}
+
+.column {
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	float: left;
+}
+
+.pm {
+	width:80px;
+	height:45px;
+	background-color:#F0F0F0;
+	margin-bottom: 1px;
+}
+.pmslot {
+	width: 20%;
+	height:45px;
+	float: left;
+	background-color:#CCCCCC;
+	margin-bottom:1px;
+}
+.pmspantext{
+	width: 60%;
+	height: 100%;
+	float: left;
+	font-size:18px;
+	font-family:Arial;
+	color:#004DA1;
+}
+.rpu {
+	width:80px;
+	height:31px;
+	background-color:#F0F0F0;
+}
+.rpuslot {
+	width:20%;
+	height:31px;
+	float: left;
+	background-color:#CCCCCC;
+	margin-bottom:1px;
+}
+
+
+.board {
+	width:190px;
+	height:30px;
+	background-color:#F0F0F0;
+	margin-bottom:1px;
+}
+
+.slot {
+	width: 10px;
+	height:30px;
+	float: left;
+	background-color:#CCCCCC;
+	margin-bottom:1px;
+}
+
+.fan {
+	width:40px;
+	height:92px;
+	background-color:#F0F0F0;
+}
+
+.fanslot {
+	width: 40px;
+	height:30px;
+	background-color:#CCCCCC;
+	margin-bottom:1px;
+}
+
+.fanState {
+	margin-top: 46px;
+	width:31px;
+	height:31px;
+}
+
+.lighter{
+	float:right;
+	position:relative;
+	right:5%;
+	top: 40%;
+	width: 13px;
+	height: 13px;
+	/*background-image:url(../images/InvalibleLighter.PNG);*/
+	background-repeat: no-repeat;
+	display:block;
+}
+
+/*"Times New Roman"Verdana*/
+.spantext{
+	width: 80%;
+	height: 100%;
+	float: left;
+	font-size:18px;
+	font-family:Arial;
+	color:#004DA1;
+}
+.spantextstandby{
+	width: 80%;
+	height: 100%;
+	float: left;
+	font-size:18px;
+	font-family:Arial;
+	color:#444444;
+}
+.oduShelf{
+	float:left;
+	margin-left: 30px;
+	width:100px;
+	height: 132px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#375F91;
+	display:inline;
+}
+
+.oduSlot{
+	width: 10px;
+	height:20px;
+	float: left;
+	background-color:#CCCCCC;
+	margin-bottom:1px;
+}
+
+.odu{
+	width: 92px;
+	height:20px;
+	float: left;
+	background-color:#F0F0F0;
+	margin-bottom:1px;
+	margin-left: 4px;
+	display:inline;
+}
+
+.tableTh{
+	border-bottom : #d3d3d3 1px solid;
+	border-left : #d3d3d3 1px solid;
+	border-right : #d3d3d3 1px solid;
+	outline-style : none;
+	border: 1px solid #d3d3d3;
+	background: #e6e6e6 url(../images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+	font-weight: normal;
+	color: #555555;
+	outline: none;
+}
+
+
+.clearBoth{
+	clear:both;
+}
+
+.spanTitle{
+	width: 200px;
+	float: left;
+}
+.spanContent{
+	width: 600px;
+	float: left;
+}
+
+#confBlock{
+	background-color:#ffffff;
+	background-image:none;
+	border:1px solid #6e6e6e;
+	left:150px;
+	width:800px !important;
+	max-width:800px;
+	min-width:200px;
+	height:400px !important;
+	min-height:50px;
+	max-height:400px;
+	padding:0 0 0 0;
+	position:absolute;
+	top:100px;
+	z-index:10000;
+	display:block;
+	font-weight:normal;
+	display:none;
+}
+#confBlock h5{
+	padding:3px 0 3px 0;
+	margin:0;
+	background-color:#d0d0d0;
+	border-bottom:1px solid #6e6e6e;
+	text-indent:5px;
+}
+
+.submitDiv{
+		margin:0;
+		padding:0;
+		text-align:center;
+		
+	}
+#detailConf{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:92%;
+	overflow-x:auto;
+	overflow-y:scroll;
+}
+
+#innerDiv{
+	padding:10px;
+	border:0px;
+}
+
+#outTitlePane {
+	overflow:auto; 
+	width:100%; 
+	min-width:920px;
+}
+
+.wapperPane {
+	overflow:auto; 
+	width:100%; 
+	min-width:920px;
+}
+
+#pageControl {
+	width:900px;
+	height:30px;
+	margin:2px;
+}
+
+#warningInfo {
+	color:red;
+	float:right;
+}
+
+/* jTable表格外层Div 样式 */
+.jtableContainerStyle {
+	width:900px;
+	margin:0 0 10px 0;
+	overflow:hidden;
+}

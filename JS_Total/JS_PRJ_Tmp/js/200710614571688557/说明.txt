@@ -1,0 +1,16 @@
+CCTV 首页多屏通栏广告代码
+
+收集整理：懒人图库[转载请注明出处]
+
+
+1/
+<script language=JavaScript src="js/js.js" type=text/javascript></script> 必须加在<head></head>中间
+
+2/
+var.txt文件为flash广告路径文件
+
+参数解释：
+&introNum=3 设置广告数量
+fileName1=flash/01.swf 设置广告路径
+url1=http://www.makewing.com/lanren/ 设置广告链接（如果Flash本身没有链接）
+&loadOk=true 不需更改

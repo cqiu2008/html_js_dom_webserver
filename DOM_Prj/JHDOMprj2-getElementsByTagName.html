@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Hello World!</p>
+
+<div id="main">
+<p>The DOM is very useful.</p>
+<p>本例演示 <b>getElementsByTagName</b> 方法。</p>
+</div>
+
+<script>
+var x=document.getElementById("main");
+var y=x.getElementsByTagName("p");
+document.write('id 为 "main" 的 div 中的第一段文本是：' + y[0].innerHTML );
+document.write('id 为 "main" 的 div 中的第一段文本是：' + y[1].innerHTML );
+document.write(Date() );
+</script>
+
+<h1 id="id1">My Heading 1</h1>
+
+<button type="button" onclick="document.getElementById('id1').style.color='red'">
+点击这里
+</button>
+
+
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="Copyright" content="懒人图库 http://lanren.makewing.com/" />
+<meta name="description" content="学会偷懒，并懒出境界是提高工作效率最有效的方法！" />
+<meta content="懒人图库" name="keywords" />
+<title>懒人图库</title>
+</head>
+
+<body>
+<table width="300" height="300" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
+  <tr>
+    <td><script language=JavaScript>
+var elady_step=3;	//1:small, 3:middle, 5:big
+var elady_speed=50;	//20:fast, 50:middle, 80:slow
+var e_tp=new Array();
+var e_tplink=new Array();
+var adNum_elady1=0;  
+var elady_stop_sh=0;
+var elady_star_sh=1;
+
+function elady1_moveImg(){
+if ((!document.all&&!document.getElementById)||(elady_stop_sh==0))	return;
+if (elady_star_sh==1){
+	document.all.elady1_divimg.style.pixelTop=parseInt(document.all.elady1_divimg.style.pixelTop)+elady_step;}
+else if (elady_star_sh==2){
+	document.all.elady1_divimg.style.pixelLeft=parseInt(document.all.elady1_divimg.style.pixelLeft)+elady_step;}
+else if (elady_star_sh==3){
+	document.all.elady1_divimg.style.pixelTop=parseInt(document.all.elady1_divimg.style.pixelTop)-elady_step;}
+else{
+	document.all.elady1_divimg.style.pixelLeft=parseInt(document.all.elady1_divimg.style.pixelLeft)-elady_step;}
+if (elady_star_sh<4)	elady_star_sh++;
+else	elady_star_sh=1;
+setTimeout("elady1_moveImg()",elady_speed);}
+
+e_tplink[0]="http://www.makewing.com/lanren/";
+e_tp[0]="images/01.jpg";
+
+e_tplink[1]="http://www.makewing.com/lanren/";
+e_tp[1]="images/02.jpg";
+
+e_tplink[2]="http://www.makewing.com/lanren/";
+e_tp[2]="images/03.jpg";
+
+e_tplink[3]="http://www.makewing.com/lanren/";
+e_tp[3]="images/04.jpg";
+var currentimage=new Array();   
+for (i=0;i<=3;i++){currentimage[i]=new Image();
+      currentimage[i].src=e_tp[i];
+         }
+         function elady1_set(){   if (document.all)
+         {      e_tprotator.filters.revealTrans.Transition=Math.floor(Math.random()*23);
+               e_tprotator.filters.revealTrans.apply();   }
+               }
+               function elady1_playCo()
+               {   if (document.all)      e_tprotator.filters.revealTrans.play()
+               }function elady1_nextAd(){   if(adNum_elady1<e_tp.length-1)adNum_elady1++ ;
+                     else adNum_elady1=0;
+                        elady1_set();
+                           document.images.e_tprotator.src=e_tp[adNum_elady1];
+                              elady1_playCo();
+                                 theTimer=setTimeout("elady1_nextAd()", 4000);}
+                                 function elady1_linkurl(){   jumpUrl=e_tplink[adNum_elady1];
+                                    jumpTarget='_blank';
+                                       if (jumpUrl != ''){      if (jumpTarget != '')window.open(jumpUrl,jumpTarget);
+                                             else location.href=jumpUrl;
+                                                }}
+function elady1_listMsg() 
+{   status=e_tplink[adNum_elady1];
+document.returnValue = true;}
+document.write("<div id='elady1_divimg' style='position:relative'>");
+document.write('<a onMouseOver="elady1_listMsg();return document.returnValue" href="javascript:elady1_linkurl()" target="_self">');
+document.write('<img style="FILTER: revealTrans(duration=2,transition=20)" height=300 src="javascript:elady1_nextAd()" width=300 border=0 name=e_tprotator ></a>');
+document.write("</div>");
+    </script></td>
+  </tr>
+</table>
+</body>
+</html>

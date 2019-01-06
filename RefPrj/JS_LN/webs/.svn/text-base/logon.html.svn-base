@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>login</title>
+
+<script type="text/javascript" language="javascript">
+
+var isIE = window.ActiveXObject;    //是否是IE浏览器
+function getEvent(){     //同时兼容ie和ff的写法 
+	if(isIE){
+		return window.event;
+	}
+	else{
+		func=getEvent.caller;             
+		while(func!=null){     
+			var arg0=func.arguments[0]; 
+			if(arg0){ 
+				if((arg0.constructor==Event || arg0.constructor ==MouseEvent) 
+                        || (typeof(arg0)=="object" && arg0.preventDefault && arg0.stopPropagation)){     
+					return arg0; 
+				} 
+			} 
+			func=func.caller; 
+		} 
+	}
+	return null; 
+};
+
+
+function login_enter(keypressed){
+    //此函数用于非提交类input做为提交按钮时，响应回车。可视情况使用
+
+   var key=getEvent().keyCode;
+    if (key==13){
+		login();
+    }
+}
+
+
+function LogonInit(){
+	document.getElementById('username').focus();	
+}
+
+function login(){
+     var info = document.getElementById('lblErrInfo');	
+	 info.style.display = 'block';
+	 var username = document.getElementById('username').value;
+	if(username == ""){
+		info.innerHTML = 'please input user name';
+		info.focus();
+		return;
+	}
+	var pwd = document.getElementById('pwd').value;
+	if(pwd == ""){
+		info.innerHTML = 'please input password';
+		info.focus();
+		return;
+	}
+    
+	if(username!="admin"||pwd!="admin"){
+		info.innerHTML = 'you input wrong username or password';
+		info.focus();
+		return;
+	}
+	document.location.href="index.html";
+}
+
+
+
+//end
+
+</script>
+<style type="text/css">
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+     background-repeat:no-repeat;
+}
+.style1 {font-size: 4pt}
+.style2 {
+	font-size: 9pt;
+	color: #FFFFFF;
+}
+
+</style>
+</head>
+
+
+<body  onLoad="LogonInit()" bgcolor="#9fc2d7">
+<table id="logon" width="540" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="100" valign="center" align="center"></td>
+  </tr>
+  <tr>   
+    <td height="380" valign="top" background="images/log.gif">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td height="120" valign="top"></td>
+      </tr>
+      <tr>
+        <td height="150" align="right">
+        <div>
+          <center>
+            <table cellSpacing="0" cellPadding="0" width="280" border="0" id="table4">
+              <tr>
+                <td height="41"><div align="center"><font face="arial"><span class="style1"><span class="style2"><nobr><strong>用户名</strong></nobr></span></span></font></div></td>
+                <td >
+                    <div align="left">
+                      <input name="username" class="textOption" id="username" style="color: #006699; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1px solid #EEE; width:180px; height:18px"  onkeydown="if(getEvent().keyCode==13)getEvent().keyCode=9" size="20">
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td height="54"><div align="center"><font face="arial" color="black"><span class="style2"><nobr><strong>密码</strong></nobr></span></font></div></td>
+                <td >
+                    <div align="left">
+                      <input name="pwd" type="password" class="textOption" id="pwd" style="color:  #006699; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1px solid rgb(192,192,192); width:180px; height:18px" onkeypress="login_enter()" size="20">
+                    </div>
+                </td>
+              </tr>
+			  <tr><td colspan="2" align="center"><span id="lblErrInfo" style="display:none; color:#CC0000;font-size:12px;"></span></td></tr>
+            </table> 
+            </center>
+         </div>
+         </tr>
+         <tr>
+            <td><div align="center"><input name="goto" type="image" onclick="login();" value="Logon" src="images/logon.gif"></div></td>
+         </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

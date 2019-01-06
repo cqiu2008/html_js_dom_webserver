@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="Copyright" content="ZTE " />
+<meta name="description" content="qiu.chao" />
+<meta content="Simulation" name="keywords" />
+<title>10G Ethernet Packet</title>
+<style type="text/css">
+body{text-align:center;}
+td {font-size: 12px;line-height:160%}
+.dotline{background-image:url(images/dot_line.gif);background-repeat: repeat-x;background-position: bottom;}
+</style>
+
+<script language=JavaScript src="js/js.js"></script>
+<script language=JavaScript src="js/editTable.js"></script>
+
+<script language="javascript" type="text/javascript">
+    //添加行ByName
+	function addRowByName(){
+		addInstanceRow("table1_byname",["name","sex","age","city","nation"],["张三","男","13","北京","汉"],"setObjValueByName");
+	}
+</script>
+
+
+
+</head>
+
+<body>
+
+<p>
+  <input type="button" onclick="addRowByName();" name="addByName" value="添加(ByName)" />
+  <input type="button" onclick="alert('fuck');" name="tmp1" value="tmp1" />
+  <button type="button" onclick="alert('Welcome!')">点击这里</button>
+</p>
+
+
+<table id="table1_byname" width="600" border="0" cellspacing="2" cellpadding="0">
+<thead>
+  <tr style="display: none">
+    <td width="56" height="40" align="right" class="dotline"><img src="images/ico_q.gif" width="47" height="29"></td>
+    <!-- <td width="100" height="40" class="dotline"><a onClick=javascript:ShowFLT(0) href="javascript:void(null)">NO.1 Eth Stream</a></td> -->
+	<td width="100" height="40" class="dotline"><a onClick=javascript:shutdownshow() href="javascript:void(null)">NO.1 Eth Stream</a></td>
+	
+	
+	
+	<td width="100" height="30" bgcolor="#f5f9ed">	
+	<!--List-->
+		<select id="PacketList"name="PacketType" onchange="listshow(this.value)">
+			<option value="ipv4"> IPV4</option>
+			<option value="ipv6" selected="selected">IPV6</option>
+			<option value="l2pdu1588">1588 L2 PDU</option>
+			<option value="l3pdu1588">1588 L3 PDU</option>
+			<option value="oam">OAM </option>
+			<option value="l2other">L2 OTHER</option>
+		</select>
+	</td>
+	<td width="100"  height="30" bgcolor="#f5f9ed">
+		<input type="button" name="delete" onclick="javascript:deleteThisRow(this);"/>
+	</td>
+  </tr>
+
+<!--Type 1  Begin xxxxxx-->
+  <tr id=LM0 style="DISPLAY: none">
+    <td height="30" align="right" bgcolor="#f5f9ed"><img src="images/ico_a.gif" width="14" height="14" hspace="5"></td>
+	<td height="30" align="right" bgcolor="#f5f9ed"><img src="images/ico_a.gif" width="14" height="14" hspace="5"></td>
+	<td height="30" bgcolor="#f5f9ed">
+
+	<table class="formdata">
+		<caption> A1 10G Ethernet Packet Generator </caption>
+	<tr>
+		<td> Name  </td>
+		<td> Value </td>
+	</tr>
+	<tr>
+		<td> Preamble (1B) </td>
+		<td><input type="text" name="ethconfig" id="preamble" value="55"/> </td>
+	</tr>
+	<tr>
+		<td> logMessageInterval (1B) </td>
+		<td><input type="text" name="ethconfig" id="logMessageInterval" value="44"/> </td>
+	</tr>
+	</table>
+
+	</td>
+  </tr>
+<!--Type 1 end xxxxxx-->
+<!--Type 2 Begin xxxxxx-->
+  <tr id=LM1 style="DISPLAY: none">
+    <td height="30" align="right" bgcolor="#f5f9ed"><img src="images/ico_a.gif" width="14" height="14" hspace="5"></td>
+	<td height="30" align="right" bgcolor="#f5f9ed"><img src="images/ico_a.gif" width="14" height="14" hspace="5"></td>
+	<td height="30" bgcolor="#f5f9ed">
+	<table class="formdata">
+		<caption> A2 10G Ethernet Packet Generator </caption>
+	<tr>
+		<td> Name  </td>
+		<td> Value </td>
+	</tr>
+	<tr>
+		<td> Preamble (1B) </td>
+		<td><input type="text" name="ethconfig" id="preamble" value="55"/> </td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+<!--Type 2 end xxxxxx-->  
+
+</thead> 
+
+</table>
+</body>
+</html>

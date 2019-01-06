@@ -1,0 +1,238 @@
+<html>
+
+
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<meta name="keywords" content="HTML, CSS, XML" />
+
+<style type="text/css">
+body {background-color: white}
+p {margin-left: 20px}
+</style>
+</head>
+
+<h1 onmouseover="style.color='red'" onmouseout="style.color='blue'">
+请把鼠标移到这段文本上
+</h1>
+
+
+				
+
+<body background="C:\Users\Public\Pictures\Sample Pictures\沙漠.jpg">
+
+ <div id="loginerror" class="wrong_info">
+                &nbsp;</div>
+
+<script type='text/javascript'> 
+            document.getElementById('loginerror').innerHTML =  '<FONT color=red>用户名或密码错误，请重新输入。</FONT>' ;</script>
+
+<a href="http://www.w3school.com.cn/" target="_blank">Visit W3School</a>
+
+<a href="www.baidu.com" style="text-decoration:none">
+这是一个链接！
+</a>
+
+<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:green;width:120px;height:20px;padding:40px;color:#ffffff;">把鼠标移到上面</div>
+<script>
+function mOver(obj)
+{
+obj.innerHTML="谢谢"
+}
+
+function mOut(obj)
+{
+obj.innerHTML="把鼠标移到上面"
+}
+# function startProgress() { 
+# var prBar = document.getElementById("prog"); 
+# var startButt = document.getElementById("startBtn"); 
+# var val = document.getElementById("numValue"); 
+# startButt.disabled=true; 
+# prBar.value = currProgress; 
+# val.innerHTML = Math.round((currProgress/total)*100)+"%"; 
+#  
+# currProgress++; 
+# if(currProgress>100) done=true; 
+# if(!done) 
+#     setTimeout("startProgress()", 100); 
+# else     
+# { 
+#     document.getElementById("startBtn").disabled = false; 
+#     done = false; 
+#     currProgress = 0; 
+# } 
+# } 
+# </script>
+
+
+
+
+
+</script>
+
+
+
+<p style="color: red; margin-left: 20px">
+This is a paragraph
+<a href="#C4">查看 Chapter 4。</a>
+
+<h2><a name="C4">Chapter 4</a></h2>
+<p>This chapter explains ba bla bla</p>
+
+<p>
+这是另一个 mailto 链接：
+<a href="mailto:someone@microsoft.com?cc=someoneelse@microsoft.com&bcc=andsomeoneelse2@microsoft.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!">发送邮件！</a>
+</p>
+
+
+<h4>垂直的表头：</h4>
+<table border="1" bgcolor="red">
+>
+<caption>表格的标题</caption>
+<tr>
+  <th>姓名</th>
+  <td>Bill Gates</td>
+</tr>
+<tr>
+  <th>电话</th>
+  <td>555 77 854</td>
+</tr>
+<tr>
+  <th>&nbsp;</th>
+  <td>555 77 855</td>
+</tr>
+</table>
+
+<table width="400" border="1">
+ <tr>
+  <th align="left">消费项目....</th>
+  <th align="right">一月</th>
+  <th align="right">二月</th>
+ </tr>
+ <tr>
+  <td align="left">衣服</td>
+  <td align="right">$241.10</td>
+  <td align="right">$50.20</td>
+ </tr>
+ <tr>
+  <td align="left">化妆品</td>
+  <td align="right">$30.00</td>
+  <td align="right">$44.45</td>
+ </tr>
+ <tr>
+  <td align="left">食物</td>
+  <td align="right">$730.40</td>
+  <td align="right">$650.00</td>
+ </tr>
+ <tr>
+  <th align="left">总计</th>
+  <th align="right">$1001.50</th>
+  <th align="right">$744.65</th>
+ </tr>
+</table>
+
+<h4>Disc 项目符号列表：</h4>
+<ul type="disc">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ul> 
+
+<h4>字母列表：</h4>
+<ol type="A">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol> 
+
+<progress id="prog" value="0" max="100"></progress>  进度
+<input id="startBtn" type="button" value="start" onclick="startProgress()"/> 
+
+
+<form action="/example/html/form_action.asp" method="get">
+  <p>First name: <input type="text" name="fname" /></p>
+  <p>Last name: <input type="text" name="lname" /></p>
+  <input type="submit" value="Submit" />
+</form>
+
+
+<form name="input" action="html_form_action.asp" method="get">
+First name: 
+<input type="text" name="firstname" />
+<input type="submit" value="Submit" />
+<br />
+Last name: 
+<input type="text" name="lastname" />
+</form>
+
+<form>
+<input type="radio" checked="checked" name="sex" value="male" /> Male
+<br />
+<input type="checkbox" name="sex" value="female" /> Female
+<br />
+<input type="button" value="Hello world!">
+</form>
+
+<form>
+<select name="cars">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat" selected="selected">Fiat</option>
+<option value="audi">Audi</option>
+</select>
+</form>
+
+<form action="MAILTO:someone@w3school.com.cn" method="post" enctype="text/plain">
+
+<h3>这个表单会把电子邮件发送到 W3School。</h3>
+姓名：<br />
+<input type="text" name="name" value="yourname" size="20">
+<br />
+电邮：<br />
+<input type="text" name="mail" value="yourmail" size="20">
+<br />
+内容：<br />
+<input type="text" name="comment" value="yourcomment" size="40">
+<br /><br />
+<input type="submit" value="发送">
+<input type="reset" value="重置">
+</form>
+
+<form>
+  <fieldset>
+    <legend>健康信息</legend>
+    身高：<input type="text" />
+    体重：<input type="text" />
+  </fieldset>
+</form>
+
+<frameset rows="25%,50%,25%">
+
+  <frame src="/example/html/frame_a.html" noresize="noresize">
+  <frame src="/example/html/frame_b.html">
+  <frame src="/example/html/frame_c.html">
+
+</frameset>
+
+
+
+<textarea rows="10" cols="30">
+The cat was playing in the garden.
+<html/>
+
+
+
+<html>
+
+<frameset cols="180,*">
+
+<frame src="/example/html/content.html">
+<frame src="/example/html/link.html" name="showframe">
+
+</frameset>
+
+</html>
+
+

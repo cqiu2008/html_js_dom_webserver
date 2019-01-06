@@ -1,0 +1,27 @@
+<script type="text/javascript"> 
+/*
+FileExists(filepath)是验证文件是否存在的方法,filepath是文件路径
+OpenTextFile，第二个参数有三种方式，都是常量:
+ForReading=1          以只读方式打开文件。 不能写这个文件。
+ForWriting=2          以写方式打开文件
+ForAppending= 8       打开文件并从文件末尾开始写。
+*/
+
+var oFso,oFile,sFile,sContent;
+sFile = "G:\\luckty.txt";
+
+//写文件
+oFso = new ActiveXObject("Scripting.FileSystemObject");  
+oFile = oFso.OpenTextFile(sFile,2,true); //写方式打开
+oFile.WriteLine("菩提本无树，明镜亦非台，本来无一物，何处惹尘埃!");      
+oFile.Close();  
+
+//读文件
+oFile = oFso.OpenTextFile(sFile,1);  //只读方式打开
+sContent = oFile.ReadLine();
+oFile.Close();  
+
+document.write(sFile + "文件内容为：<br/><br/>" + sContent);
+</script>
+</head>
+

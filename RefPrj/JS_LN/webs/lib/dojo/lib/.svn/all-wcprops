@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/lib
+END
+backCompat.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/lib/backCompat.js
+END
+main-browser.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/lib/main-browser.js
+END
+kernel.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/NR8000_NEW/!svn/ver/66985/trunk/tool/Robot/src/cloud/webs/lib/dojo/lib/kernel.js
+END
